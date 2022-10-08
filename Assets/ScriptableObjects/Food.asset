@@ -15,9 +15,9 @@ MonoBehaviour:
   Effects_Key: food
   Icon: {fileID: 21300000, guid: 14868e72ec28e43459f2f2c0151ace90, type: 3}
   Name: A manger !
-  Description: "Mangez un tr\xE8s bon |name| et r\xE9cuperez |qte| faim"
+  Description: "Mangez une tr\xE8s bonne |name| et r\xE9cuperez |qte| faim"
   Energy_Cost: 1
   Wood_Cost: 0
   Stone_Cost: 0
   Probability_to_change: 0
-  TextParams: name:Carottes-carots;qte:40-40
+  TextParams: name:Carotte-carots;qte:40-40
