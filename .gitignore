@@ -75,3 +75,4 @@ ProjectSettings/ProjectVersion.txt
 /.idea/*
 
 .DS_Store
+Packages/packages-lock.json

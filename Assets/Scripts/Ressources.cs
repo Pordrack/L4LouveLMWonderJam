@@ -24,9 +24,9 @@ public class Ressources : MonoBehaviour
 
     void Start()
     {
-        update_bois(45);
-        update_pierre(45);
-        update_nourriture(45);
+        update_bois(_bois);
+        update_pierre(_pierre);
+        update_nourriture(_nourriture);
     }
 
 
