@@ -30,11 +30,11 @@ public class MapMaskHandler
             for(var i=0; i<11; i++)
             {
                 //blocks to hide
-                maskUpdate[0, i, 0] = _playerPos[0] - 5;
+                maskUpdate[0, i, 0] = _playerPos[0] - deltaX*5;
                 maskUpdate[0, i, 1] = _playerPos[1] - 5 + i;
                 
                 //blocks to draw
-                maskUpdate[1, i, 0] = _playerPos[0] + 6;
+                maskUpdate[1, i, 0] = _playerPos[0] + deltaX*6;
                 maskUpdate[1, i, 1] = _playerPos[1] - 5 + i;
             }
         }
@@ -44,11 +44,11 @@ public class MapMaskHandler
             {
                 //blocks to hide
                 maskUpdate[0, i, 0] = _playerPos[0] - 5 + i;
-                maskUpdate[0, i, 1] = _playerPos[1] - 5;
+                maskUpdate[0, i, 1] = _playerPos[1] - deltaY*5;
                 
                 //blocks to draw
                 maskUpdate[1, i, 0] = _playerPos[0] - 5 + i;
-                maskUpdate[1, i, 1] = _playerPos[1] + 6;
+                maskUpdate[1, i, 1] = _playerPos[1] + deltaY*6;
             }
         }
         else //No movement
