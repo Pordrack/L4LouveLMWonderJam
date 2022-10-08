@@ -1,35 +1,35 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Generation : MonoBehaviour
 {
-
+    
     public static int tailleMap = 100;
     public GameObject bloc; //prefab of the block
-    public GameObject[,] MapBlocks;
+    private static GameObject[,] _mapBlocks;
     
 
-    public GameObject Environnement;
+    public GameObject environment;
     public static GameObject[,] MapsEnvironment; //Position of the environment elements (tree, rocks, etc ...)
     
-    public static event Action OnGenerationComplete;
+    public static event Action<int,int> OnGenerationComplete;
+    private static MapMaskHandler _maskHandler;
 
     // Start is called before the first frame update
     void Start()
     {
-        MapBlocks = new GameObject[tailleMap,tailleMap];
+        _mapBlocks = new GameObject[tailleMap,tailleMap];
 
         for(int i = 0; i<tailleMap; i++){
             for(int v = 0; v<tailleMap; v++){
                 GameObject go = Instantiate(bloc, new Vector3(i, 0, v), Quaternion.identity,transform) as GameObject;
                 go.transform.localScale = Vector3.one;
-                MapBlocks[i,v] = go;
+                _mapBlocks[i,v] = go;
                 if(v==0 || i == 0 || i == tailleMap-1 || v == tailleMap-1){
-                    MapBlocks[i,v].GetComponent<bloc>().set_type(0);
+                    _mapBlocks[i,v].GetComponent<bloc>().set_type(0);
                 }
+                go.SetActive(false);
             }
         }
         procedural();
@@ -38,20 +38,24 @@ public class Generation : MonoBehaviour
 
         for(int i = 0; i<tailleMap; i++){
             for(int v = 0; v<tailleMap; v++){
-                GameObject go = Instantiate(Environnement, new Vector3(i, 1, v), Quaternion.identity,transform) as GameObject;
+                GameObject go = Instantiate(environment, new Vector3(i, 1, v), Quaternion.identity,transform) as GameObject;
                 go.transform.localScale = Vector3.one;
                 MapsEnvironment[i,v] = go;
                 if(v==0 || i == 0 || i == tailleMap-1 || v == tailleMap-1){
                     MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(0);
                 }
+                go.SetActive(false);
             }
         }
         procedural_generation_environnemnt();
+
+        var playerPos = Set_Player_Position();
+        //mask logic
+        _maskHandler = new MapMaskHandler(playerPos[0], playerPos[1]);
+        MaskInit();
+
+        OnGenerationComplete?.Invoke(playerPos[0], playerPos[1]);
         
-        //Center the plate (so that (0,0) is in the center of the plate)
-        //transform.position = new Vector3(-tailleMap/2+1,0,-tailleMap/2 + 1);
-        
-        OnGenerationComplete?.Invoke();
     }
 
     void procedural(){
@@ -60,13 +64,13 @@ public class Generation : MonoBehaviour
         for(int i = 1; i<tailleMap-1; i++){
             for(int v = 1; v<tailleMap-1; v++){
                 if((i+v)<=tailleMap-1){
-                    if(MapBlocks[i-1,v].GetComponent<bloc>().get_type() == 0 || MapBlocks[i,v-1].GetComponent<bloc>().get_type() == 0){
+                    if(_mapBlocks[i-1,v].GetComponent<bloc>().get_type() == 0 || _mapBlocks[i,v-1].GetComponent<bloc>().get_type() == 0){
                         if(Random.Range(0, 100)>50){
-                           MapBlocks[tailleMap-i-1,tailleMap-v-1].GetComponent<bloc>().set_type(3); 
-                           MapBlocks[i,v].GetComponent<bloc>().set_type(3); 
+                           _mapBlocks[tailleMap-i-1,tailleMap-v-1].GetComponent<bloc>().set_type(3); 
+                           _mapBlocks[i,v].GetComponent<bloc>().set_type(3); 
                         }else{
-                             MapBlocks[tailleMap-i-1,tailleMap-v-1].GetComponent<bloc>().set_type(0); 
-                             MapBlocks[i,v].GetComponent<bloc>().set_type(0); 
+                             _mapBlocks[tailleMap-i-1,tailleMap-v-1].GetComponent<bloc>().set_type(0); 
+                             _mapBlocks[i,v].GetComponent<bloc>().set_type(0); 
                         }
 
                     }else{
@@ -80,11 +84,11 @@ public class Generation : MonoBehaviour
         for(int i = 1; i<tailleMap-1; i++){
             for(int v = 1; v<tailleMap-1; v++){
                 if((i+v)<=tailleMap-1){
-                    if(MapBlocks[i-1,v].GetComponent<bloc>().get_type() == 0 || MapBlocks[i,v-1].GetComponent<bloc>().get_type() == 0){
+                    if(_mapBlocks[i-1,v].GetComponent<bloc>().get_type() == 0 || _mapBlocks[i,v-1].GetComponent<bloc>().get_type() == 0){
                         if(Random.Range(0, 100)>50){
-                           MapBlocks[i,v].GetComponent<bloc>().set_type(3); 
+                           _mapBlocks[i,v].GetComponent<bloc>().set_type(3); 
                         }else{
-                             MapBlocks[i,v].GetComponent<bloc>().set_type(0); 
+                             _mapBlocks[i,v].GetComponent<bloc>().set_type(0); 
                         }
 
                     }else{
@@ -97,25 +101,24 @@ public class Generation : MonoBehaviour
 
         for(int i = 0; i<tailleMap; i++){
             for(int v = 0; v<tailleMap; v++){
-                MapBlocks[i,v].GetComponent<bloc>().set_visibility();
+                _mapBlocks[i,v].GetComponent<bloc>().set_visibility();
             }
         }
     }
-
-
+    
     void procedural_1(int i, int v){
-        MapBlocks[i,v].GetComponent<bloc>().set_type(Random.Range(1, 3));
-        MapBlocks[tailleMap-i-1,tailleMap-v-1].GetComponent<bloc>().set_type(Random.Range(1, 3));
+        _mapBlocks[i,v].GetComponent<bloc>().set_type(Random.Range(1, 3));
+        _mapBlocks[tailleMap-i-1,tailleMap-v-1].GetComponent<bloc>().set_type(Random.Range(1, 3));
     }
 
     void procedural_2(int i,int v){
-        MapBlocks[i,v].GetComponent<bloc>().set_type(Random.Range(1, 3));
+        _mapBlocks[i,v].GetComponent<bloc>().set_type(Random.Range(1, 3));
     }
 
     void procedural_generation_environnemnt(){
         for(int i = 0; i<tailleMap; i++){
             for(int v = 0; v<tailleMap; v++){
-                switch(MapBlocks[i,v].GetComponent<bloc>().get_type()){
+                switch(_mapBlocks[i,v].GetComponent<bloc>().get_type()){
                     case 0:
                         MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(0); 
                     break;
@@ -168,4 +171,51 @@ public class Generation : MonoBehaviour
             }
         }
     }
+
+    private int[] Set_Player_Position()
+    {
+        //TODO : à modifier pour le placer sur une case libre.
+        return new[] {30, 30};
+    }
+    
+    #region Masking logic
+
+    private void MaskInit()
+    {
+        var mask =_maskHandler.InitMask();
+        for(var i=0; i<mask.GetLength(0); i++)
+        {
+            for(var j=0; j<mask.GetLength(1); j++)
+            {
+                var x = mask[i, j, 0];
+                var y = mask[i, j, 1];
+                _mapBlocks[x,y].SetActive(true);
+                MapsEnvironment[x,y].SetActive(true);
+            }
+        }
+    }
+
+    public static void UpdateMask(int newX, int newZ)
+    {
+        var updated = _maskHandler.UpdateMap(newX, newZ);
+        //Hide the blocks that are not in the mask
+        for (var j = 0; j < updated.GetLength(1); j++)
+        {
+            var x = updated[0, j, 0];
+            var y = updated[0, j, 1];
+            _mapBlocks[x,y].SetActive(false);
+            MapsEnvironment[x,y].SetActive(false);
+        }
+        //Show the new blocks
+        for (var j = 0; j < updated.GetLength(0); j++)
+        {
+            var x = updated[1, j, 0];
+            var y = updated[1, j, 1];
+            _mapBlocks[x,y].SetActive(true);
+            MapsEnvironment[x,y].SetActive(true);
+        }
+    }
+    
+
+    #endregion
 }

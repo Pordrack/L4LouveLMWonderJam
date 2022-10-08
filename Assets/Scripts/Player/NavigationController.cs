@@ -6,6 +6,8 @@ namespace Player
 {
     public class NavigationController : MonoBehaviour
     {
+        [SerializeField] private Transform _cam;
+        
         private int _playerX, _playerZ; //indices of the player relatively to the map
         // This is different from its world position in Unity.
         
@@ -27,8 +29,15 @@ namespace Player
             _playerZ = (int) position.z;
         }
 
-        private void GetGeneratedMap()
+        private void GetGeneratedMap(int x, int y)
         {
+            //Set player position given by the generator
+            transform.position = new Vector3(x, 0, y);
+            _playerX = x;
+            _playerZ = y;
+
+            _cam.transform.position = new Vector3(x, 15, y);
+            
             var map = Generation.MapsEnvironment;
             _map = new environnement_bloc[map.GetLength(0), map.GetLength(1)];
             //Go through each element of the map
@@ -61,7 +70,10 @@ namespace Player
             var targetBlock = _map[newX, newZ];
             if (IsMoveLegal(targetBlock))
             {
+                //Move the table
                 gameTable.transform.position += new Vector3(-direction.x, 0, -direction.y);
+                //Update table visibility
+                Generation.UpdateMask(newX,newZ);
                 //Update player position
                 _playerX = newX;
                 _playerZ = newZ;

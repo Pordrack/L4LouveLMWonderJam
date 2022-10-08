@@ -199,8 +199,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 30875094}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 50.5, y: 106, z: 51.6}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 30, y: 15, z: 30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloc: {fileID: 6564775023136269066, guid: f545dab1c4fb8e24e8356a292919cfdc, type: 3}
-  Environnement: {fileID: 1962304772503831723, guid: 7c3a5f90b0b560c4881a52a37dd701bf, type: 3}
+  environment: {fileID: 1962304772503831723, guid: 7c3a5f90b0b560c4881a52a37dd701bf, type: 3}
 --- !u!4 &191525893
 Transform:
   m_ObjectHideFlags: 0
@@ -393,6 +393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc680d0d4d7454dde853cca72723119e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cam: {fileID: 30875097}
   gameTable: {fileID: 191525891}
 --- !u!136 &2064442204
 CapsuleCollider:

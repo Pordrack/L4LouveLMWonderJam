@@ -62,4 +62,18 @@ public class MapMaskHandler
         
         return maskUpdate;
     }
+
+    public int[,,] InitMask()
+    {
+        var mask = new int[11, 11, 2];
+        for (var i = 0; i < 11; i++)
+        {
+            for (var j = 0; j < 11; j++)
+            {
+                mask[i, j, 0] = _playerPos[0] - 5 + i;
+                mask[i, j, 1] = _playerPos[1] - 5 + j;
+            }
+        }
+        return mask;
+    }
 }
