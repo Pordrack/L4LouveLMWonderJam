@@ -9,6 +9,8 @@ public class loading : MonoBehaviour {
 	public Slider slider;
 	public string sceneIndex;
 	public GameObject loadingScreen;
+	public Text load_txt;
+	public string[] truc;
 
 	// option
 
@@ -25,7 +27,9 @@ public class loading : MonoBehaviour {
 
 	// Use this for initialization
 	public void LoadLevel (int sceneIndex){
-		StartCoroutine(LoadSAsync(sceneIndex));
+		StartCoroutine(Troll(sceneIndex));
+		StartCoroutine(load_slider(sceneIndex));
+		loadingScreen.SetActive(true);
 	}
 
 	IEnumerator LoadSAsync(int sceneIndex){
@@ -54,6 +58,8 @@ public class loading : MonoBehaviour {
 		}else{
 			fullscreen = false;
 		}
+
+		
 
 	}
 
@@ -114,5 +120,23 @@ public class loading : MonoBehaviour {
 		Screen.SetResolution(data.l,data.L,data.fullscreen);
 
 	}
+
+	 IEnumerator Troll(int sceneIndex)
+    {
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(10);
+        StartCoroutine(LoadSAsync(sceneIndex));
+
+    }
+
+    IEnumerator load_slider(int sceneIndex)
+    {
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(Random.Range(0.2f,1.0f));
+        slider.value = Random.Range(0.0f,1.0f);
+        StartCoroutine(load_slider(sceneIndex));
+        load_txt.text = truc[Random.Range(0,truc.Length)];
+
+    }
 
 }
