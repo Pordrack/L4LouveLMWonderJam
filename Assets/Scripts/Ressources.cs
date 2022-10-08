@@ -16,7 +16,9 @@ public class Ressources : MonoBehaviour
 
     void Start()
     {
-        //rondin[0].SetActive(false);
+        update_bois(45);
+        update_pierre(45);
+        update_nourriture(45);
     }
 
 
@@ -129,14 +131,15 @@ public class Ressources : MonoBehaviour
                 }
                 break;
             case <= 50:
-                for (int i = 5; i < 9; i++)
-                {
-                    rondin[i].SetActive(false);
-                }
                 for (int i = 0; i < 5; i++)
                 {
                     rondin[i].SetActive(true);
                 }
+                for (int i = 5; i < 9; i++)
+                {
+                    rondin[i].SetActive(false);
+                }
+                
                 break;
             case <= 60:
                 for (int i = 6; i < 9; i++)
