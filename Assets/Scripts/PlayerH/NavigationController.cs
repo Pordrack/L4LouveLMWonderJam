@@ -8,7 +8,6 @@ namespace PlayerH
     {
         [SerializeField] private float speed = 5f;
         private int _currentPos;
-        private Vector3? _target;
 
         public GameObject plate;
         
@@ -33,32 +32,21 @@ namespace PlayerH
             }
             
         }
-
-        private void Update()
-        {
-            if (_target is null) return;
-            _tf.position = Vector3.MoveTowards(_tf.position, _target.Value, speed*Time.deltaTime);
-            if (_tf.position == _target.Value)
-            {
-                _target = null;
-            }
-            
-        }
+        
 
         public void TryToMove(int dir)
         {
-            if (_target is not null) return;
-            
+
             //Check if the movement is possible
             if (IsMoveLegal(dir))
             {
                 _currentPos += dir; //Update pos index
-                _target = _map[_currentPos]; //Update target
                 
+                plate.transform.position = _map[_currentPos]; //Move the plate (teleport for now)
             }
             else
             {
-                
+                Debug.Log("Impossible movement.");
             }
         }
 
