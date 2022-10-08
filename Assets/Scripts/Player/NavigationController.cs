@@ -77,6 +77,9 @@ namespace Player
                 //Update player position
                 _playerX = newX;
                 _playerZ = newZ;
+                
+                //Update its rotation according to the movement.
+                _tf.rotation = Quaternion.RotateTowards(_tf.rotation, Quaternion.LookRotation(new Vector3(direction.x, 0, direction.y)), 180);
             }
 
         }
