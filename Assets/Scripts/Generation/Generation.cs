@@ -25,6 +25,7 @@ public class Generation : MonoBehaviour
             for(int v = 0; v<tailleMap; v++){
                 GameObject go = Instantiate(bloc, new Vector3(i, 0, v), Quaternion.identity,transform) as GameObject;
                 go.transform.localScale = Vector3.one;
+                go.name = "Bloc (" + i + "," + v + ")";
                 _mapBlocks[i,v] = go;
                 if(v==0 || i == 0 || i == tailleMap-1 || v == tailleMap-1){
                     _mapBlocks[i,v].GetComponent<bloc>().set_type(0);
@@ -40,6 +41,7 @@ public class Generation : MonoBehaviour
             for(int v = 0; v<tailleMap; v++){
                 GameObject go = Instantiate(environment, new Vector3(i, 1, v), Quaternion.identity,transform) as GameObject;
                 go.transform.localScale = Vector3.one;
+                go.name = "Environment (" + i + "," + v + ")";
                 MapsEnvironment[i,v] = go;
                 if(v==0 || i == 0 || i == tailleMap-1 || v == tailleMap-1){
                     MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(0);
@@ -207,7 +209,7 @@ public class Generation : MonoBehaviour
             MapsEnvironment[x,y].SetActive(false);
         }
         //Show the new blocks
-        for (var j = 0; j < updated.GetLength(0); j++)
+        for (var j = 0; j < updated.GetLength(1); j++)
         {
             var x = updated[1, j, 0];
             var y = updated[1, j, 1];
