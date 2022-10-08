@@ -6,7 +6,8 @@ namespace Player
 {
     public class NavigationController : MonoBehaviour
     {
-        private int _playerX, _playerZ;
+        private int _playerX, _playerZ; //indices of the player relatively to the map
+        // This is different from its world position in Unity.
         
         public GameObject gameTable;
         private environnement_bloc[,] _map;
@@ -20,6 +21,7 @@ namespace Player
             _tf = transform;
             Generation.OnGenerationComplete += GetGeneratedMap;
             //init position of the player.
+            //TODO : this must be changed
             var position = _tf.position;
             _playerX = (int) position.x;
             _playerZ = (int) position.z;
