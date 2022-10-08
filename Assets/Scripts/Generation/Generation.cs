@@ -52,6 +52,7 @@ public class Generation : MonoBehaviour
         procedural_generation_environnemnt();
 
         var playerPos = Set_Player_Position();
+
         //mask logic
         _maskHandler = new MapMaskHandler(playerPos[0], playerPos[1]);
         MaskInit();
@@ -205,19 +206,27 @@ public class Generation : MonoBehaviour
         {
             var x = updated[0, j, 0];
             var y = updated[0, j, 1];
-            _mapBlocks[x,y].SetActive(false);
-            MapsEnvironment[x,y].SetActive(false);
+            
+            if (!IsInMap(x, y)) continue;
+            
+            _mapBlocks[x, y].SetActive(false);
+            MapsEnvironment[x, y].SetActive(false);
         }
         //Show the new blocks
         for (var j = 0; j < updated.GetLength(1); j++)
         {
             var x = updated[1, j, 0];
             var y = updated[1, j, 1];
+            if (!IsInMap(x, y)) continue;
             _mapBlocks[x,y].SetActive(true);
             MapsEnvironment[x,y].SetActive(true);
         }
     }
     
+    private static bool IsInMap(int x, int y)
+    {
+        return x >= 0 && x < Generation.tailleMap && y >= 0 && y < Generation.tailleMap;
+    }
 
     #endregion
 }

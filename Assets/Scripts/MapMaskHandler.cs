@@ -62,6 +62,8 @@ public class MapMaskHandler
         
         return maskUpdate;
     }
+    
+    
 
     public int[,,] InitMask()
     {
