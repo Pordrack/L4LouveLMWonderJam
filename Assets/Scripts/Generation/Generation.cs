@@ -141,6 +141,8 @@ public class Generation : MonoBehaviour
                             case 4:
                                 if(Random.Range(0, 100)>75){
                                     MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(4); 
+                                }else{
+                                    MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(1); 
                                 }
                             break;
                         }
@@ -156,10 +158,6 @@ public class Generation : MonoBehaviour
                 }
             }
         }
-
-
-
-
 
 
 

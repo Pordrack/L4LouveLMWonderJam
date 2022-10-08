@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class environnement_bloc : MonoBehaviour
 {
-    int type; // 0 water 1 //empty
+    public int type; // 0 water 1 //empty
     float hauteur;
     float x,z;
     public GameObject[] obj_type_floor;
