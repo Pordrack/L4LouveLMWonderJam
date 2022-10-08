@@ -22,7 +22,7 @@ public class Stats_Perso : MonoBehaviour
     {
         return _max_santee;
     }
-    
+
     public int Get_Max_Faim()
     {
         return _max_faim;
@@ -41,6 +41,23 @@ public class Stats_Perso : MonoBehaviour
         _faim = _max_faim;
         _action = _max_action;
     }
+
+    //void Update()
+    //{
+    //    if (Random.Range(0, 2) == 0)
+    //    {
+    //        add_santee(Random.Range(0, 11));
+    //        add_faim(Random.Range(0, 11));
+    //        add_action(Random.Range(0, 11));
+    //    }
+    //    else
+    //    {
+    //        down_santee(Random.Range(0, 11));
+    //        down_faim(Random.Range(0, 11));
+    //        down_action(Random.Range(0, 11));
+    //    }
+
+    //}
 
     // ajout de valeurs
 

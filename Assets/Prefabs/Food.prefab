@@ -92,7 +92,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2474899652500702957}
-  - component: {fileID: 2474899652500702956}
   m_Layer: 0
   m_Name: Food
   m_TagString: Untagged
@@ -120,20 +119,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2474899652500702956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2474899652500702959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99bb1db79af10d44b92e8aabeb137833, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cylindre: {fileID: 8378520961095866700}
-  txt: {fileID: 3763956765721551979}
 --- !u!1 &3477124469480023104
 GameObject:
   m_ObjectHideFlags: 0
