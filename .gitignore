@@ -73,3 +73,5 @@ crashlytics-build.properties
 ProjectSettings/ProjectVersion.txt
 
 /.idea/*
+
+.DS_Store
