@@ -127,6 +127,34 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "Cards",
+            "id": "eb83e53c-c46f-4105-b42a-b61a204a858c",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "cea0991e-a031-4b68-9fbe-127e0ecb82bf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "fc8a5166-b4c7-4621-a86b-f09c0a7fe67f",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
