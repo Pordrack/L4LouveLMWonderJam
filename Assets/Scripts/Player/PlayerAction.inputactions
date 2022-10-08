@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchToCardView",
+                    "type": "Button",
+                    "id": "9aa5092e-fb73-4dd8-9e28-8c78d541d658",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -245,6 +254,17 @@
                     "action": "SpawnNewCard",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0b68db76-728b-43ea-800d-4bd73797246c",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchToCardView",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -292,6 +312,15 @@
                     "name": "Card4",
                     "type": "Button",
                     "id": "e78d7570-4abd-426c-a311-dca192a5c062",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchToNormalView",
+                    "type": "Button",
+                    "id": "f5737349-2956-4627-a41c-7333a9bf6946",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -351,6 +380,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Card0",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6fbb4e49-2790-4ecd-96ed-cd205467907a",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchToNormalView",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

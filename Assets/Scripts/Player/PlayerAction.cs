@@ -89,6 +89,15 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchToCardView"",
+                    ""type"": ""Button"",
+                    ""id"": ""9aa5092e-fb73-4dd8-9e28-8c78d541d658"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -267,6 +276,17 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""action"": ""SpawnNewCard"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0b68db76-728b-43ea-800d-4bd73797246c"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchToCardView"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -314,6 +334,15 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""name"": ""Card4"",
                     ""type"": ""Button"",
                     ""id"": ""e78d7570-4abd-426c-a311-dca192a5c062"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchToNormalView"",
+                    ""type"": ""Button"",
+                    ""id"": ""f5737349-2956-4627-a41c-7333a9bf6946"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -375,6 +404,17 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""action"": ""Card0"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6fbb4e49-2790-4ecd-96ed-cd205467907a"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchToNormalView"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -413,6 +453,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         m_Player_Card3 = m_Player.FindAction("Card3", throwIfNotFound: true);
         m_Player_Card4 = m_Player.FindAction("Card4", throwIfNotFound: true);
         m_Player_SpawnNewCard = m_Player.FindAction("SpawnNewCard", throwIfNotFound: true);
+        m_Player_SwitchToCardView = m_Player.FindAction("SwitchToCardView", throwIfNotFound: true);
         // Cards
         m_Cards = asset.FindActionMap("Cards", throwIfNotFound: true);
         m_Cards_Card0 = m_Cards.FindAction("Card0", throwIfNotFound: true);
@@ -420,6 +461,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         m_Cards_Card2 = m_Cards.FindAction("Card2", throwIfNotFound: true);
         m_Cards_Card3 = m_Cards.FindAction("Card3", throwIfNotFound: true);
         m_Cards_Card4 = m_Cards.FindAction("Card4", throwIfNotFound: true);
+        m_Cards_SwitchToNormalView = m_Cards.FindAction("SwitchToNormalView", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -486,6 +528,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Card3;
     private readonly InputAction m_Player_Card4;
     private readonly InputAction m_Player_SpawnNewCard;
+    private readonly InputAction m_Player_SwitchToCardView;
     public struct PlayerActions
     {
         private @PlayerAction m_Wrapper;
@@ -497,6 +540,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         public InputAction @Card3 => m_Wrapper.m_Player_Card3;
         public InputAction @Card4 => m_Wrapper.m_Player_Card4;
         public InputAction @SpawnNewCard => m_Wrapper.m_Player_SpawnNewCard;
+        public InputAction @SwitchToCardView => m_Wrapper.m_Player_SwitchToCardView;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -527,6 +571,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @SpawnNewCard.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpawnNewCard;
                 @SpawnNewCard.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpawnNewCard;
                 @SpawnNewCard.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpawnNewCard;
+                @SwitchToCardView.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchToCardView;
+                @SwitchToCardView.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchToCardView;
+                @SwitchToCardView.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchToCardView;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -552,6 +599,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @SpawnNewCard.started += instance.OnSpawnNewCard;
                 @SpawnNewCard.performed += instance.OnSpawnNewCard;
                 @SpawnNewCard.canceled += instance.OnSpawnNewCard;
+                @SwitchToCardView.started += instance.OnSwitchToCardView;
+                @SwitchToCardView.performed += instance.OnSwitchToCardView;
+                @SwitchToCardView.canceled += instance.OnSwitchToCardView;
             }
         }
     }
@@ -565,6 +615,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_Cards_Card2;
     private readonly InputAction m_Cards_Card3;
     private readonly InputAction m_Cards_Card4;
+    private readonly InputAction m_Cards_SwitchToNormalView;
     public struct CardsActions
     {
         private @PlayerAction m_Wrapper;
@@ -574,6 +625,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         public InputAction @Card2 => m_Wrapper.m_Cards_Card2;
         public InputAction @Card3 => m_Wrapper.m_Cards_Card3;
         public InputAction @Card4 => m_Wrapper.m_Cards_Card4;
+        public InputAction @SwitchToNormalView => m_Wrapper.m_Cards_SwitchToNormalView;
         public InputActionMap Get() { return m_Wrapper.m_Cards; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -598,6 +650,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @Card4.started -= m_Wrapper.m_CardsActionsCallbackInterface.OnCard4;
                 @Card4.performed -= m_Wrapper.m_CardsActionsCallbackInterface.OnCard4;
                 @Card4.canceled -= m_Wrapper.m_CardsActionsCallbackInterface.OnCard4;
+                @SwitchToNormalView.started -= m_Wrapper.m_CardsActionsCallbackInterface.OnSwitchToNormalView;
+                @SwitchToNormalView.performed -= m_Wrapper.m_CardsActionsCallbackInterface.OnSwitchToNormalView;
+                @SwitchToNormalView.canceled -= m_Wrapper.m_CardsActionsCallbackInterface.OnSwitchToNormalView;
             }
             m_Wrapper.m_CardsActionsCallbackInterface = instance;
             if (instance != null)
@@ -617,6 +672,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @Card4.started += instance.OnCard4;
                 @Card4.performed += instance.OnCard4;
                 @Card4.canceled += instance.OnCard4;
+                @SwitchToNormalView.started += instance.OnSwitchToNormalView;
+                @SwitchToNormalView.performed += instance.OnSwitchToNormalView;
+                @SwitchToNormalView.canceled += instance.OnSwitchToNormalView;
             }
         }
     }
@@ -648,6 +706,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         void OnCard3(InputAction.CallbackContext context);
         void OnCard4(InputAction.CallbackContext context);
         void OnSpawnNewCard(InputAction.CallbackContext context);
+        void OnSwitchToCardView(InputAction.CallbackContext context);
     }
     public interface ICardsActions
     {
@@ -656,5 +715,6 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         void OnCard2(InputAction.CallbackContext context);
         void OnCard3(InputAction.CallbackContext context);
         void OnCard4(InputAction.CallbackContext context);
+        void OnSwitchToNormalView(InputAction.CallbackContext context);
     }
 }

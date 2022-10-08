@@ -19,6 +19,8 @@ public class CardScript : MonoBehaviour
     public bool Must_Reach_Target=false; //Doit se déplacer vers sa position cible
     public float Max_Speed = 2; //La vitesse par frame dont on se déplace
 
+    public static Dictionary<string,Card_Effect> Card_Effects_Dictionnary;//Le dictionnaire qui contient
+    //Les classes pour les effets de toutes les cartes
     void Start()
     {
         Card_Scriptable_Object = Instantiate(Card_Scriptable_Object);
@@ -94,8 +96,22 @@ public class CardScript : MonoBehaviour
     //Joué quand on joue la carte
     public void On_Play()
     {
+        //On trouve son instance de Card_Effects puis on appel OnPlay
+        if (Card_Effects_Dictionnary.ContainsKey(Card_Scriptable_Object.Effects_Key))
+        {
+            Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnPlay(Card_Scriptable_Object);
+        }
         //A la fin on défausse
         GetComponentInChildren<Collider>().enabled = false;
         Destroy(gameObject, 1);
+    }
+
+    //Joué quand la carte glitch
+    public void On_Glitch()
+    {
+        if (Card_Effects_Dictionnary.ContainsKey(Card_Scriptable_Object.Effects_Key))
+        {
+            Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnGlitch(Card_Scriptable_Object);
+        }
     }
 }

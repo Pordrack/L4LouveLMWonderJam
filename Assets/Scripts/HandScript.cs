@@ -12,6 +12,8 @@ public class HandScript : MonoBehaviour
     public Transform[] Cards_Holder; //Les positions ou doivent atterir les cartes sur la table
     public int Max_Number_Of_Cards;
 
+    private int selected_index; //L'actuel selection d'index
+
     public GameObject Card_Prefab; //Prefab de la carte physique
     public Card[] Cards_Templates; //Liste des scritable objects de cartes randoms
     public int[] Ponderations; //Les ponderation des cartes randoms
@@ -128,5 +130,57 @@ public class HandScript : MonoBehaviour
         Cards_Scripts.RemoveAt(index);
 
         Update_Target_Pos();
+    }
+
+    //Marque une carte comme selectionnée
+    public void Select_Card_Of_Index(int index)
+    {
+        selected_index = index;
+        //On commence par desactiver tous les curseurs et par 
+        Hide_Cursors();
+        Show_Cursors();
+    }
+
+    //Selectionne la carte suivante/précédente
+    public void Move_Selected_Index(int difference)
+    {
+        selected_index += difference;
+        while (selected_index > Cards_Scripts.Count)
+        {
+            selected_index--;
+        }
+        if (selected_index < 0)
+        {
+            selected_index = 0;
+        }
+        Select_Card_Of_Index(selected_index);
+    }
+
+
+    //Cache tous les cursors
+    public void Hide_Cursors()
+    {
+        foreach (Transform card_holder in Cards_Holder)
+        {
+            card_holder.Find("Cursor").gameObject.SetActive(false);
+        }
+    }
+
+    public void Show_Cursors()
+    {
+        //Puis on active le curseur de la carte a selectionner, si il y'as une carte là
+        if (selected_index >= 0 && selected_index < Cards_Holder.Length && selected_index <= Cards_Scripts.Count)
+        {
+            Cards_Holder[selected_index].Find("Cursor").gameObject.SetActive(true);
+        }
+    }
+
+    public void Play_Selected_Card()
+    {
+        if (selected_index >= 0 && selected_index <= Cards_Scripts.Count)
+        {
+            Play_Card_Of_Index(selected_index);
+            Select_Card_Of_Index(0);
+        }
     }
 }
