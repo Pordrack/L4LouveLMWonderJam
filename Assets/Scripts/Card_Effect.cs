@@ -17,6 +17,14 @@ public abstract class Card_Effect : MonoBehaviour
         CardScript.Card_Effects_Dictionnary.Add(Effects_Key, this);
     }
 
-    public abstract void OnPlay(Card card);
-    public abstract void OnGlitch(Card card);
+    public abstract void OnPlay(Dictionary<string,string[]> parameters);
+    public void OnGlitch(Dictionary<string, string[]> parameters)
+    {
+        float random_value = Random.Range(0.0f, 1.0f);
+        if (random_value <= 1)
+        {
+            OnValueGlitch(parameters);
+        }
+    }
+    public abstract void OnValueGlitch(Dictionary<string, string[]> parameters);
 }

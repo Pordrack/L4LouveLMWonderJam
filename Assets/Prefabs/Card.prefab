@@ -640,7 +640,7 @@ MonoBehaviour:
   Stone_Cost: {fileID: 2782907867858198169}
   Target_Position: {x: 0, y: 0, z: 0}
   Must_Reach_Target: 0
-  Max_Speed: 2
+  Max_Speed: 0.1
 --- !u!54 &-1472918934843817454
 Rigidbody:
   m_ObjectHideFlags: 0

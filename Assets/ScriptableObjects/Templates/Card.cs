@@ -16,6 +16,8 @@ public class Card : ScriptableObject
     public int Wood_Cost;
     public int Stone_Cost;
 
+    public float Probability_to_change; //Probabilité de devenir une nouvelle carte lors du glitch
+
     public string TextParams; //Paramètre aux format text, converti en dictionnaire Params
                               //Format = "Key:DisplayName-Value;"
                               //Remplie le dico a partir de la valeur de text params
