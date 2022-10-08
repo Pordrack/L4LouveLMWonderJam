@@ -58,10 +58,9 @@ namespace Player
             // Get the wanted new player's position
             var newX = _playerX + (int) direction.x;
             var newZ = _playerZ + (int) direction.y;
-            
-            Debug.Log($"Current position registered is {_playerX}, {_playerZ}.\n Current position (transform) is {_tf.position.x}, {_tf.position.z}.\n" +
-                      $" The direction we get is {direction} .\n" +
-                      $" New position is {newX}, {newZ}.");
+            //Debug.Log($"Current position registered is {_playerX}, {_playerZ}.\n Current position (transform) is {_tf.position.x}, {_tf.position.z}.\n" +
+              //        $" The direction we get is {direction} .\n" +
+                //      $" New position is {newX}, {newZ}.");
             
             //Ensure it is in bounds.
             if(newX < 0 || newX >= _map.GetLength(0) || newZ < 0 || newZ >= _map.GetLength(1)) return;

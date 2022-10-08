@@ -4,13 +4,14 @@ using UnityEngine;
 
 namespace IA
 {
-    [RequireComponent(typeof(Renderer))]
+    [RequireComponent(typeof(MeshRenderer))]
     [RequireComponent(typeof(OtherNavBehavior))]
     public abstract class Brain : MonoBehaviour 
     {
         protected OtherNavBehavior Nav { get; private set; }
         protected Transform Tf { get; private set; }
-        protected Renderer Rend { get; private set; }
+        protected MeshRenderer Rend { get; private set; }
+        public Transform player;
         private int _playerX, _playerY;
         private int _minX,_maxX,_minY,_maxY;
 
@@ -18,18 +19,29 @@ namespace IA
         {
             Tf = transform;
             Nav = GetComponent<OtherNavBehavior>();
-            Rend = GetComponent<Renderer>();
-            Rend.enabled = false;
+            Rend = GetComponent<MeshRenderer>();
+            EnableRendering(false);
             Generation.OnGenerationComplete += (x,y) =>
             {
-                _playerX = x ; 
-                _playerY = y;
+                _playerX = (int) player.position.x ; 
+                _playerY = (int)player.position.z;
                 var half = MapMaskHandler.DrawnMapSize/2;    
-                _minX = x - half;
-                _maxX = x + half;
-                _minY = y-half;
-                _maxY = y+half;
+                _minX = _playerX - half;
+                _maxX = _playerX + half;
+                _minY = _playerY-half;
+                _maxY = _playerY+half;
             };
+        }
+
+        private void EnableRendering(bool b)
+        {
+            if (!b && !Rend.isVisible) return;
+            if (b && Rend.isVisible) return;
+            Rend.enabled = b;
+            foreach (var childRenderer in transform.GetComponentsInChildren<MeshRenderer>())
+            {
+                childRenderer.enabled = b;
+            }
         }
 
         public abstract void Decide();
@@ -69,13 +81,18 @@ namespace IA
                 return;
             
             //We only hide the visual part, the animals still play, even out of bounds.
-            var local = Tf.localPosition;
+            var local = Tf.position;
             Debug.Log($"We have ({local.x},{local.z}) with extrema being X = ({_minX},{_maxX}) and Y = ({_minY},{_maxY})");
             if (local.x < _minX || local.x > _maxX || local.z < _minY || local.z > _maxY)
-                Rend.enabled = false;
+            {
+                EnableRendering(false);
+                print("We get in the false statement WTF.? ");
+            }
             else
-                Rend.enabled = true;
-            print("We get in true statement.");
+            {
+                EnableRendering(true);
+                print("We get in true statement.");
+            }
         }
     }
     

@@ -25,8 +25,8 @@ public class MapMaskHandler
         var deltaX = newX - _playerPos[0];
         var deltaY = newY - _playerPos[1];
 
-        Debug.Log($"old pos ({_playerPos[0]},{_playerPos[1]}) and new pos ({newX},{newY})" +
-            $"deltaX: {deltaX}, deltaY: {deltaY}");
+    //        Debug.Log($"old pos ({_playerPos[0]},{_playerPos[1]}) and new pos ({newX},{newY})" +
+      //      $"deltaX: {deltaX}, deltaY: {deltaY}");
         if (deltaX != 0)
         {
             for(var i=0; i<11; i++)
