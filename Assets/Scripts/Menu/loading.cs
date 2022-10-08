@@ -43,7 +43,7 @@ public class loading : MonoBehaviour {
 
 	void Start(){
 		setsound();
-		LoadParametre();
+		//LoadParametre();
 
 
 	}
