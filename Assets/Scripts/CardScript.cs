@@ -15,6 +15,9 @@ public class CardScript : MonoBehaviour
     public TMP_Text Stone_Cost;
     private string SEPARATOR = "|"; //Séparateur des paramètres de la description
     private string PLACEHOLDER = "paramètre introuvable";
+    public Vector3 Target_Position; //Une position dont on doit se rapprocher
+    public bool Must_Reach_Target=false; //Doit se déplacer vers sa position cible
+    public float Max_Speed = 2; //La vitesse par frame dont on se déplace
 
     void Start()
     {
@@ -23,10 +26,20 @@ public class CardScript : MonoBehaviour
         LoadCard();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        if (!Must_Reach_Target)
+        {
+            return;
+        }
+        Target_Position.y = transform.position.y;
+        //On se rapproche de la position cible
+        transform.position = Vector3.MoveTowards(transform.position, Target_Position, Max_Speed);
+
+        if (transform.position == Target_Position)
+        {
+            Must_Reach_Target = false;
+        }
     }
 
     //Remplie les champs de la carte avec les infos du scriptable object
@@ -76,5 +89,13 @@ public class CardScript : MonoBehaviour
         //On recolle les bouts puis on renvoie
         return string.Concat(segments);
 
+    }
+
+    //Joué quand on joue la carte
+    public void On_Play()
+    {
+        //A la fin on défausse
+        GetComponentInChildren<Collider>().enabled = false;
+        Destroy(gameObject, 1);
     }
 }

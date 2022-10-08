@@ -35,6 +35,60 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Card0"",
+                    ""type"": ""Button"",
+                    ""id"": ""397d9696-ca01-4e23-b5f5-e28357a9a021"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Card1"",
+                    ""type"": ""Button"",
+                    ""id"": ""126e0c11-cb31-4eb6-93e5-d8cec45d995f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Card2"",
+                    ""type"": ""Button"",
+                    ""id"": ""10b7e9f6-94fb-429d-835b-406ec328622c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Card3"",
+                    ""type"": ""Button"",
+                    ""id"": ""bc6bf143-276d-4263-bb76-4b409661c585"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Card4"",
+                    ""type"": ""Button"",
+                    ""id"": ""680ccfe9-17f0-4416-9556-989cb05a3569"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SpawnNewCard"",
+                    ""type"": ""Button"",
+                    ""id"": ""b77d0df3-3b5d-472e-a506-c4ca4ce5cb7c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -147,6 +201,72 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""74683281-1993-45d3-a56f-cceb4536d01b"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Card0"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""de0fe3d5-5b90-4c39-b5cc-51114aa4a802"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Card1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a1805fd3-a66a-4ae8-a9ed-9c7ec645d0da"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Card2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e13b7ea9-0505-426e-ac4e-d5a8a5d6acee"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Card3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""03677846-a5a8-445e-9df5-18f71731b413"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Card4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""39c89a93-66ca-458e-9370-db135398b931"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpawnNewCard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -155,9 +275,45 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
             ""id"": ""eb83e53c-c46f-4105-b42a-b61a204a858c"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Card0"",
+                    ""type"": ""Button"",
+                    ""id"": ""fd9c52fb-4889-4c86-b045-8b8da6294dbe"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Card1"",
                     ""type"": ""Button"",
                     ""id"": ""cea0991e-a031-4b68-9fbe-127e0ecb82bf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Card2"",
+                    ""type"": ""Button"",
+                    ""id"": ""e64dbfb7-29b6-4f73-87e1-d9f28b1c43e9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Card3"",
+                    ""type"": ""Button"",
+                    ""id"": ""2987f2a5-e84e-482a-868f-e046d5fc0f16"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Card4"",
+                    ""type"": ""Button"",
+                    ""id"": ""e78d7570-4abd-426c-a311-dca192a5c062"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -168,11 +324,55 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""fc8a5166-b4c7-4621-a86b-f09c0a7fe67f"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/2"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Card1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1278ffc3-aee5-46aa-be3d-37d5e5aeda5a"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Card2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e88eb015-5ca4-4ed1-9472-286723d28752"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Card3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a24335cd-234a-4195-ba49-e6eeeddbf98d"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Card4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""53a4962a-4ced-4062-8d2b-9710d1d7a3a0"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Card0"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -207,9 +407,19 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+        m_Player_Card0 = m_Player.FindAction("Card0", throwIfNotFound: true);
+        m_Player_Card1 = m_Player.FindAction("Card1", throwIfNotFound: true);
+        m_Player_Card2 = m_Player.FindAction("Card2", throwIfNotFound: true);
+        m_Player_Card3 = m_Player.FindAction("Card3", throwIfNotFound: true);
+        m_Player_Card4 = m_Player.FindAction("Card4", throwIfNotFound: true);
+        m_Player_SpawnNewCard = m_Player.FindAction("SpawnNewCard", throwIfNotFound: true);
         // Cards
         m_Cards = asset.FindActionMap("Cards", throwIfNotFound: true);
-        m_Cards_Newaction = m_Cards.FindAction("New action", throwIfNotFound: true);
+        m_Cards_Card0 = m_Cards.FindAction("Card0", throwIfNotFound: true);
+        m_Cards_Card1 = m_Cards.FindAction("Card1", throwIfNotFound: true);
+        m_Cards_Card2 = m_Cards.FindAction("Card2", throwIfNotFound: true);
+        m_Cards_Card3 = m_Cards.FindAction("Card3", throwIfNotFound: true);
+        m_Cards_Card4 = m_Cards.FindAction("Card4", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -270,11 +480,23 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
+    private readonly InputAction m_Player_Card0;
+    private readonly InputAction m_Player_Card1;
+    private readonly InputAction m_Player_Card2;
+    private readonly InputAction m_Player_Card3;
+    private readonly InputAction m_Player_Card4;
+    private readonly InputAction m_Player_SpawnNewCard;
     public struct PlayerActions
     {
         private @PlayerAction m_Wrapper;
         public PlayerActions(@PlayerAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
+        public InputAction @Card0 => m_Wrapper.m_Player_Card0;
+        public InputAction @Card1 => m_Wrapper.m_Player_Card1;
+        public InputAction @Card2 => m_Wrapper.m_Player_Card2;
+        public InputAction @Card3 => m_Wrapper.m_Player_Card3;
+        public InputAction @Card4 => m_Wrapper.m_Player_Card4;
+        public InputAction @SpawnNewCard => m_Wrapper.m_Player_SpawnNewCard;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -287,6 +509,24 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
+                @Card0.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCard0;
+                @Card0.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCard0;
+                @Card0.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCard0;
+                @Card1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCard1;
+                @Card1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCard1;
+                @Card1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCard1;
+                @Card2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCard2;
+                @Card2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCard2;
+                @Card2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCard2;
+                @Card3.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCard3;
+                @Card3.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCard3;
+                @Card3.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCard3;
+                @Card4.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCard4;
+                @Card4.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCard4;
+                @Card4.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCard4;
+                @SpawnNewCard.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpawnNewCard;
+                @SpawnNewCard.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpawnNewCard;
+                @SpawnNewCard.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpawnNewCard;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -294,6 +534,24 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @Card0.started += instance.OnCard0;
+                @Card0.performed += instance.OnCard0;
+                @Card0.canceled += instance.OnCard0;
+                @Card1.started += instance.OnCard1;
+                @Card1.performed += instance.OnCard1;
+                @Card1.canceled += instance.OnCard1;
+                @Card2.started += instance.OnCard2;
+                @Card2.performed += instance.OnCard2;
+                @Card2.canceled += instance.OnCard2;
+                @Card3.started += instance.OnCard3;
+                @Card3.performed += instance.OnCard3;
+                @Card3.canceled += instance.OnCard3;
+                @Card4.started += instance.OnCard4;
+                @Card4.performed += instance.OnCard4;
+                @Card4.canceled += instance.OnCard4;
+                @SpawnNewCard.started += instance.OnSpawnNewCard;
+                @SpawnNewCard.performed += instance.OnSpawnNewCard;
+                @SpawnNewCard.canceled += instance.OnSpawnNewCard;
             }
         }
     }
@@ -302,12 +560,20 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     // Cards
     private readonly InputActionMap m_Cards;
     private ICardsActions m_CardsActionsCallbackInterface;
-    private readonly InputAction m_Cards_Newaction;
+    private readonly InputAction m_Cards_Card0;
+    private readonly InputAction m_Cards_Card1;
+    private readonly InputAction m_Cards_Card2;
+    private readonly InputAction m_Cards_Card3;
+    private readonly InputAction m_Cards_Card4;
     public struct CardsActions
     {
         private @PlayerAction m_Wrapper;
         public CardsActions(@PlayerAction wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Cards_Newaction;
+        public InputAction @Card0 => m_Wrapper.m_Cards_Card0;
+        public InputAction @Card1 => m_Wrapper.m_Cards_Card1;
+        public InputAction @Card2 => m_Wrapper.m_Cards_Card2;
+        public InputAction @Card3 => m_Wrapper.m_Cards_Card3;
+        public InputAction @Card4 => m_Wrapper.m_Cards_Card4;
         public InputActionMap Get() { return m_Wrapper.m_Cards; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -317,16 +583,40 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_CardsActionsCallbackInterface != null)
             {
-                @Newaction.started -= m_Wrapper.m_CardsActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_CardsActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_CardsActionsCallbackInterface.OnNewaction;
+                @Card0.started -= m_Wrapper.m_CardsActionsCallbackInterface.OnCard0;
+                @Card0.performed -= m_Wrapper.m_CardsActionsCallbackInterface.OnCard0;
+                @Card0.canceled -= m_Wrapper.m_CardsActionsCallbackInterface.OnCard0;
+                @Card1.started -= m_Wrapper.m_CardsActionsCallbackInterface.OnCard1;
+                @Card1.performed -= m_Wrapper.m_CardsActionsCallbackInterface.OnCard1;
+                @Card1.canceled -= m_Wrapper.m_CardsActionsCallbackInterface.OnCard1;
+                @Card2.started -= m_Wrapper.m_CardsActionsCallbackInterface.OnCard2;
+                @Card2.performed -= m_Wrapper.m_CardsActionsCallbackInterface.OnCard2;
+                @Card2.canceled -= m_Wrapper.m_CardsActionsCallbackInterface.OnCard2;
+                @Card3.started -= m_Wrapper.m_CardsActionsCallbackInterface.OnCard3;
+                @Card3.performed -= m_Wrapper.m_CardsActionsCallbackInterface.OnCard3;
+                @Card3.canceled -= m_Wrapper.m_CardsActionsCallbackInterface.OnCard3;
+                @Card4.started -= m_Wrapper.m_CardsActionsCallbackInterface.OnCard4;
+                @Card4.performed -= m_Wrapper.m_CardsActionsCallbackInterface.OnCard4;
+                @Card4.canceled -= m_Wrapper.m_CardsActionsCallbackInterface.OnCard4;
             }
             m_Wrapper.m_CardsActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
+                @Card0.started += instance.OnCard0;
+                @Card0.performed += instance.OnCard0;
+                @Card0.canceled += instance.OnCard0;
+                @Card1.started += instance.OnCard1;
+                @Card1.performed += instance.OnCard1;
+                @Card1.canceled += instance.OnCard1;
+                @Card2.started += instance.OnCard2;
+                @Card2.performed += instance.OnCard2;
+                @Card2.canceled += instance.OnCard2;
+                @Card3.started += instance.OnCard3;
+                @Card3.performed += instance.OnCard3;
+                @Card3.canceled += instance.OnCard3;
+                @Card4.started += instance.OnCard4;
+                @Card4.performed += instance.OnCard4;
+                @Card4.canceled += instance.OnCard4;
             }
         }
     }
@@ -352,9 +642,19 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnCard0(InputAction.CallbackContext context);
+        void OnCard1(InputAction.CallbackContext context);
+        void OnCard2(InputAction.CallbackContext context);
+        void OnCard3(InputAction.CallbackContext context);
+        void OnCard4(InputAction.CallbackContext context);
+        void OnSpawnNewCard(InputAction.CallbackContext context);
     }
     public interface ICardsActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnCard0(InputAction.CallbackContext context);
+        void OnCard1(InputAction.CallbackContext context);
+        void OnCard2(InputAction.CallbackContext context);
+        void OnCard3(InputAction.CallbackContext context);
+        void OnCard4(InputAction.CallbackContext context);
     }
 }
