@@ -17,14 +17,14 @@ public abstract class Card_Effect : MonoBehaviour
         CardScript.Card_Effects_Dictionnary.Add(Effects_Key, this);
     }
 
-    public abstract void OnPlay(Dictionary<string,string[]> parameters);
-    public void OnGlitch(Dictionary<string, string[]> parameters)
+    public abstract void OnPlay(Dictionary<string,string[]> parameters, Card card);
+    public void OnGlitch(Dictionary<string, string[]> parameters, Card card)
     {
         float random_value = Random.Range(0.0f, 1.0f);
         if (random_value <= 1)
         {
-            OnValueGlitch(parameters);
+            OnValueGlitch(parameters,card);
         }
     }
-    public abstract void OnValueGlitch(Dictionary<string, string[]> parameters);
+    public abstract void OnValueGlitch(Dictionary<string, string[]> parameters,Card card);
 }

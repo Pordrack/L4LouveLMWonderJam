@@ -118,6 +118,19 @@ public class HandScript : MonoBehaviour
         return new_card;
     }
 
+    //Fait glitcher les cartes avec une proba tirée pour chaque carte
+    public void Glitch_Hand(float probability)
+    {
+        foreach(CardScript card_script in Cards_Scripts)
+        {
+            float rng = Random.Range(0, 1);
+            if (rng <= probability)
+            {
+                card_script.On_Glitch();
+            }
+        }
+    }
+
     //Joue une carte de la main en fonction de son index
     public void Play_Card_Of_Index(int index)
     {

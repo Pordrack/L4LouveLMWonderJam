@@ -4,6 +4,23 @@ using UnityEngine;
 
 public class Stats_Perso : MonoBehaviour
 {
+    private List<CardScript> Cards_Scripts; //Les cartes "physiquement" dans la main
+
+    public static Stats_Perso Instance { get; private set; }
+    private void Awake()
+    {
+        // If there is an instance, and it's not me, delete myself.
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
     // gestion santee perso, max peut etre modifie entre autre en cas de glitch
     public int _max_santee = 200;
     public int _santee { get; set; }

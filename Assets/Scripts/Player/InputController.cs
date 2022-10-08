@@ -44,6 +44,7 @@ namespace PlayerH
                 _action.Player.Card2.performed += (ctx) => OnCardButton(2);
                 _action.Player.Card3.performed += (ctx) => OnCardButton(3);
                 _action.Player.Card4.performed += (ctx) => OnCardButton(4);
+                _action.Player.GlitchHand.performed += GlitchHand;
                 _action.Player.SwitchToCardView.performed += Switch_To_Card_View;
 
                 _action.Player.SpawnNewCard.performed += SpawnNewCards;
@@ -83,6 +84,11 @@ namespace PlayerH
         private void SpawnNewCards(InputAction.CallbackContext obj)
         {
             handScript.Fill_Hand();
+        }
+
+        private void GlitchHand(InputAction.CallbackContext obj)
+        {
+            handScript.Glitch_Hand(0.5f);
         }
 
         //switch les controles et la camera vers la version "selection des cartes"

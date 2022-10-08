@@ -931,6 +931,67 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 15c6978abb036e4479f45be40b5a83ef, type: 3}
   m_PrefabInstance: {fileID: 529049433}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &480454388
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8992219235522415073, guid: fe9d8db2adbcc3342972a1ce1a689316, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992219235522415073, guid: fe9d8db2adbcc3342972a1ce1a689316, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992219235522415073, guid: fe9d8db2adbcc3342972a1ce1a689316, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992219235522415073, guid: fe9d8db2adbcc3342972a1ce1a689316, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992219235522415073, guid: fe9d8db2adbcc3342972a1ce1a689316, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992219235522415073, guid: fe9d8db2adbcc3342972a1ce1a689316, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992219235522415073, guid: fe9d8db2adbcc3342972a1ce1a689316, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992219235522415073, guid: fe9d8db2adbcc3342972a1ce1a689316, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992219235522415073, guid: fe9d8db2adbcc3342972a1ce1a689316, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992219235522415073, guid: fe9d8db2adbcc3342972a1ce1a689316, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992219235522415073, guid: fe9d8db2adbcc3342972a1ce1a689316, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992219235522415075, guid: fe9d8db2adbcc3342972a1ce1a689316, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992219235522415079, guid: fe9d8db2adbcc3342972a1ce1a689316, type: 3}
+      propertyPath: m_Name
+      value: Generateur
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fe9d8db2adbcc3342972a1ce1a689316, type: 3}
 --- !u!1001 &502790044
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1739,6 +1800,38 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+--- !u!1 &845078805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 845078806}
+  m_Layer: 0
+  m_Name: Card_Effects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &845078806
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845078805}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 40.77773, y: 0.8828001, z: 44.531563}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1848294495}
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &868722536
 GameObject:
   m_ObjectHideFlags: 0
@@ -2056,8 +2149,9 @@ MonoBehaviour:
   Max_Number_Of_Cards: 5
   Card_Prefab: {fileID: 2782907868825681752, guid: 9b838c88abc17cf4c99d756c8a3cbd21, type: 3}
   Cards_Templates:
+  - {fileID: 11400000, guid: 69bebf8be9eac094d8e035d6b025f2af, type: 2}
   - {fileID: 11400000, guid: db97ab44703f4ee4ca9bb02833ea2f48, type: 2}
-  Ponderations: 01000000
+  Ponderations: 0400000001000000
 --- !u!4 &1045395967
 Transform:
   m_ObjectHideFlags: 0
@@ -2580,6 +2674,9 @@ MonoBehaviour:
   - {fileID: 887536678}
   - {fileID: 1624779648}
   - {fileID: 721780541}
+  text_rondin: {fileID: 0}
+  text_pierre: {fileID: 0}
+  text_carotte: {fileID: 0}
 --- !u!114 &1387708571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3256,6 +3353,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1848294494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1848294495}
+  - component: {fileID: 1848294496}
+  m_Layer: 0
+  m_Name: Pordrack_Card_Effects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1848294495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848294494}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 845078806}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1848294496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848294494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eff85e8328c703d46a807dc0888b6c52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Effects_Key: food
+  Poutine_Sprite: {fileID: 21300000, guid: d257666eb90274245ab88b2f0551cffd, type: 3}
 --- !u!1 &1886100455
 GameObject:
   m_ObjectHideFlags: 0

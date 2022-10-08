@@ -84,7 +84,7 @@ public class CardScript : MonoBehaviour
             {
                 value = PLACEHOLDER;
             }
-            segments[i] = value;
+            segments[i] = "<color=red>"+value+"</color>";
             //Debug.Log(value);
         }
 
@@ -101,7 +101,7 @@ public class CardScript : MonoBehaviour
             //On trouve son instance de Card_Effects puis on appel OnPlay
             if (Card_Effects_Dictionnary.ContainsKey(Card_Scriptable_Object.Effects_Key))
             {
-                Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnPlay(Card_Scriptable_Object.Params);
+                Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnPlay(Card_Scriptable_Object.Params,Card_Scriptable_Object);
             }
         }
         
@@ -115,7 +115,9 @@ public class CardScript : MonoBehaviour
     {
         if (Card_Effects_Dictionnary.ContainsKey(Card_Scriptable_Object.Effects_Key))
         {
-            Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnGlitch(Card_Scriptable_Object.Params);
+            Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnGlitch(Card_Scriptable_Object.Params,Card_Scriptable_Object);
         }
+        //Recharge l'affichage des infos de la carte
+        LoadCard(); 
     }
 }

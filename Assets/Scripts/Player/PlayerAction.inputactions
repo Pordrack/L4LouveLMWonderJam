@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "GlitchHand",
+                    "type": "Button",
+                    "id": "4d02aacb-df24-4de3-b769-a781e6ad9377",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -247,7 +256,7 @@
                 {
                     "name": "",
                     "id": "39c89a93-66ca-458e-9370-db135398b931",
-                    "path": "<Keyboard>/enter",
+                    "path": "<Keyboard>/f1",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -263,6 +272,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "SwitchToCardView",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b5bc49fe-04a0-40eb-9048-08ea4f123bb0",
+                    "path": "<Keyboard>/f2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GlitchHand",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

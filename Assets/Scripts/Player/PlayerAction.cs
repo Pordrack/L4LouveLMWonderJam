@@ -98,6 +98,15 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GlitchHand"",
+                    ""type"": ""Button"",
+                    ""id"": ""4d02aacb-df24-4de3-b769-a781e6ad9377"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -269,7 +278,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""39c89a93-66ca-458e-9370-db135398b931"",
-                    ""path"": ""<Keyboard>/enter"",
+                    ""path"": ""<Keyboard>/f1"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -285,6 +294,17 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""SwitchToCardView"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b5bc49fe-04a0-40eb-9048-08ea4f123bb0"",
+                    ""path"": ""<Keyboard>/f2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GlitchHand"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -454,6 +474,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         m_Player_Card4 = m_Player.FindAction("Card4", throwIfNotFound: true);
         m_Player_SpawnNewCard = m_Player.FindAction("SpawnNewCard", throwIfNotFound: true);
         m_Player_SwitchToCardView = m_Player.FindAction("SwitchToCardView", throwIfNotFound: true);
+        m_Player_GlitchHand = m_Player.FindAction("GlitchHand", throwIfNotFound: true);
         // Cards
         m_Cards = asset.FindActionMap("Cards", throwIfNotFound: true);
         m_Cards_Card0 = m_Cards.FindAction("Card0", throwIfNotFound: true);
@@ -529,6 +550,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Card4;
     private readonly InputAction m_Player_SpawnNewCard;
     private readonly InputAction m_Player_SwitchToCardView;
+    private readonly InputAction m_Player_GlitchHand;
     public struct PlayerActions
     {
         private @PlayerAction m_Wrapper;
@@ -541,6 +563,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         public InputAction @Card4 => m_Wrapper.m_Player_Card4;
         public InputAction @SpawnNewCard => m_Wrapper.m_Player_SpawnNewCard;
         public InputAction @SwitchToCardView => m_Wrapper.m_Player_SwitchToCardView;
+        public InputAction @GlitchHand => m_Wrapper.m_Player_GlitchHand;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -574,6 +597,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @SwitchToCardView.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchToCardView;
                 @SwitchToCardView.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchToCardView;
                 @SwitchToCardView.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSwitchToCardView;
+                @GlitchHand.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGlitchHand;
+                @GlitchHand.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGlitchHand;
+                @GlitchHand.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGlitchHand;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -602,6 +628,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @SwitchToCardView.started += instance.OnSwitchToCardView;
                 @SwitchToCardView.performed += instance.OnSwitchToCardView;
                 @SwitchToCardView.canceled += instance.OnSwitchToCardView;
+                @GlitchHand.started += instance.OnGlitchHand;
+                @GlitchHand.performed += instance.OnGlitchHand;
+                @GlitchHand.canceled += instance.OnGlitchHand;
             }
         }
     }
@@ -707,6 +736,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         void OnCard4(InputAction.CallbackContext context);
         void OnSpawnNewCard(InputAction.CallbackContext context);
         void OnSwitchToCardView(InputAction.CallbackContext context);
+        void OnGlitchHand(InputAction.CallbackContext context);
     }
     public interface ICardsActions
     {
