@@ -332,6 +332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  plate: {fileID: 1401548216}
 --- !u!114 &1106826596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,7 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3f5c0d3da5aa4172b6a18dd63d8c0f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerNav: {fileID: 1106826595}
+  playerNav: {fileID: 0}
 --- !u!1 &1309203191
 GameObject:
   m_ObjectHideFlags: 0

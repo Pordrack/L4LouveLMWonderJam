@@ -8,7 +8,7 @@ namespace PlayerH
     {
         #region External components
 
-        [SerializeField] private NavigationController _playerNav;
+        [SerializeField] private NavigationController playerNav;
 
         #endregion
         
@@ -34,7 +34,7 @@ namespace PlayerH
         private void OnMove(InputAction.CallbackContext obj)
         {
             var dirVector = obj.ReadValue<Vector2>();
-            _playerNav.TryToMove(MiscTools.ConvertVector2ToIndex(dirVector, 100));
+            playerNav.TryToMove(MiscTools.ConvertVector2ToIndex(dirVector, 100));
             
         }
         
