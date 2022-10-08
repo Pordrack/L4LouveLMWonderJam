@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2241,6 +2241,9 @@ MonoBehaviour:
   - {fileID: 887536678}
   - {fileID: 1624779648}
   - {fileID: 721780541}
+  text_rondin: {fileID: 1629520219}
+  text_pierre: {fileID: 941482900}
+  text_carotte: {fileID: 543065806}
 --- !u!114 &1387708571
 MonoBehaviour:
   m_ObjectHideFlags: 0
