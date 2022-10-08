@@ -223,9 +223,21 @@ public class Generation : MonoBehaviour
         }
     }
     
-    private static bool IsInMap(int x, int y)
+    public static bool IsInMap(int x, int y)
     {
         return x >= 0 && x < Generation.tailleMap && y >= 0 && y < Generation.tailleMap;
+    }
+
+    public static bool IsAvailable(GameObject bloc)
+    {
+        return bloc.GetComponent<environnement_bloc>().get_type() == 1;
+    }
+
+    public static bool IsAvailable(int x, int y)
+    {
+        if (!IsInMap(x, y)) return false; //We make sure he is in the map
+        
+        return IsAvailable(MapsEnvironment[x, y]);
     }
 
     #endregion

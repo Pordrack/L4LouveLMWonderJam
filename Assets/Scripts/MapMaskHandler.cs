@@ -5,6 +5,8 @@ using UnityEngine;
 public class MapMaskHandler
 {
     private readonly int[] _playerPos;
+    public static int DrawnMapSize = 11;
+    private int _halfMapSize = DrawnMapSize / 2;
     
     public MapMaskHandler(int x, int y)
     {
@@ -19,7 +21,7 @@ public class MapMaskHandler
     /// <returns>int[[list of blocks' pos to hide], [list of blocks' pos to draw]]</returns>
     public int[,,] UpdateMap(int newX, int newY)
     {
-        var maskUpdate = new int[2,11,2];
+        var maskUpdate = new int[2,DrawnMapSize,2];
         var deltaX = newX - _playerPos[0];
         var deltaY = newY - _playerPos[1];
 
@@ -30,12 +32,12 @@ public class MapMaskHandler
             for(var i=0; i<11; i++)
             {
                 //blocks to hide
-                maskUpdate[0, i, 0] = _playerPos[0] - deltaX*5;
-                maskUpdate[0, i, 1] = _playerPos[1] - 5 + i;
+                maskUpdate[0, i, 0] = _playerPos[0] - deltaX*_halfMapSize;
+                maskUpdate[0, i, 1] = _playerPos[1] - _halfMapSize + i;
                 
                 //blocks to draw
-                maskUpdate[1, i, 0] = _playerPos[0] + deltaX*6;
-                maskUpdate[1, i, 1] = _playerPos[1] - 5 + i;
+                maskUpdate[1, i, 0] = _playerPos[0] + deltaX*(_halfMapSize+1);
+                maskUpdate[1, i, 1] = _playerPos[1] - _halfMapSize + i;
             }
         }
         else if (deltaY != 0)
@@ -43,12 +45,12 @@ public class MapMaskHandler
             for(var i=0; i<11; i++)
             {
                 //blocks to hide
-                maskUpdate[0, i, 0] = _playerPos[0] - 5 + i;
-                maskUpdate[0, i, 1] = _playerPos[1] - deltaY*5;
+                maskUpdate[0, i, 0] = _playerPos[0] - _halfMapSize + i;
+                maskUpdate[0, i, 1] = _playerPos[1] - deltaY*_halfMapSize;
                 
                 //blocks to draw
-                maskUpdate[1, i, 0] = _playerPos[0] - 5 + i;
-                maskUpdate[1, i, 1] = _playerPos[1] + deltaY*6;
+                maskUpdate[1, i, 0] = _playerPos[0] - _halfMapSize + i;
+                maskUpdate[1, i, 1] = _playerPos[1] + deltaY*(_halfMapSize+1);
             }
         }
         else //No movement
@@ -67,13 +69,13 @@ public class MapMaskHandler
 
     public int[,,] InitMask()
     {
-        var mask = new int[11, 11, 2];
-        for (var i = 0; i < 11; i++)
+        var mask = new int[DrawnMapSize, DrawnMapSize, 2];
+        for (var i = 0; i < DrawnMapSize; i++)
         {
-            for (var j = 0; j < 11; j++)
+            for (var j = 0; j < DrawnMapSize; j++)
             {
-                mask[i, j, 0] = _playerPos[0] - 5 + i;
-                mask[i, j, 1] = _playerPos[1] - 5 + j;
+                mask[i, j, 0] = _playerPos[0] - _halfMapSize + i;
+                mask[i, j, 1] = _playerPos[1] - _halfMapSize+ j;
             }
         }
         return mask;

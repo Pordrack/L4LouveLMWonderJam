@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Ressources : MonoBehaviour
 {
@@ -12,7 +13,14 @@ public class Ressources : MonoBehaviour
     public GameObject[] rocher;
     public GameObject[] carotte;
 
+    public GameObject text_rondin;
+    public GameObject text_pierre;
+    public GameObject text_carotte;
 
+    //public Text txt_rondin = text_rondin.GetComponent<UnityEngine.UI.Text>();
+    //public Text txt_pierre = text_pierre.GetComponent<UnityEngine.UI.Text>();
+    //public Text txt_carotte = text_carotte.GetComponent<UnityEngine.UI.Text>();
+    
 
     void Start()
     {
@@ -85,8 +93,12 @@ public class Ressources : MonoBehaviour
         Debug.Log("Nourriture - " + carotte + " : " + _nourriture);
     }
 
+
+
     public void update_bois(int _rondin)
     {
+        text_rondin.SetActive(true);
+        text_rondin.GetComponent<TextMesh>().text = _rondin.ToString();
         switch (_rondin)
         {
             case 0:
@@ -177,6 +189,8 @@ public class Ressources : MonoBehaviour
 
     public void update_pierre(int _rocher)
     {
+        text_pierre.SetActive(true);
+        text_pierre.GetComponent<TextMesh>().text = _rocher.ToString();
         switch (_rocher)
         {
             case 0:
@@ -246,6 +260,8 @@ public class Ressources : MonoBehaviour
 
     public void update_nourriture(int _carotte)
     {
+        text_carotte.SetActive(true);
+        text_carotte.GetComponent<TextMesh>().text = _carotte.ToString();
         switch (_carotte)
         {
             case 0:
