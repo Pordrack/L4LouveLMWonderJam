@@ -1,0 +1,173 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3868065595831914379
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3868065595831914377}
+  - component: {fileID: 3868065595831914376}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3868065595831914377
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3868065595831914379}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 44.53632, y: 1.0723648, z: 42.637264}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3868065595831914376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3868065595831914379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91bae07d0ba47f04a8318a2e859c5add, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Tirage_Carte
+    clip: {fileID: 8300000, guid: 58369a3e6ddb7cf4abbc8a94d8db980d, type: 3}
+    volume: 0.53
+    pitch: 1.59
+    loop: 0
+    source: {fileID: 0}
+  - name: Manger
+    clip: {fileID: 8300000, guid: 29d8655168f8909478d4215ec9b7574c, type: 3}
+    volume: 1
+    pitch: 1.59
+    loop: 0
+    source: {fileID: 0}
+  - name: Theme
+    clip: {fileID: 8300000, guid: ff3d5af1adced44db9ba71266282c8e1, type: 3}
+    volume: 0.71
+    pitch: 1.61
+    loop: 1
+    source: {fileID: 0}
+  - name: Pierre
+    clip: {fileID: 8300000, guid: 8f2f1ed3e6872274d937c67125593517, type: 3}
+    volume: 1
+    pitch: 1.59
+    loop: 0
+    source: {fileID: 0}
+  - name: Bucheron
+    clip: {fileID: 8300000, guid: 4ac0c0ae8a14ece4db4368a0cbdbdf39, type: 3}
+    volume: 1
+    pitch: 1.59
+    loop: 0
+    source: {fileID: 0}
+  - name: Glitch
+    clip: {fileID: 8300000, guid: 88828c85aea5bb8499ca095265aeaaf1, type: 3}
+    volume: 1
+    pitch: 1.59
+    loop: 0
+    source: {fileID: 0}
+  - name: eau
+    clip: {fileID: 8300000, guid: c415533e6ab474546aa043c6ff78564d, type: 3}
+    volume: 1
+    pitch: 1.59
+    loop: 0
+    source: {fileID: 0}
+  - name: elizabeth
+    clip: {fileID: 8300000, guid: a3bfaf3cee22bfd4996a0d7198f7bff1, type: 3}
+    volume: 1
+    pitch: 1.59
+    loop: 0
+    source: {fileID: 0}
+  - name: Oof1
+    clip: {fileID: 8300000, guid: 68c4f00a17015594abc83affbb378384, type: 3}
+    volume: 1
+    pitch: 1.59
+    loop: 0
+    source: {fileID: 0}
+  - name: Oof2
+    clip: {fileID: 8300000, guid: 73ca5c09a178272469b1f935e11cbaa4, type: 3}
+    volume: 1
+    pitch: 1.59
+    loop: 0
+    source: {fileID: 0}
+  - name: Oof3
+    clip: {fileID: 8300000, guid: 2340e6dacb6d8ed4c926c319c5e7a400, type: 3}
+    volume: 1
+    pitch: 1.59
+    loop: 0
+    source: {fileID: 0}
+  - name: Oof4
+    clip: {fileID: 8300000, guid: 2ac54d87462a4c34f804051dfd4d8950, type: 3}
+    volume: 1
+    pitch: 1.59
+    loop: 0
+    source: {fileID: 0}
+  - name: elizabeth
+    clip: {fileID: 8300000, guid: eb91ad5d581dbc544a9fd0da38659681, type: 3}
+    volume: 1
+    pitch: 1.59
+    loop: 0
+    source: {fileID: 0}
+  - name: elizabeth
+    clip: {fileID: 8300000, guid: 2a3ab51ec95c4c54d92af54ad216a4e0, type: 3}
+    volume: 1
+    pitch: 1.59
+    loop: 0
+    source: {fileID: 0}
+  - name: elizabeth
+    clip: {fileID: 8300000, guid: 642f5db851db0284fab8d6eaec9a88d0, type: 3}
+    volume: 1
+    pitch: 1.59
+    loop: 0
+    source: {fileID: 0}
+  - name: elizabeth
+    clip: {fileID: 8300000, guid: b7cb5b6a05ddac04ca51a58ad175a76a, type: 3}
+    volume: 1
+    pitch: 1.59
+    loop: 0
+    source: {fileID: 0}
+  - name: elizabeth
+    clip: {fileID: 8300000, guid: daf292bb7d95560459e68c01b76031d5, type: 3}
+    volume: 1
+    pitch: 1.59
+    loop: 0
+    source: {fileID: 0}
+  - name: Lapin
+    clip: {fileID: 8300000, guid: 7967221b5889c954899787ec56fd14ec, type: 3}
+    volume: 1
+    pitch: 1.59
+    loop: 0
+    source: {fileID: 0}
+  - name: Mort
+    clip: {fileID: 8300000, guid: d8d84dc63f696da4d84c199f58c6da8d, type: 3}
+    volume: 1
+    pitch: 1.59
+    loop: 0
+    source: {fileID: 0}
+  - name: Feu_de_camp
+    clip: {fileID: 8300000, guid: e8863cf5f9f574a4a8b15e02a7323226, type: 3}
+    volume: 1
+    pitch: 1.59
+    loop: 0
+    source: {fileID: 0}
+  - name: Bandage
+    clip: {fileID: 8300000, guid: 5bded0e828a872b4e8855fe30f156186, type: 3}
+    volume: 1
+    pitch: 1.59
+    loop: 0
+    source: {fileID: 0}

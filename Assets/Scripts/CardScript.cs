@@ -167,6 +167,11 @@ public class CardScript : MonoBehaviour
         }
         GetComponentInChildren<Collider>().enabled = false;
         Destroy(gameObject, destroy_timer);
+
+        Ressources.Instance.update_nourriture(Ressources.Instance._nourriture);
+        Ressources.Instance.update_bois(Ressources.Instance._bois);
+        Ressources.Instance.update_pierre(Ressources.Instance._pierre);
+
         return true;
     }
 

@@ -107,6 +107,24 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""IncreaseRessources"",
+                    ""type"": ""Button"",
+                    ""id"": ""26f68e0e-a851-4a17-881f-327140db3aa8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DecreaseStats"",
+                    ""type"": ""Button"",
+                    ""id"": ""1f61de28-8167-4ebd-af33-90f9c2f26862"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -307,6 +325,28 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""action"": ""GlitchHand"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e0a69ad4-f60e-473f-92aa-4cd4f81013f6"",
+                    ""path"": ""<Keyboard>/f3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""IncreaseRessources"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""11a97a8e-36cb-4dbd-8198-6d987891be91"",
+                    ""path"": ""<Keyboard>/f4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DecreaseStats"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -475,6 +515,8 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         m_Player_SpawnNewCard = m_Player.FindAction("SpawnNewCard", throwIfNotFound: true);
         m_Player_SwitchToCardView = m_Player.FindAction("SwitchToCardView", throwIfNotFound: true);
         m_Player_GlitchHand = m_Player.FindAction("GlitchHand", throwIfNotFound: true);
+        m_Player_IncreaseRessources = m_Player.FindAction("IncreaseRessources", throwIfNotFound: true);
+        m_Player_DecreaseStats = m_Player.FindAction("DecreaseStats", throwIfNotFound: true);
         // Cards
         m_Cards = asset.FindActionMap("Cards", throwIfNotFound: true);
         m_Cards_Card0 = m_Cards.FindAction("Card0", throwIfNotFound: true);
@@ -551,6 +593,8 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_SpawnNewCard;
     private readonly InputAction m_Player_SwitchToCardView;
     private readonly InputAction m_Player_GlitchHand;
+    private readonly InputAction m_Player_IncreaseRessources;
+    private readonly InputAction m_Player_DecreaseStats;
     public struct PlayerActions
     {
         private @PlayerAction m_Wrapper;
@@ -564,6 +608,8 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         public InputAction @SpawnNewCard => m_Wrapper.m_Player_SpawnNewCard;
         public InputAction @SwitchToCardView => m_Wrapper.m_Player_SwitchToCardView;
         public InputAction @GlitchHand => m_Wrapper.m_Player_GlitchHand;
+        public InputAction @IncreaseRessources => m_Wrapper.m_Player_IncreaseRessources;
+        public InputAction @DecreaseStats => m_Wrapper.m_Player_DecreaseStats;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -600,6 +646,12 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @GlitchHand.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGlitchHand;
                 @GlitchHand.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGlitchHand;
                 @GlitchHand.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGlitchHand;
+                @IncreaseRessources.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnIncreaseRessources;
+                @IncreaseRessources.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnIncreaseRessources;
+                @IncreaseRessources.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnIncreaseRessources;
+                @DecreaseStats.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDecreaseStats;
+                @DecreaseStats.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDecreaseStats;
+                @DecreaseStats.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDecreaseStats;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -631,6 +683,12 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @GlitchHand.started += instance.OnGlitchHand;
                 @GlitchHand.performed += instance.OnGlitchHand;
                 @GlitchHand.canceled += instance.OnGlitchHand;
+                @IncreaseRessources.started += instance.OnIncreaseRessources;
+                @IncreaseRessources.performed += instance.OnIncreaseRessources;
+                @IncreaseRessources.canceled += instance.OnIncreaseRessources;
+                @DecreaseStats.started += instance.OnDecreaseStats;
+                @DecreaseStats.performed += instance.OnDecreaseStats;
+                @DecreaseStats.canceled += instance.OnDecreaseStats;
             }
         }
     }
@@ -737,6 +795,8 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         void OnSpawnNewCard(InputAction.CallbackContext context);
         void OnSwitchToCardView(InputAction.CallbackContext context);
         void OnGlitchHand(InputAction.CallbackContext context);
+        void OnIncreaseRessources(InputAction.CallbackContext context);
+        void OnDecreaseStats(InputAction.CallbackContext context);
     }
     public interface ICardsActions
     {
