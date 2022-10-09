@@ -36,6 +36,8 @@ namespace Player
         private Vector3? _targetPosition;
         
         private Transform _tf; //for fewer c++ calls
+        
+        [SerializeField] private int movingEnergyCost = 10; 
 
         private void Update()
         {
@@ -53,6 +55,7 @@ namespace Player
             if (_targetPosition is not null)
             {
                 gameTable.transform.position = Vector3.MoveTowards(gameTable.transform.position, _targetPosition.Value, speed*Time.deltaTime);
+                EnemyManager.Singleton.DrawEnemies();
                 if(gameTable.transform.position == _targetPosition)
                 {
                     _targetPosition = null;
@@ -153,10 +156,13 @@ namespace Player
                 PlayerX = newX;
                 PlayerZ = newZ;
                 
-                //Update its rotation according to the movement.
+                //Update its rotation according to the movement and play animation.
                 _anim.SetTrigger(_moveHash);
                 _targetRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.y));
                 angularSpeed = Quaternion.Angle(_tf.rotation, _targetRotation.Value) * 2f;
+                
+                //Update energy
+                Stats_Perso.Instance.down_action(movingEnergyCost);
             }
 
         }

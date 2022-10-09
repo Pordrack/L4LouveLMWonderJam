@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using IA;
 using UnityEngine;
 
 public class MapMaskHandler
@@ -63,6 +64,8 @@ public class MapMaskHandler
         _playerPos[0] = newX;
         _playerPos[1] = newY;
         
+        //Ask the enemy manager to check for animal drawing
+        EnemyManager.Singleton.DrawEnemies();
         return maskUpdate;
     }
     
@@ -85,6 +88,8 @@ public class MapMaskHandler
                 mask[i, j, 1] = y - _halfMapSize+ j;
             }
         }
+        //Check for animal drawing
+        EnemyManager.Singleton.DrawEnemies();
         return mask;
     }
     

@@ -60,10 +60,6 @@ namespace PlayerH
                 _action.Cards.Card4.performed += (ctx) => OnCardButton(4);
                 _action.Cards.SwitchToNormalView.performed += Switch_To_Normal_View;
             }
-
-            Debug.LogWarning("_action.Enable(); est toujours lanc� dans InputController.cs !");
-            _action.Enable();
-            _action.Cards.Disable();
         }
 
         private void OnDisable()
