@@ -19,7 +19,7 @@ MonoBehaviour:
   Energy_Cost: 0
   Wood_Cost: 0
   Stone_Cost: 0
-  Food_Cost: 30
+  Food_Cost: 20
   Audio_Clip: {fileID: 8300000, guid: d4a5d0b89d3384d4eaaab83d03c4bb86, type: 3}
   Audio_Volume: 1
   Probability_to_change: 1

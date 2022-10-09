@@ -15,8 +15,8 @@ MonoBehaviour:
   Effects_Key: 8
   Icon: {fileID: 21300000, guid: f2ef570effe8beb40a6b2d4a50ca974d, type: 3}
   Name: "Phytoth\xE9rapie"
-  Description: "Utilisez [quantity] [item] pour vous soigner et r\xE9cup\xE9rer [quantity2]
-    [item2]."
+  Description: "Utilisez |quantity| |item| pour vous soigner et r\xE9cup\xE9rer |quantity2|
+    |item2|"
   Energy_Cost: 0
   Wood_Cost: 0
   Stone_Cost: 0

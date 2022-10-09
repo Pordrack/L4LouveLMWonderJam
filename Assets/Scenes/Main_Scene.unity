@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2314,19 +2314,19 @@ PrefabInstance:
       objectReference: {fileID: 874128882}
     - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: Ponderations.Array.data[0]
-      value: 1
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: Ponderations.Array.data[1]
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: Ponderations.Array.data[2]
-      value: 1
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: Ponderations.Array.data[3]
-      value: 1
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: Ponderations.Array.data[4]
@@ -2334,27 +2334,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: Ponderations.Array.data[5]
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: Ponderations.Array.data[6]
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: Ponderations.Array.data[7]
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: Ponderations.Array.data[8]
-      value: 100
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: Ponderations.Array.data[9]
-      value: 100
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: Ponderations.Array.data[10]
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4571597446544668883, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: m_RootOrder
@@ -2786,7 +2786,6 @@ MonoBehaviour:
   state: 0
   ennemy: {fileID: 0}
   Glitch_Probability: 0.8
-  startEnnemyTurn: 0
   NbTourMin: 3
   NbTourMax: 7
   glitchWave: {fileID: 418232213099085750}
