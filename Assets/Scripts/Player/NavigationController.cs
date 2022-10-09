@@ -1,6 +1,8 @@
 using System;
 using Generation;
+using IA;
 using PlayerH;
+using UnityEditor;
 using UnityEngine;
 
 namespace Player
@@ -31,7 +33,13 @@ namespace Player
                 str += "]";
                 Debug.Log(str);
             }
+            
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                EnemyManager.Singleton.KillEnemiesInAnArea(transform.position,2);
+            }
         }
+        
 
         private void Awake()
         {

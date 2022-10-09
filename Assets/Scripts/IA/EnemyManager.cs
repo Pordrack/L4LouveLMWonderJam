@@ -22,6 +22,7 @@ namespace IA
         #endregion
         
         [SerializeField] private Transform player;
+        [SerializeField] private LayerMask enemyLayer;
         private Transform _enemyParent;
         private List<Brain> _brains;
 
@@ -70,6 +71,23 @@ namespace IA
                 brain.Decide();
             }
         }
+
+        public void KillEnemiesInAnArea(Vector3 worldPos, int range)
+        {
+            var colliders = Physics.OverlapBox(worldPos, range * (Vector3.right + Vector3.forward),
+                Quaternion.identity, enemyLayer);
+            Debug.Log("There is " + colliders.Length + " enemies in the area.");
+            
+            //Remove the brain from the list
+            foreach (var collider in colliders)
+            {
+                var brain = collider.GetComponent<Brain>();
+                RemoveEnemy(brain);
+                brain.Die();
+            }
+        }
+
+        
 
         public Vector3 GetPlayerPosition() => player.position;
     }

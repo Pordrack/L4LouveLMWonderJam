@@ -2460,6 +2460,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1923917771}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &791970209 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 54b2a410606efa540bc1680e011a8485, type: 3}

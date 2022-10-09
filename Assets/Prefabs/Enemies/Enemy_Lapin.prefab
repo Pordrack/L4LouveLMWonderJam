@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3397014012021073037}
   - component: {fileID: 4123618010837115717}
   - component: {fileID: 3326045313224627657}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 94016513191284015}
   - component: {fileID: 2519717909639145980}
   - component: {fileID: 5456101314137761162}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8480089365835447154}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: lapin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 8803163832139976367}
   - component: {fileID: 6145375736243721975}
   - component: {fileID: 597862428676182396}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 5416188367511244063}
   - component: {fileID: 8982936179994465589}
   - component: {fileID: 3051223122409248184}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -380,7 +380,8 @@ GameObject:
   - component: {fileID: 7558549416785835414}
   - component: {fileID: 3661109322141115400}
   - component: {fileID: 3661109322141115403}
-  m_Layer: 0
+  - component: {fileID: 2592820626446000294}
+  m_Layer: 6
   m_Name: Enemy_Lapin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -477,4 +478,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65f4a3f0f162b4392a8d906fc1a11675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+--- !u!65 &2592820626446000294
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8351257924918498371}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.018044967, y: 0.017888568, z: 0.15771724}
+  m_Center: {x: -0.000039100647, y: -0.00011730195, z: 0.070451245}
