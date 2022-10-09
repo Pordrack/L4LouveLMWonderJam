@@ -12,7 +12,7 @@ namespace Player
     {
         private static NavigationController _instance;
         
-        public static Vector2Int GetPlayerPos() => new Vector2Int(_instance.PlayerX, _instance.PlayerZ);
+        public static Vector2Int GetPlayerPosInGrid() => new Vector2Int(_instance.PlayerX, _instance.PlayerZ);
 
         public int PlayerX { get; private set; }
         public int PlayerZ { get; private set; }//indices of the player relatively to the map
