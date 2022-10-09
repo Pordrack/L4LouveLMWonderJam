@@ -54,6 +54,7 @@ namespace Player
 
             if (_targetPosition is not null)
             {
+                AudioManager.instance.Play("Marche");
                 gameTable.transform.position = Vector3.MoveTowards(gameTable.transform.position, _targetPosition.Value, speed*Time.deltaTime);
                 EnemyManager.Singleton.DrawEnemies();
                 if(gameTable.transform.position == _targetPosition)
