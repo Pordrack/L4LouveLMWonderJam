@@ -227,6 +227,7 @@ public class Stats_Perso : MonoBehaviour
 
     public void GameFail()
     {
+        AudioManager.instance.Play("Mort");
         //enable the game over screen
         endScreenCanvas.SetActive(true);
     }
