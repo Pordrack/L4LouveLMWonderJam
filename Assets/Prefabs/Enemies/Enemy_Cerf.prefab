@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cafaeed3674f047d0baa3368746a2e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buggedMat: {fileID: 0}
   moveAmount: 1
 --- !u!114 &6154398259438172975
 MonoBehaviour:

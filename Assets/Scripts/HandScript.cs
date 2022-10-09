@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HandScript : MonoBehaviour
 {
@@ -21,6 +22,10 @@ public class HandScript : MonoBehaviour
 
     private List<CardScript> Cards_Scripts; //Les cartes "physiquement" dans la main
     public GameObject Card_Prefab; //Prefab de la carte physique
+
+    public TMP_Text Turn_Number_Displayer;  
+    private int Turn_Number=0;
+
 
     [Header("DECK")]
     
@@ -45,6 +50,8 @@ public class HandScript : MonoBehaviour
 
     void Start()
     {
+        GameManager.OnPlayerTurn+=Increment_Card_Number;
+        Increment_Card_Number();
         Cards_Scripts = new List<CardScript>();
         Cards_Templates_With_Ponderations = new List<Card>();
         //On cr�� le tableau cards with ponderations
@@ -64,6 +71,11 @@ public class HandScript : MonoBehaviour
         }
 
         Fill_Hand();
+    }
+
+    public void Increment_Card_Number(){
+        Turn_Number++;
+        Turn_Number_Displayer.text="Tour n°"+Turn_Number.ToString();
     }
 
     // Update is called once per frame
