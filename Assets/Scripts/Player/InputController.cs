@@ -48,6 +48,7 @@ namespace PlayerH
                 _action.Player.Card4.performed += (ctx) => OnCardButton(4);
                 _action.Player.GlitchHand.performed += GlitchHand;
                 _action.Player.SwitchToCardView.performed += Switch_To_Card_View;
+                _action.Player.EndTurn.performed += End_Turn;
 
                 _action.Player.SpawnNewCard.performed += SpawnNewCards;
                 _action.Player.IncreaseRessources.performed += IncreaseRessource;
@@ -78,6 +79,12 @@ namespace PlayerH
             //Tell player nav to move and adjust the input to constraint movement on x and z axis only 
             playerNav.TryToMove(dirVector.sqrMagnitude > 1f ? Vector2.zero : dirVector);
             
+        }
+
+        private void End_Turn(InputAction.CallbackContext obj)
+        {
+            Debug.LogWarning("Je ne fini pas vraiment le tour ! J'invoque juste les events a la main");
+            GameManager.CallPlayerTurnEvent();
         }
 
         private void OnCardButton(int index)

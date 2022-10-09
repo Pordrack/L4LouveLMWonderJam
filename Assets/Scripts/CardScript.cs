@@ -18,7 +18,7 @@ public class CardScript : MonoBehaviour
     private string SEPARATOR = "|"; //Séparateur des paramètres de la description
     private string PLACEHOLDER = "paramètre introuvable";
     public Vector3 Target_Position; //Une position dont on doit se rapprocher
-    public bool Must_Reach_Target=false; //Doit se déplacer vers sa position cible
+    public bool Must_Reach_Target=true; //Doit se déplacer vers sa position cible
     public float Max_Speed = 2; //La vitesse par frame dont on se déplace
 
     public static Dictionary<Effect_Key_Enum, Card_Effect> Card_Effects_Dictionnary;//Le dictionnaire qui contient
@@ -32,7 +32,7 @@ public class CardScript : MonoBehaviour
         //On trouve son instance de Card_Effects puis on appel OnStart
         if (Card_Effects_Dictionnary.ContainsKey(Card_Scriptable_Object.Effects_Key))
         {
-            Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnStart(Card_Scriptable_Object.Params, Card_Scriptable_Object);
+            Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnStart(Card_Scriptable_Object.Params, Card_Scriptable_Object,this);
         }
 
         LoadCard();
@@ -45,7 +45,7 @@ public class CardScript : MonoBehaviour
         //On trouve son instance de Card_Effects puis on appel OnTurn
         if (Card_Effects_Dictionnary.ContainsKey(Card_Scriptable_Object.Effects_Key))
         {
-            Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnTurn(Card_Scriptable_Object.Params, Card_Scriptable_Object);
+            Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnTurn(Card_Scriptable_Object.Params, Card_Scriptable_Object,this);
         }
     }
 
@@ -55,7 +55,6 @@ public class CardScript : MonoBehaviour
         {
             return;
         }
-        Target_Position.y = transform.position.y;
         //On se rapproche de la position cible
         transform.position = Vector3.MoveTowards(transform.position, Target_Position, Max_Speed);
 
@@ -77,6 +76,7 @@ public class CardScript : MonoBehaviour
         Food_Cost.text = Card_Scriptable_Object.Food_Cost.ToString();
 
         audio_source.clip = Card_Scriptable_Object.Audio_Clip;
+        audio_source.volume = Card_Scriptable_Object.Audio_Volume;
 
         //On cache les icones de couts si inutiles
         Energy_Cost.transform.parent.gameObject.SetActive(Card_Scriptable_Object.Energy_Cost > 0);
@@ -160,13 +160,19 @@ public class CardScript : MonoBehaviour
         }
 
         //A la fin on défausse
-        float destroy_timer = 0.3f;
+        float destroy_timer = 5; //0.3f;
         if (audio_source.clip != null)
         {
             destroy_timer=audio_source.clip.length;
         }
-        GetComponentInChildren<Collider>().enabled = false;
+
         Destroy(gameObject, destroy_timer);
+        transform.rotation = Quaternion.Euler(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f));
+        Target_Position.x = Random.Range(-1000f, 1000f);
+        Target_Position.y = Random.Range(-1000f, 1000f);
+        Target_Position.z = Random.Range(-1000f, 1000f);
+        Max_Speed *= 5;
+        Must_Reach_Target = true;
 
         Ressources.Instance.update_nourriture(Ressources.Instance._nourriture);
         Ressources.Instance.update_bois(Ressources.Instance._bois);
@@ -178,6 +184,7 @@ public class CardScript : MonoBehaviour
     //Joué quand la carte glitch
     public void On_Glitch()
     {
+        //TODO : Ajouter animation de glitch
         if (Card_Effects_Dictionnary.ContainsKey(Card_Scriptable_Object.Effects_Key))
         {
             Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnGlitch(Card_Scriptable_Object.Params,Card_Scriptable_Object,this);

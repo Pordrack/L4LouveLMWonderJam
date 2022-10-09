@@ -115,13 +115,17 @@ public class HandScript : MonoBehaviour
         //On rajotue des variations en Z et en rotation, pour l'effet "naturel"
         float rotation = Random.Range(-Angle_Variation, Angle_Variation);
         float z_offset = Random.Range(-Z_Variation, Z_Variation);
+
+        Vector3 targetPosition = SpawnPosition;
+
         Quaternion quaternion = Quaternion.Euler(0, rotation, 0);
         SpawnPosition.z += z_offset;
-        SpawnPosition.y += SpawnAltitude;
 
         //On cr�� l'objet
         GameObject new_card_go = Instantiate(Card_Prefab, SpawnPosition, quaternion);
         CardScript new_card = new_card_go.GetComponent<CardScript>();
+        new_card.Target_Position = SpawnPosition;
+        SpawnPosition.y += SpawnAltitude;
 
         //On applique le template
         new_card.Card_Scriptable_Object = card_template;

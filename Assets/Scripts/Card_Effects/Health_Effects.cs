@@ -33,12 +33,12 @@ public class Health_Effects : Card_Effect
         Debug.Log("Nv action : " + Stats_Perso.Instance._action.ToString());
     }
 
-    public override void OnStart(Dictionary<string, ParameterEntry> parameters, Card card)
+    public override void OnStart(Dictionary<string, ParameterEntry> parameters, Card card, CardScript card_script)
     {
 
     }
 
-    public override void OnTurn(Dictionary<string, ParameterEntry> parameters, Card card)
+    public override void OnTurn(Dictionary<string, ParameterEntry> parameters, Card card, CardScript card_script)
     {
 
     }

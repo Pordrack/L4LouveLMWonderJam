@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Food
   m_EditorClassIdentifier: 
   Effects_Key: 0
-  Icon: {fileID: 21300000, guid: 14868e72ec28e43459f2f2c0151ace90, type: 3}
+  Icon: {fileID: 21300000, guid: ee1f9404ee8dd4675a5fb1d8c40235d6, type: 3}
   Name: Nourriture
   Description: "Mangez une tr\xE8s bonne |food| et r\xE9cuperez |faim| de nourriture"
   Energy_Cost: 10

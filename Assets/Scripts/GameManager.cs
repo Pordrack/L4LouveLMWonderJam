@@ -8,11 +8,29 @@ public class GameManager : MonoBehaviour
     public State state;
     public TestInput Input;
     public GameObject ennemy;
+    [Tooltip("Probability qu'une carte glitch a chaque tour")]
+    [Range(0f, 1f)]
+    public float Glitch_Probability=0.8f;
 
     public delegate void OnTurn();
     public static event OnTurn On_Player_Turn;
     public static event OnTurn On_Enemy_Turn;
-    
+
+    public static GameManager Instance { get; private set; }
+    private void Awake()
+    {
+        // If there is an instance, and it's not me, delete myself.
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,24 +39,24 @@ public class GameManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (state == State.Player_Turn){    
-            StatePlayerTurn();
+    //void Update()
+    //{
+    //    if (state == State.Player_Turn){    
+    //        StatePlayerTurn();
             
-            // a la fin du tour
-            state = State.Environnement_Turn;
+    //        // a la fin du tour
+    //        state = State.Environnement_Turn;
 
-            Debug.Log("player end");
-        }
+    //        Debug.Log("player end");
+    //    }
 
-        if (state == State.Environnement_Turn){      
-            StateEnemyTurn();
+    //    if (state == State.Environnement_Turn){      
+    //        StateEnemyTurn();
 
-            state = State.Player_Turn;
-             Debug.Log("ennemy end");
-        }
-    }
+    //        state = State.Player_Turn;
+    //         Debug.Log("ennemy end");
+    //    }
+    //}
 
     public void StatePlayerTurn(){
         Input.Player.Enable();
@@ -53,9 +71,13 @@ public class GameManager : MonoBehaviour
 
         //deplacement des ennemis
         //actions des ennemis
-        HandScript.Instance.Glitch_Hand(0.8f);
+        HandScript.Instance.Glitch_Hand(Glitch_Probability);
         On_Enemy_Turn.Invoke();
     }
 
-
+    //Pour le debug pour moi
+    public static void CallPlayerTurnEvent()
+    {
+        On_Player_Turn.Invoke();
+    }
 }

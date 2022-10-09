@@ -125,6 +125,15 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EndTurn"",
+                    ""type"": ""Button"",
+                    ""id"": ""b3d9af84-7a5b-4c71-a9c5-23f2d9b961b5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -347,6 +356,17 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""action"": ""DecreaseStats"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b826aadd-f14b-4476-8d29-390ae7d647db"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EndTurn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -517,6 +537,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         m_Player_GlitchHand = m_Player.FindAction("GlitchHand", throwIfNotFound: true);
         m_Player_IncreaseRessources = m_Player.FindAction("IncreaseRessources", throwIfNotFound: true);
         m_Player_DecreaseStats = m_Player.FindAction("DecreaseStats", throwIfNotFound: true);
+        m_Player_EndTurn = m_Player.FindAction("EndTurn", throwIfNotFound: true);
         // Cards
         m_Cards = asset.FindActionMap("Cards", throwIfNotFound: true);
         m_Cards_Card0 = m_Cards.FindAction("Card0", throwIfNotFound: true);
@@ -595,6 +616,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_GlitchHand;
     private readonly InputAction m_Player_IncreaseRessources;
     private readonly InputAction m_Player_DecreaseStats;
+    private readonly InputAction m_Player_EndTurn;
     public struct PlayerActions
     {
         private @PlayerAction m_Wrapper;
@@ -610,6 +632,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         public InputAction @GlitchHand => m_Wrapper.m_Player_GlitchHand;
         public InputAction @IncreaseRessources => m_Wrapper.m_Player_IncreaseRessources;
         public InputAction @DecreaseStats => m_Wrapper.m_Player_DecreaseStats;
+        public InputAction @EndTurn => m_Wrapper.m_Player_EndTurn;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -652,6 +675,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @DecreaseStats.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDecreaseStats;
                 @DecreaseStats.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDecreaseStats;
                 @DecreaseStats.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDecreaseStats;
+                @EndTurn.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEndTurn;
+                @EndTurn.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEndTurn;
+                @EndTurn.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEndTurn;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -689,6 +715,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @DecreaseStats.started += instance.OnDecreaseStats;
                 @DecreaseStats.performed += instance.OnDecreaseStats;
                 @DecreaseStats.canceled += instance.OnDecreaseStats;
+                @EndTurn.started += instance.OnEndTurn;
+                @EndTurn.performed += instance.OnEndTurn;
+                @EndTurn.canceled += instance.OnEndTurn;
             }
         }
     }
@@ -797,6 +826,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         void OnGlitchHand(InputAction.CallbackContext context);
         void OnIncreaseRessources(InputAction.CallbackContext context);
         void OnDecreaseStats(InputAction.CallbackContext context);
+        void OnEndTurn(InputAction.CallbackContext context);
     }
     public interface ICardsActions
     {

@@ -1846,6 +1846,22 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 874128882}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Ponderations.Array.data[3]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Ponderations.Array.data[6]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Ponderations.Array.data[7]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Ponderations.Array.data[9]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4571597446544668883, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -2585,6 +2601,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 427154657}
     m_Modifications:
+    - target: {fileID: 2203942710235883513, guid: 3ba2168ea0bf7174b9bb51259db0c75e, type: 3}
+      propertyPath: StoneBonus.max
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2203942710235883513, guid: 3ba2168ea0bf7174b9bb51259db0c75e, type: 3}
+      propertyPath: StoneBonus.min
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2203942710235883513, guid: 3ba2168ea0bf7174b9bb51259db0c75e, type: 3}
+      propertyPath: HealthBonus.max
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2203942710235883513, guid: 3ba2168ea0bf7174b9bb51259db0c75e, type: 3}
+      propertyPath: HealthBonus.min
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 2476799782958325158, guid: 3ba2168ea0bf7174b9bb51259db0c75e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2632,6 +2664,18 @@ PrefabInstance:
     - target: {fileID: 2476799782958325159, guid: 3ba2168ea0bf7174b9bb51259db0c75e, type: 3}
       propertyPath: m_Name
       value: Pordrack_Card_Effects
+      objectReference: {fileID: 0}
+    - target: {fileID: 3163795326691853112, guid: 3ba2168ea0bf7174b9bb51259db0c75e, type: 3}
+      propertyPath: Effects_Key
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3163795326691853112, guid: 3ba2168ea0bf7174b9bb51259db0c75e, type: 3}
+      propertyPath: minmax_range.max
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3163795326691853112, guid: 3ba2168ea0bf7174b9bb51259db0c75e, type: 3}
+      propertyPath: minmax_range.min
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ba2168ea0bf7174b9bb51259db0c75e, type: 3}
