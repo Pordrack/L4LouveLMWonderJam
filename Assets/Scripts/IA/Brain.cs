@@ -1,25 +1,47 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 namespace IA
 {
     [RequireComponent(typeof(MeshRenderer))]
     [RequireComponent(typeof(OtherNavBehavior))]
-    public abstract class Brain : MonoBehaviour
+    public class Brain : MonoBehaviour
     {
-        [SerializeField] protected int moveAmount = 1;
-        protected OtherNavBehavior Nav { get; private set; }
-        protected Transform Tf { get; private set; }
-        protected MeshRenderer Rend { get; private set; }
+        [SerializeField] private int moveAmount = 1;
+        private OtherNavBehavior _nav;
+        private Transform _tf;
+        private MeshRenderer _rend;
+
+        #region Decision makers
+
+        private DecisionMaker _decision;
+
+        public static NormalDecision NormalDecision { get; private set; }
+        public static EnragedDecision EnragedDecision { get; private set; }
+        
+        public static GlitchedDecision GlitchedDecision { get; private set; }
+
+        #endregion
+
+        private void InitDecision()
+        {
+            var tf = transform;
+            NormalDecision = new NormalDecision(_nav, this, moveAmount, tf);
+            EnragedDecision = new EnragedDecision(_nav, this, moveAmount, tf);
+            GlitchedDecision = new GlitchedDecision(_nav, this, moveAmount, tf);
+        }
+        
+        
         private int _playerX = -1, _playerY = -1;
         private int _minX,_maxX,_minY,_maxY;
 
         private void Start()
         {
-            Tf = transform;
-            Nav = GetComponent<OtherNavBehavior>();
-            Rend = GetComponent<MeshRenderer>();
+            _tf = transform;
+            _nav = GetComponent<OtherNavBehavior>();
+            _rend = GetComponent<MeshRenderer>();
             EnableRendering(false);
             var playerPos = EnemyManager.Singleton.GetPlayerPosition();
             _playerX = (int) playerPos.x ; 
@@ -34,16 +56,15 @@ namespace IA
 
         private void EnableRendering(bool b)
         {
-            if (!b && !Rend.isVisible) return;
-            if (b && Rend.isVisible) return;
-            Rend.enabled = b;
+            if (!b && !_rend.isVisible) return;
+            if (b && _rend.isVisible) return;
+            _rend.enabled = b;
             foreach (var childRenderer in transform.GetComponentsInChildren<MeshRenderer>())
             {
                 childRenderer.enabled = b;
             }
         }
-
-        public abstract void Decide();
+        
 
         /// <summary>
         /// Permet d'obtenir les cases déplaçables aux alentours.
@@ -51,7 +72,7 @@ namespace IA
         /// </summary>
         /// <param name="pos">Position of the player</param>
         /// <returns>List of possible position on the map.</returns>
-        protected List<int[]> GetAvailableSurrounding(Vector3 pos)
+        public List<int[]> GetAvailableSurrounding(Vector3 pos)
         {
             var x = pos.x;
             var y = pos.z;
@@ -80,7 +101,7 @@ namespace IA
                 return;
             
             //We only hide the visual part, the animals still play, even out of bounds.
-            var local = Tf.position;
+            var local = _tf.position;
             if (local.x < _minX || local.x > _maxX || local.z < _minY || local.z > _maxY)
             {
                 EnableRendering(false);
@@ -91,9 +112,33 @@ namespace IA
             }
         }
 
+
+        public void GlitchSwitch()
+        {
+            if (!_decision.Equals(NormalDecision)) throw new Exception("Only applies to normal");
+
+            if (UnityEngine.Random.Range(0f, 1f) < 0.7f) //70% chance to enrage rather than glitch
+            {
+                SwitchDecision(EnragedDecision);
+            }
+            else
+            {
+                SwitchDecision(GlitchedDecision);
+            }
+            
+        }
+        
+        public void SwitchDecision(DecisionMaker decision)
+        {
+            Debug.Log($"Switching decision from {_decision} to {decision}");
+            _decision = decision;
+        }
+        public void Decide() => _decision.Decide();
+        
         public virtual void Die()
         {
             Debug.Log("He's dead Jim.");
+            _decision.Die();
             Destroy(gameObject);
         }
     }
