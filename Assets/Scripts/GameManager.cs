@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
 
     
     public State state;
-    public TestInput Input;
     public GameObject ennemy;
     [Tooltip("Probability qu'une carte glitch a chaque tour")]
     [Range(0f, 1f)]
@@ -18,6 +17,8 @@ public class GameManager : MonoBehaviour
     public static event OnTurn On_Player_Turn;
     public static event OnTurn On_Enemy_Turn;
     private bool startPlayerTurn = false;
+    public bool startEnnemyTurn= false;
+
 
     public static GameManager Instance { get; private set; }
     private void Awake()
@@ -38,7 +39,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         state = State.Player_Turn;
-        Input = new TestInput();
+
         turnBeforeGlitch = Random.Range(1,6);
     }
 
@@ -46,7 +47,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
        
-       if (state == State.Player_Turn){    
+        if (state == State.Player_Turn){    
             if(startPlayerTurn == false){
                 StatePlayerTurn();
                 startPlayerTurn = true;
@@ -54,21 +55,23 @@ public class GameManager : MonoBehaviour
             
        }
 
-       if (state == State.Environnement_Turn){      
-           StateEnemyTurn();
-
-           changeStateEvent();
+       
+        if (state == State.Environnement_Turn){    
+          
+            StateEnemyTurn();
+            
+            changeStateEvent();
             Debug.Log("ennemy end");
        }
-       if(state == State.Glitch_Turn){
-        StateGlitchTurn();
-         changeStateEvent();
-         Debug.Log("Glitch end");
+        if(state == State.Glitch_Turn){
+            StateGlitchTurn();
+            changeStateEvent();
+            Debug.Log("Glitch end");
        }
     }
 
     public void StatePlayerTurn(){
-        Input.Player.Enable();
+        PlayerH.InputController.Instance.SwitchInputToMovement(true);
         //deplacement du joueur
         //actions
         HandScript.Instance.Fill_Hand();
@@ -85,21 +88,19 @@ public class GameManager : MonoBehaviour
     }
 
     public void StateEnemyTurn(){
-        Input.Player.Disable();
-        
-        
-
+        PlayerH.InputController.Instance.SwitchInputToMovement(false);
         //deplacement des ennemis
         //actions des ennemis
-        
-//        On_Enemy_Turn.Invoke();
+        IA.EnemyManager.Singleton.PerformEnemiesTurn();       
+//       On_Enemy_Turn.Invoke();
     }
     public void StateGlitchTurn(){
-        Input.Player.Disable();
+         PlayerH.InputController.Instance.SwitchInputToMovement(false);
 
         //apparition des glitch
         //Descente des glitchs
         //Glitchage des mobs
+
         //glitchage de la main
          HandScript.Instance.Glitch_Hand(Glitch_Probability);
          turnBeforeGlitch = Random.Range(1,6);
