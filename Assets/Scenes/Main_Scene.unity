@@ -1841,6 +1841,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: HandManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Ponderations.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Cards_Templates.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Ponderations.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Ponderations.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Ponderations.Array.data[2]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Ponderations.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Cards_Templates.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7dc650bc52bd76b47aba4d078050d29d, type: 2}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Cards_Templates.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 69bebf8be9eac094d8e035d6b025f2af, type: 2}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Cards_Templates.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: d9aef7e684d4c85418e0908e720da953, type: 2}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Cards_Templates.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: a24dc21be500f55468dbd0c2ab9133d9, type: 2}
     - target: {fileID: 4571597446544668883, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: m_RootOrder
       value: 11
