@@ -16,7 +16,7 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 14868e72ec28e43459f2f2c0151ace90, type: 3}
   Name: "R\xE9colte"
   Description: "Utilisez votre |tool||weak| pour r\xE9cuperer du |ressource|"
-  Energy_Cost: 2
+  Energy_Cost: 20
   Wood_Cost: 0
   Stone_Cost: 0
   Food_Cost: 0
