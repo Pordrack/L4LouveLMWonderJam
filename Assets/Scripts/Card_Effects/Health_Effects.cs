@@ -53,6 +53,6 @@ public class Health_Effects : Card_Effect
         parameters["item2"] = new ParameterEntry { display_value = "points d'action", real_value = "points d'action" };
         //Change l'image de la carte
         card_scriptable_objects.Icon = Satan_Sprite;
-        card_scriptable_objects.name = "Sacrifice satanique";
+        card_scriptable_objects.Name = "Sacrifice satanique";
     }
 }
