@@ -1846,6 +1846,98 @@ PrefabInstance:
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 874128882}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: SpawnAltitude
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Ponderations.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Cards_Templates.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Ponderations.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Ponderations.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Ponderations.Array.data[3]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Ponderations.Array.data[5]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Ponderations.Array.data[6]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Ponderations.Array.data[7]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Ponderations.Array.data[8]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Ponderations.Array.data[9]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Ponderations.Array.data[10]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Cards_Templates.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 03e74052248feb042a20c560d6e529a2, type: 2}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Cards_Templates.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7dc650bc52bd76b47aba4d078050d29d, type: 2}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Cards_Templates.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 69bebf8be9eac094d8e035d6b025f2af, type: 2}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Cards_Templates.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: d9aef7e684d4c85418e0908e720da953, type: 2}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Cards_Templates.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: a24dc21be500f55468dbd0c2ab9133d9, type: 2}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Cards_Templates.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 906af94ab0c463243b2d998aad25e422, type: 2}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Cards_Templates.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: a7186f84dd476ef4f87177610044dc3a, type: 2}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Cards_Templates.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: e556c751096192944bde2fd262f0b279, type: 2}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Cards_Templates.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 918990e90f947c24689d336b3927db03, type: 2}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Cards_Templates.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7cc7c5ec2b40bf445abfe53bb6bc74f3, type: 2}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Cards_Templates.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: 90713c6ed2cdf474b934d7a8dc1c5b36, type: 2}
     - target: {fileID: 4571597446544668883, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -2585,6 +2677,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 427154657}
     m_Modifications:
+    - target: {fileID: 2203942710235883513, guid: 3ba2168ea0bf7174b9bb51259db0c75e, type: 3}
+      propertyPath: StoneBonus.max
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2203942710235883513, guid: 3ba2168ea0bf7174b9bb51259db0c75e, type: 3}
+      propertyPath: StoneBonus.min
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2203942710235883513, guid: 3ba2168ea0bf7174b9bb51259db0c75e, type: 3}
+      propertyPath: HealthBonus.max
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2203942710235883513, guid: 3ba2168ea0bf7174b9bb51259db0c75e, type: 3}
+      propertyPath: HealthBonus.min
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 2476799782958325158, guid: 3ba2168ea0bf7174b9bb51259db0c75e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2632,6 +2740,18 @@ PrefabInstance:
     - target: {fileID: 2476799782958325159, guid: 3ba2168ea0bf7174b9bb51259db0c75e, type: 3}
       propertyPath: m_Name
       value: Pordrack_Card_Effects
+      objectReference: {fileID: 0}
+    - target: {fileID: 3163795326691853112, guid: 3ba2168ea0bf7174b9bb51259db0c75e, type: 3}
+      propertyPath: Effects_Key
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3163795326691853112, guid: 3ba2168ea0bf7174b9bb51259db0c75e, type: 3}
+      propertyPath: minmax_range.max
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3163795326691853112, guid: 3ba2168ea0bf7174b9bb51259db0c75e, type: 3}
+      propertyPath: minmax_range.min
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ba2168ea0bf7174b9bb51259db0c75e, type: 3}

@@ -29,22 +29,20 @@ public class Generic_Effects : Card_Effect
         Ressources.Instance.update_pierre(Ressources.Instance._pierre);
     }
 
-    public override void OnStart(Dictionary<string, ParameterEntry> parameters, Card card)
+    public override void OnStart(Dictionary<string, ParameterEntry> parameters, Card card, CardScript card_script)
     {
 
     }
 
-    public override void OnTurn(Dictionary<string, ParameterEntry> parameters, Card card)
+    public override void OnTurn(Dictionary<string, ParameterEntry> parameters, Card card, CardScript card_script)
     {
-
+        
     }
 
     public override void OnValueGlitch(Dictionary<string, ParameterEntry> parameters, Card card_scriptable_objects)
     {
-
-    }
-
-    
+        OnStart(parameters, card_scriptable_objects,null);
+    }  
 }
 
 public class ValueRandomizer
@@ -56,6 +54,7 @@ public class ValueRandomizer
 }
 
 
+//Structure qui sert a définir une vairbale qui sera générée aléatoirement par ValueRandomizer.RandomizeValue;
 [System.Serializable]
 public struct MinMaxValue
 {

@@ -181,7 +181,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed208c5065d28ea459638a4b26b8d275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioManager: {fileID: 0}
   Z_Variation: 0.3
   Angle_Variation: 6
   SpawnAltitude: 5
@@ -211,7 +210,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 24.6, y: 1, z: 4}
+  m_Size: {x: 24.6, y: 1, z: 9.7}
   m_Center: {x: 0, y: -0.5, z: -2.35}
 --- !u!1 &4571597446738110020
 GameObject:

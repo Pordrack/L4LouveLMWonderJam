@@ -8,8 +8,6 @@ public class Attack_Effects : Card_Effect
     //public Sprite Pickaxe_Icon;
     //public Sprite Food_Icon;
 
-    public ParameterEntry[] tool_values;
-    public ParameterEntry[] ressources_values;
     public MinMaxValue minmax_range;
 
 
@@ -22,7 +20,7 @@ public class Attack_Effects : Card_Effect
         IA.EnemyManager.Singleton.KillEnemiesInAnArea(IA.EnemyManager.Singleton.GetPlayerPosition(), range);
     }
 
-    public override void OnStart(Dictionary<string, ParameterEntry> parameters, Card card)
+    public override void OnStart(Dictionary<string, ParameterEntry> parameters, Card card, CardScript card_script)
     {
 
         int range = ValueRandomizer.RandomizeValue(minmax_range);
@@ -37,7 +35,7 @@ public class Attack_Effects : Card_Effect
         }
     }
 
-    public override void OnTurn(Dictionary<string, ParameterEntry> parameters, Card card)
+    public override void OnTurn(Dictionary<string, ParameterEntry> parameters, Card card, CardScript card_script)
     {
 
     }
@@ -47,6 +45,6 @@ public class Attack_Effects : Card_Effect
         if(Random.Range(0,3)==0)
             card_scriptable_objects.Name = "01100011 01101111 01110101 01100011 01101111 01110101";
 
-        OnStart(parameters, card_scriptable_objects);
+        OnStart(parameters, card_scriptable_objects,null);
     }
 }

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Effect_Key_Enum { food,camp,gather,attack,teleport,queen,loading,sacrifice,phytotherapy,stone_fries,rambo,raccoon,fire}
+public enum Effect_Key_Enum { food,camp,gather,attack,teleport,queen,loading,sacrifice,phytotherapy,stone_fries,rambo,raccoon,fire,bandage}
 
 [CreateAssetMenu(fileName = "New Card", menuName = "Card", order = 1)]
 public class Card : ScriptableObject

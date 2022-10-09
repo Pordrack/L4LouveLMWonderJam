@@ -32,7 +32,7 @@ public class CardScript : MonoBehaviour
         //On trouve son instance de Card_Effects puis on appel OnStart
         if (Card_Effects_Dictionnary.ContainsKey(Card_Scriptable_Object.Effects_Key))
         {
-            Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnStart(Card_Scriptable_Object.Params, Card_Scriptable_Object);
+            Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnStart(Card_Scriptable_Object.Params, Card_Scriptable_Object,this);
         }
 
         LoadCard();
@@ -45,7 +45,7 @@ public class CardScript : MonoBehaviour
         //On trouve son instance de Card_Effects puis on appel OnTurn
         if (Card_Effects_Dictionnary.ContainsKey(Card_Scriptable_Object.Effects_Key))
         {
-            Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnTurn(Card_Scriptable_Object.Params, Card_Scriptable_Object);
+            Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnTurn(Card_Scriptable_Object.Params, Card_Scriptable_Object,this);
         }
     }
 
@@ -179,6 +179,7 @@ public class CardScript : MonoBehaviour
     //Joué quand la carte glitch
     public void On_Glitch()
     {
+        //TODO : Ajouter animation de glitch
         if (Card_Effects_Dictionnary.ContainsKey(Card_Scriptable_Object.Effects_Key))
         {
             Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnGlitch(Card_Scriptable_Object.Params,Card_Scriptable_Object,this);

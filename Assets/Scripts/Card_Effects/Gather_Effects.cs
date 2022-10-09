@@ -44,7 +44,7 @@ public class Gather_Effects : Card_Effect
         Ressources.Instance.update_pierre(Ressources.Instance._pierre);
     }
 
-    public override void OnStart(Dictionary<string, ParameterEntry> parameters, Card card)
+    public override void OnStart(Dictionary<string, ParameterEntry> parameters, Card card,CardScript card_script)
     {
         int index = Random.Range(0, tool_values.Length);
         parameters["tool"] = tool_values[index];
@@ -68,7 +68,7 @@ public class Gather_Effects : Card_Effect
         //}
     }
 
-    public override void OnTurn(Dictionary<string, ParameterEntry> parameters, Card card)
+    public override void OnTurn(Dictionary<string, ParameterEntry> parameters, Card card, CardScript card_script)
     {
 
     }
@@ -80,7 +80,7 @@ public class Gather_Effects : Card_Effect
         tool_values[index].display_value = "υɿwɿO pɿdʇɿυƧ";
         tool_values[index].display_value = "ḧ̶̢̞̠̼̮̤̞̮̳̲̬̳́̌̽͂͝ͅų̵̢̢̞̠͙̖̥̼̠̞͍̹̉̐̾͒̀̕g̸̛̯̮͙̋̀̇͠o̵͈̼͐̍̅̔̎̆͐̑̓̃̚̚";
 
-        OnStart(parameters, card_scriptable_objects);
+        OnStart(parameters, card_scriptable_objects,null);
     }
 
     //Pete les ressources et les ajoutes aux ressources du joueur

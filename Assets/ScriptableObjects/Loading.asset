@@ -10,17 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6a3cce0af8b0824c8a0d62f845a6e18, type: 3}
-  m_Name: Teleport
+  m_Name: Loading
   m_EditorClassIdentifier: 
-  Effects_Key: 4
+  Effects_Key: 6
   Icon: {fileID: 21300000, guid: 5614946330350464e884afe2af4b4fd7, type: 3}
-  Name: "T\xE9l\xE9portation"
-  Description: "*BIOUUM* T\xE9l\xE9portation !!!!"
-  Energy_Cost: 30
+  Name: ...
+  Description: ...
+  Energy_Cost: 999
   Wood_Cost: 0
   Stone_Cost: 0
   Food_Cost: 0
   Audio_Clip: {fileID: 0}
   Audio_Volume: 1
-  Probability_to_change: 0.394
-  parameter_Entries: []
+  Probability_to_change: 0
+  parameter_Entries:
+  - key: loading_time
+    display_value: 0
+    real_value: 0

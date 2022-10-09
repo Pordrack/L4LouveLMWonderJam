@@ -75,7 +75,7 @@ public class Stats_Perso : MonoBehaviour
         //    down_faim(Random.Range(0, 11));
         //    down_action(Random.Range(0, 11));
         //}
-        down_santee(1);
+        //down_santee(1);
     }
 
     // ajout de valeurs

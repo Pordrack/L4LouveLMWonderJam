@@ -17,7 +17,7 @@ public abstract class Card_Effect : MonoBehaviour
         CardScript.Card_Effects_Dictionnary.Add(Effects_Key, this);
     }
 
-    public abstract void OnStart(Dictionary<string, ParameterEntry> parameters, Card card);
+    public abstract void OnStart(Dictionary<string, ParameterEntry> parameters, Card card,CardScript card_script);
 
     public abstract void OnPlay(Dictionary<string, ParameterEntry> parameters, Card card);
     public void OnGlitch(Dictionary<string, ParameterEntry> parameters, Card card,CardScript card_script)
@@ -33,7 +33,7 @@ public abstract class Card_Effect : MonoBehaviour
         }
     }
 
-    public abstract void OnTurn(Dictionary<string, ParameterEntry> parameters, Card card);
+    public abstract void OnTurn(Dictionary<string, ParameterEntry> parameters, Card card, CardScript card_script);
 
     public abstract void OnValueGlitch(Dictionary<string, ParameterEntry> parameters,Card card);
 }
