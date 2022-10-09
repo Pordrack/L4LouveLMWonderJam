@@ -25,9 +25,12 @@ public class Unlimited_Load : MonoBehaviour
     IEnumerator load_slider()
     {
         //yield on a new YieldInstruction that waits for 5 seconds.
-        yield return new WaitForSeconds(Random.Range(0.2f,1.0f));
-        slider.value = Random.Range(0.0f,1.0f);
-        load_txt.text = truc[Random.Range(0,truc.Length)];
-
+        while (true)
+        {
+            slider.value = Random.Range(0.0f, 1.0f);
+            load_txt.text = truc[Random.Range(0, truc.Length)];
+            yield return new WaitForSeconds(Random.Range(0.2f, 1.0f));
+        }
+        
     }
 }

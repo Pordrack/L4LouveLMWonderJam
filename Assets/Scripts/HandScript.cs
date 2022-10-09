@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HandScript : MonoBehaviour
 {
@@ -12,9 +13,10 @@ public class HandScript : MonoBehaviour
     //Permet d'avoir les cartes un peu pos�s a l'arrache comme en vrai
 
     public Transform[] Cards_Holder; //Les positions ou doivent atterir les cartes sur la table
+    public Transform[] Cursors; //Les curseurs a cacher/montrer
     public int Max_Number_Of_Cards;
 
-    private int selected_index; //L'actuel selection d'index
+    private int selected_index=0; //L'actuel selection d'index
     private List<Card> Cards_Templates_With_Ponderations; //La fusion des deux, avec des cartes en multiples pour la pond�ration
 
     private List<CardScript> Cards_Scripts; //Les cartes "physiquement" dans la main
@@ -180,7 +182,7 @@ public class HandScript : MonoBehaviour
     public void Move_Selected_Index(int difference)
     {
         selected_index += difference;
-        while (selected_index > Cards_Scripts.Count)
+        while (selected_index >= Cards_Scripts.Count)
         {
             selected_index--;
         }
@@ -195,19 +197,20 @@ public class HandScript : MonoBehaviour
     //Cache tous les cursors
     public void Hide_Cursors()
     {
-        foreach (Transform card_holder in Cards_Holder)
-        {
-            card_holder.Find("Cursor").gameObject.SetActive(false);
-        }
+
+            foreach(Transform cursor in Cursors)
+            {
+            cursor.gameObject.SetActive(false);
+            }
     }
 
     public void Show_Cursors()
     {
         //Puis on active le curseur de la carte a selectionner, si il y'as une carte l�
-        if (selected_index >= 0 && selected_index < Cards_Holder.Length && selected_index <= Cards_Scripts.Count)
-        {
-            Cards_Holder[selected_index].Find("Cursor").gameObject.SetActive(true);
-        }
+        //if (selected_index >= 0 && selected_index < Cards_Holder.Length && selected_index <= Cards_Scripts.Count)
+        //{
+        Cursors[selected_index].gameObject.SetActive(true);
+        //}
     }
 
     public void Play_Selected_Card()
@@ -215,7 +218,7 @@ public class HandScript : MonoBehaviour
         if (selected_index >= 0 && selected_index <= Cards_Scripts.Count)
         {
             Play_Card_Of_Index(selected_index);
-            Select_Card_Of_Index(0);
+            Select_Card_Of_Index(selected_index);
         }
     }
 }

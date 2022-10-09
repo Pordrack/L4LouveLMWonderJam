@@ -59,6 +59,9 @@ namespace PlayerH
                 _action.Cards.Card2.performed += (ctx) => OnCardButton(2);
                 _action.Cards.Card3.performed += (ctx) => OnCardButton(3);
                 _action.Cards.Card4.performed += (ctx) => OnCardButton(4);
+                _action.Cards.Next_Selection.performed += Next_Selection;
+                _action.Cards.Previous_Selection.performed += Previous_Selection;
+                _action.Cards.Play_Selected.performed += Play_Selected;
                 _action.Cards.SwitchToNormalView.performed += Switch_To_Normal_View;
             }
 
@@ -83,6 +86,7 @@ namespace PlayerH
 
         private void End_Turn(InputAction.CallbackContext obj)
         {
+            //TO DO : Remplacer par du vrai
             Debug.LogWarning("Je ne fini pas vraiment le tour ! J'invoque juste les events a la main");
             GameManager.CallPlayerTurnEvent();
         }
@@ -120,12 +124,29 @@ namespace PlayerH
             handScript.Glitch_Hand(0.5f);
         }
 
+        public void Next_Selection(InputAction.CallbackContext obj)
+        {
+            handScript.Move_Selected_Index(1);
+        }
+
+        public void Previous_Selection(InputAction.CallbackContext obj)
+        {
+            handScript.Move_Selected_Index(-1);
+        }
+
+        public void Play_Selected(InputAction.CallbackContext obj)
+        {
+            handScript.Play_Selected_Card();
+            
+        }
+
         //switch les controles et la camera vers la version "selection des cartes"
         private void Switch_To_Card_View(InputAction.CallbackContext obj)
         {
             camera_script.SwitchToCards();
             EnableMovement(false);
             EnableCardSelection(true);
+            handScript.Show_Cursors();
         }
 
         //switch les controles et la camera vers la version "normal"
@@ -134,6 +155,7 @@ namespace PlayerH
             camera_script.SwitchFromCards();
             EnableCardSelection(false);
             EnableMovement(true);
+            handScript.Hide_Cursors();
         }
 
         #region Enable/Disable input

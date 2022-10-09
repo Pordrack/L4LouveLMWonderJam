@@ -20,10 +20,20 @@ public class CardScript : MonoBehaviour
     public Vector3 Target_Position; //Une position dont on doit se rapprocher
     public bool Must_Reach_Target=true; //Doit se déplacer vers sa position cible
     public float Max_Speed = 2; //La vitesse par frame dont on se déplace
+    public GameObject loading;
 
     public static Dictionary<Effect_Key_Enum, Card_Effect> Card_Effects_Dictionnary;//Le dictionnaire qui contient
     //Les classes pour les effets de toutes les cartes
     void Start()
+    {
+        StartCard();
+
+        GameManager.On_Player_Turn += OnPlayerTurn;
+    }
+
+    //Regroupe une partie de Star()
+    //Séparée du reste pour pouvoir être appelée indépendanment par le Loading_Effect
+    public void StartCard()
     {
         audio_source = GetComponent<AudioSource>();
         Card_Scriptable_Object = Instantiate(Card_Scriptable_Object);
@@ -32,12 +42,10 @@ public class CardScript : MonoBehaviour
         //On trouve son instance de Card_Effects puis on appel OnStart
         if (Card_Effects_Dictionnary.ContainsKey(Card_Scriptable_Object.Effects_Key))
         {
-            Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnStart(Card_Scriptable_Object.Params, Card_Scriptable_Object,this);
+            Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnStart(Card_Scriptable_Object.Params, Card_Scriptable_Object, this);
         }
 
         LoadCard();
-
-        GameManager.On_Player_Turn += OnPlayerTurn;
     }
 
     public void OnPlayerTurn()
@@ -124,21 +132,25 @@ public class CardScript : MonoBehaviour
     {
         if (Card_Scriptable_Object.Energy_Cost > Stats_Perso.Instance._action)
         {
+            //TODO : Rajouter feedback action
             return false;
         }
 
         if (Card_Scriptable_Object.Wood_Cost > Ressources.Instance._bois)
         {
+            //TODO : Rajouter feed back bois
             return false;
         }
 
         if (Card_Scriptable_Object.Stone_Cost > Ressources.Instance._pierre)
         {
+            //TODO : Rajouter feedback pierre
             return false;
         }
 
         if (Card_Scriptable_Object.Food_Cost > Ressources.Instance._nourriture)
         {
+            //TODO : Rajouter feedback nourriture
             return false;
         }
 

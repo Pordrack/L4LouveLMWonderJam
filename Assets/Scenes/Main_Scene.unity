@@ -1847,8 +1847,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 874128882}
     - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Ponderations.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Ponderations.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Ponderations.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: Ponderations.Array.data[3]
-      value: 100
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Ponderations.Array.data[4]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Ponderations.Array.data[5]
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: Ponderations.Array.data[6]
@@ -1856,11 +1876,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: Ponderations.Array.data[7]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Ponderations.Array.data[8]
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: Ponderations.Array.data[9]
-      value: 1
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: Ponderations.Array.data[10]
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4571597446544668883, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: m_RootOrder
@@ -2616,6 +2644,14 @@ PrefabInstance:
     - target: {fileID: 2203942710235883513, guid: 3ba2168ea0bf7174b9bb51259db0c75e, type: 3}
       propertyPath: HealthBonus.min
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277995414018755846, guid: 3ba2168ea0bf7174b9bb51259db0c75e, type: 3}
+      propertyPath: Ressource_Unit_Per_Map_Element.max
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2277995414018755846, guid: 3ba2168ea0bf7174b9bb51259db0c75e, type: 3}
+      propertyPath: Ressource_Unit_Per_Map_Element.min
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2476799782958325158, guid: 3ba2168ea0bf7174b9bb51259db0c75e, type: 3}
       propertyPath: m_RootOrder
