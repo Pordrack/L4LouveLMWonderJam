@@ -14,7 +14,7 @@ public class Teleport_Effects : Card_Effect
 
     public override void OnPlay(Dictionary<string, ParameterEntry> parameters,Card card_scriptable_objects)
     {
-        
+        Generation.GenerationMap.TeleportPlayer();
     }
 
     public override void OnStart(Dictionary<string, ParameterEntry> parameters, Card card, CardScript card_script)

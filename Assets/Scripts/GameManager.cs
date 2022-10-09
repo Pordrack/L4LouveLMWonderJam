@@ -75,5 +75,9 @@ public class GameManager : MonoBehaviour
         On_Enemy_Turn.Invoke();
     }
 
-
+    //Pour le debug pour moi
+    public static void CallPlayerTurnEvent()
+    {
+        On_Player_Turn.Invoke();
+    }
 }

@@ -183,7 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Z_Variation: 0.3
   Angle_Variation: 6
-  SpawnAltitude: 5
+  SpawnAltitude: -3
   Cards_Holder:
   - {fileID: 4571597447080358335}
   - {fileID: 6760348719454637684}
@@ -193,12 +193,18 @@ MonoBehaviour:
   Max_Number_Of_Cards: 5
   Card_Prefab: {fileID: 2782907868825681752, guid: 9b838c88abc17cf4c99d756c8a3cbd21, type: 3}
   Cards_Templates:
+  - {fileID: 11400000, guid: 03e74052248feb042a20c560d6e529a2, type: 2}
   - {fileID: 11400000, guid: 7dc650bc52bd76b47aba4d078050d29d, type: 2}
   - {fileID: 11400000, guid: 69bebf8be9eac094d8e035d6b025f2af, type: 2}
   - {fileID: 11400000, guid: d9aef7e684d4c85418e0908e720da953, type: 2}
   - {fileID: 11400000, guid: a24dc21be500f55468dbd0c2ab9133d9, type: 2}
+  - {fileID: 11400000, guid: 906af94ab0c463243b2d998aad25e422, type: 2}
+  - {fileID: 11400000, guid: a7186f84dd476ef4f87177610044dc3a, type: 2}
   - {fileID: 11400000, guid: e556c751096192944bde2fd262f0b279, type: 2}
-  Ponderations: 0300000003000000030000000100000001000000
+  - {fileID: 11400000, guid: 918990e90f947c24689d336b3927db03, type: 2}
+  - {fileID: 11400000, guid: 7cc7c5ec2b40bf445abfe53bb6bc74f3, type: 2}
+  - {fileID: 11400000, guid: 90713c6ed2cdf474b934d7a8dc1c5b36, type: 2}
+  Ponderations: 0100000003000000010000000a00000001000000010000006400000001000000640000006400000001000000
 --- !u!65 &4281882219553668150
 BoxCollider:
   m_ObjectHideFlags: 0
