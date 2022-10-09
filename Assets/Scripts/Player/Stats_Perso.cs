@@ -33,6 +33,8 @@ public class Stats_Perso : MonoBehaviour
     public int _max_action = 200;
     public int _action { get; set; }
 
+    [SerializeField] private GameObject endScreenCanvas;
+
 
 
     public int Get_Max_Santee()
@@ -59,22 +61,22 @@ public class Stats_Perso : MonoBehaviour
         _action = _max_action;
     }
 
-    //void Update()
-    //{
-    //    if (Random.Range(0, 2) == 0)
-    //    {
-    //        add_santee(Random.Range(0, 11));
-    //        add_faim(Random.Range(0, 11));
-    //        add_action(Random.Range(0, 11));
-    //    }
-    //    else
-    //    {
-    //        down_santee(Random.Range(0, 11));
-    //        down_faim(Random.Range(0, 11));
-    //        down_action(Random.Range(0, 11));
-    //    }
-
-    //}
+    void Update()
+    {
+        //if (Random.Range(0, 2) == 0)
+        //{
+        //    add_santee(Random.Range(0, 11));
+        //    add_faim(Random.Range(0, 11));
+        //    add_action(Random.Range(0, 11));
+        //}
+        //else
+        //{
+        //    down_santee(Random.Range(0, 11));
+        //    down_faim(Random.Range(0, 11));
+        //    down_action(Random.Range(0, 11));
+        //}
+        down_santee(1);
+    }
 
     // ajout de valeurs
 
@@ -162,7 +164,7 @@ public class Stats_Perso : MonoBehaviour
         if (santee <= 0)
         {
             _santee = 0;
-            // TODO : mourir
+            GameFail();
         }
         else
         {
@@ -219,6 +221,14 @@ public class Stats_Perso : MonoBehaviour
             _action = action;
         }
         Debug.Log("Action - " + energie + " : " + _action);
+    }
+
+    //method to call when game is lost
+
+    public void GameFail()
+    {
+        //enable the game over screen
+        endScreenCanvas.SetActive(true);
     }
 }
 
