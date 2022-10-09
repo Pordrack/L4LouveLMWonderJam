@@ -62,7 +62,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 69bebf8be9eac094d8e035d6b025f2af, type: 2}
   - {fileID: 11400000, guid: d9aef7e684d4c85418e0908e720da953, type: 2}
   - {fileID: 11400000, guid: a24dc21be500f55468dbd0c2ab9133d9, type: 2}
-  Ponderations: 03000000030000000300000001000000
+  - {fileID: 11400000, guid: e556c751096192944bde2fd262f0b279, type: 2}
+  Ponderations: 0300000003000000030000000100000001000000
 --- !u!65 &4281882219553668150
 BoxCollider:
   m_ObjectHideFlags: 0
