@@ -103,6 +103,7 @@ public class GameManager : MonoBehaviour
         //glitchage de la main
          HandScript.Instance.Glitch_Hand(Glitch_Probability);
          turnBeforeGlitch = Random.Range(1,6);
+         
 
     }
 
