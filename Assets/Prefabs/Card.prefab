@@ -639,6 +639,7 @@ MonoBehaviour:
   Energy_Cost: {fileID: 2782907869210845041}
   Wood_Cost: {fileID: 559857140036322324}
   Stone_Cost: {fileID: 2782907867858198169}
+  Food_Cost: {fileID: 4528557311070379330}
   Target_Position: {x: 0, y: 0, z: 0}
   Must_Reach_Target: 0
   Max_Speed: 0.1

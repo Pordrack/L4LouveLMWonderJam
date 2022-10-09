@@ -58,9 +58,11 @@ MonoBehaviour:
   Max_Number_Of_Cards: 5
   Card_Prefab: {fileID: 2782907868825681752, guid: 9b838c88abc17cf4c99d756c8a3cbd21, type: 3}
   Cards_Templates:
+  - {fileID: 11400000, guid: 7dc650bc52bd76b47aba4d078050d29d, type: 2}
   - {fileID: 11400000, guid: 69bebf8be9eac094d8e035d6b025f2af, type: 2}
-  - {fileID: 11400000, guid: db97ab44703f4ee4ca9bb02833ea2f48, type: 2}
-  Ponderations: 0400000001000000
+  - {fileID: 11400000, guid: d9aef7e684d4c85418e0908e720da953, type: 2}
+  - {fileID: 11400000, guid: a24dc21be500f55468dbd0c2ab9133d9, type: 2}
+  Ponderations: 03000000030000000300000001000000
 --- !u!65 &4281882219553668150
 BoxCollider:
   m_ObjectHideFlags: 0
