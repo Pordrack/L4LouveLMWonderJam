@@ -12,11 +12,11 @@ public class Gather_Effects : Card_Effect
     public ParameterEntry[] ressources_values;
     public int min_range;
     public int max_range;
-    [Tooltip("Nombre de buches par arbre, de carotte par buissons etc...")]
+    [Tooltip("Nombre de buches par arbre, de carotte par buissons etc.")]
     public MinMaxValue Ressource_Unit_Per_Map_Element;
 
-    [Tooltip("Entre 0 et 1, proba que l'outil sois faible et capable de recup qu'une ressource")]
-    public float weak_probability; 
+    //[Tooltip("Entre 0 et 1, proba que l'outil sois faible et capable de recup qu'une ressource")]
+    //public float weak_probability; 
 
     public override void OnPlay(Dictionary<string, ParameterEntry> parameters,Card card_scriptable_objects)
     {
@@ -25,20 +25,23 @@ public class Gather_Effects : Card_Effect
         switch (parameters["ressource"].real_value)
         {
             case "wood":
-                Gather(2,range,weak);
+                Gather(Generation.ResourceType.Wood,range,weak);
                 break;
             case "stone":
-                Gather(3, range, weak);
+                Gather(Generation.ResourceType.Rock, range, weak);
                 break;
             case "food":
-                Gather(4, range, weak);
+                Gather(Generation.ResourceType.Food, range, weak);
                 break;
             default:
-                Gather(2, range, weak);
-                Gather(3, range, weak);
-                Gather(4, range, weak);
+                Gather(Generation.ResourceType.Wood, range, weak);
+                Gather(Generation.ResourceType.Rock, range, weak);
+                Gather(Generation.ResourceType.Food, range, weak);
                 break;
         }
+        Ressources.Instance.update_nourriture(Ressources.Instance._nourriture);
+        Ressources.Instance.update_bois(Ressources.Instance._bois);
+        Ressources.Instance.update_pierre(Ressources.Instance._pierre);
     }
 
     public override void OnStart(Dictionary<string, ParameterEntry> parameters, Card card)
@@ -58,11 +61,11 @@ public class Gather_Effects : Card_Effect
             parameters["range"] = new ParameterEntry { display_value = "⛄", real_value = range.ToString() };
         }
 
-        //Regarde si le truc est weak
-        if (Random.Range(0.0f, 1.0F) < weak_probability)
-        {
-            parameters["weak"] = new ParameterEntry { display_value = " en papier", real_value = "1" };
-        }
+        ////Regarde si le truc est weak
+        //if (Random.Range(0.0f, 1.0F) < weak_probability)
+        //{
+        //    parameters["weak"] = new ParameterEntry { display_value = " en papier", real_value = "1" };
+        //}
     }
 
     public override void OnTurn(Dictionary<string, ParameterEntry> parameters, Card card)
@@ -81,24 +84,25 @@ public class Gather_Effects : Card_Effect
     }
 
     //Pete les ressources et les ajoutes aux ressources du joueur
-    public void Gather(int ressource_type,int range,bool weak)
+    public void Gather(Generation.ResourceType ressource_type,int range,bool weak)
     {
+        Vector2Int ppos = Player.NavigationController.GetPlayerPosInGrid();
         int amount = 0;
-        if (weak && true)
-        {
-            amount = ValueRandomizer.RandomizeValue(Ressource_Unit_Per_Map_Element);
-        }
-        else if(!weak)
-        {
-            amount = 2*ValueRandomizer.RandomizeValue(Ressource_Unit_Per_Map_Element);
-        }
+        //if (weak && )
+        //{
+        //    amount = ValueRandomizer.RandomizeValue(Ressource_Unit_Per_Map_Element);
+        //}
+        //else if(!weak)
+        //{
+        amount = Generation.GenerationMap.GetAResourceInArea(ppos.x, ppos.y, range, ressource_type) * ValueRandomizer.RandomizeValue(Ressource_Unit_Per_Map_Element);
+        //}
 
         switch (ressource_type)
         {
-            case 1:
+            case Generation.ResourceType.Wood:
                 Ressources.Instance.add_bois(amount);
                 break;
-            case 2:
+            case Generation.ResourceType.Rock:
                 Ressources.Instance.add_pierre(amount);
                 break;
             default :

@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
     public State state;
     public TestInput Input;
     public GameObject ennemy;
+    [Tooltip("Probability qu'une carte glitch a chaque tour")]
+    [Range(0f, 1f)]
+    public float Glitch_Probability=0.8f;
 
     public delegate void OnTurn();
     public static event OnTurn On_Player_Turn;
@@ -53,7 +56,7 @@ public class GameManager : MonoBehaviour
 
         //deplacement des ennemis
         //actions des ennemis
-        HandScript.Instance.Glitch_Hand(0.8f);
+        HandScript.Instance.Glitch_Hand(Glitch_Probability);
         On_Enemy_Turn.Invoke();
     }
 

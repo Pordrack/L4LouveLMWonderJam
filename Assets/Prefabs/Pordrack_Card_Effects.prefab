@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 2277995414018755846}
   - component: {fileID: 1773858202775548884}
   - component: {fileID: 6605855155149385193}
+  - component: {fileID: 9098367145642313337}
+  - component: {fileID: 3163795326691853112}
   m_Layer: 0
   m_Name: Pordrack_Card_Effects
   m_TagString: Untagged
@@ -100,7 +102,9 @@ MonoBehaviour:
     real_value: all
   min_range: 1
   max_range: 5
-  weak_probability: 0.3
+  Ressource_Unit_Per_Map_Element:
+    min: 0
+    max: 0
 --- !u!114 &1773858202775548884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,5 +147,54 @@ MonoBehaviour:
     min: 0
     max: 0
   ActionBonus:
+    min: 0
+    max: 0
+--- !u!114 &9098367145642313337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476799782958325159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67d5eb1534e573e459acfe77ca02cb64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Effects_Key: 11
+  FoodBonus:
+    min: 0
+    max: 5
+  WoodBonus:
+    min: 0
+    max: 5
+  StoneBonus:
+    min: 0
+    max: 5
+  HealthBonus:
+    min: 0
+    max: 0
+  HungerBonus:
+    min: 0
+    max: 0
+  ActionBonus:
+    min: 0
+    max: 0
+--- !u!114 &3163795326691853112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476799782958325159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d68f5fce697fac4aaaa9d178f21b4a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Effects_Key: 0
+  tool_values: []
+  ressources_values: []
+  minmax_range:
     min: 0
     max: 0

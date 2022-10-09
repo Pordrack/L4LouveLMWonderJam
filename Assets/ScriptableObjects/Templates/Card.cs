@@ -20,8 +20,11 @@ public class Card : ScriptableObject
     public int Food_Cost;
 
     public AudioClip Audio_Clip;
+    [Range(0f, 1f)]
+    public float Audio_Volume=1f;
 
     [Tooltip("Between 0 and 1, probability to become an all new card when glitched")]
+    [Range(0f,1f)]
     public float Probability_to_change; //Probabilité de devenir une nouvelle carte lors du glitch
                                
     [SerializeField]

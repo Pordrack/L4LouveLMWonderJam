@@ -77,6 +77,7 @@ public class CardScript : MonoBehaviour
         Food_Cost.text = Card_Scriptable_Object.Food_Cost.ToString();
 
         audio_source.clip = Card_Scriptable_Object.Audio_Clip;
+        audio_source.volume = Card_Scriptable_Object.Audio_Volume;
 
         //On cache les icones de couts si inutiles
         Energy_Cost.transform.parent.gameObject.SetActive(Card_Scriptable_Object.Energy_Cost > 0);
