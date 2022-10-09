@@ -63,7 +63,7 @@ namespace IA
                 posX = (int) x + (i % 3) - 1;
                 posY = (int) y + (i / 3) - 1;
 
-                if (Generation.IsAvailable(posX, posY))
+                if (Generation.GenerationMap.IsAvailable(posX, posY))
                 {
                     availableSurrounding.Add(new int[] {posX, posY});
                 }
