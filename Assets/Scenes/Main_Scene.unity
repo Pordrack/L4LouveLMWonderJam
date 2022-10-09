@@ -4665,7 +4665,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1387708569}
   - component: {fileID: 1387708568}
-  - component: {fileID: 1387708571}
   - component: {fileID: 1387708570}
   m_Layer: 0
   m_Name: "G\xE9n\xE9rateur"
@@ -4749,22 +4748,6 @@ MonoBehaviour:
   text_rondin: {fileID: 1629520219}
   text_pierre: {fileID: 941482900}
   text_carotte: {fileID: 543065806}
---- !u!114 &1387708571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1387708567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd4c8903cb13e5447a3f34b62810c0f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _max_santee: 200
-  _max_faim: 200
-  _max_action: 200
-  endScreenCanvas: {fileID: 324520555}
 --- !u!1001 &1390041861
 PrefabInstance:
   m_ObjectHideFlags: 0
