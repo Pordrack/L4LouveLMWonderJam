@@ -15,11 +15,24 @@ MonoBehaviour:
   Effects_Key: 8
   Icon: {fileID: 21300000, guid: f2ef570effe8beb40a6b2d4a50ca974d, type: 3}
   Name: "Phytoth\xE9rapie"
-  Description: "Utilisez [food] pour vous soigner et r\xE9cup\xE9rer [health] points
-    de sant\xE9e."
+  Description: "Utilisez [quantity] [item] pour vous soigner et r\xE9cup\xE9rer [quantity2]
+    [item2]."
   Energy_Cost: 0
   Wood_Cost: 0
   Stone_Cost: 0
+  Food_Cost: 10
   Audio_Clip: {fileID: 0}
-  Probability_to_change: 0
-  parameter_Entries: []
+  Probability_to_change: 0.4
+  parameter_Entries:
+  - key: quantity
+    display_value: 10
+    real_value: 10
+  - key: item
+    display_value: carottes
+    real_value: carots
+  - key: quantity2
+    display_value: 40
+    real_value: 40
+  - key: item2
+    display_value: points de vie
+    real_value: health
