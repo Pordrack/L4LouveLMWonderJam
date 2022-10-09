@@ -1,3 +1,4 @@
+using Player;
 using UnityEngine;
 
 namespace IA
@@ -11,6 +12,10 @@ namespace IA
         public override void Decide()
         {
             //Check if the player is around 
+            //var player = 
+           //Get the position of the enemy
+           //Check for distance between enemy and player
+           
            
             //if he is close enough, attack him
            

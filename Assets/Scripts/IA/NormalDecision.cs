@@ -15,7 +15,10 @@ namespace IA
             {
                 var pos = Tf.position; //Get Cerf position
                 var surroundings = Brain.GetAvailableSurrounding(pos);
-
+                if(surroundings.Count == 0)
+                {
+                    return;
+                }
                 var rand = Random.Range(0, (int)surroundings.Count);
                 Nav.PerformMove(surroundings[rand]);
             }

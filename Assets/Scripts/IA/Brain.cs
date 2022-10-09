@@ -31,6 +31,8 @@ namespace IA
             NormalDecision = new NormalDecision(_nav, this, moveAmount, tf);
             EnragedDecision = new EnragedDecision(_nav, this, moveAmount, tf);
             GlitchedDecision = new GlitchedDecision(_nav, this, moveAmount, tf);
+
+            _decision = NormalDecision;
         }
         
         
@@ -51,6 +53,8 @@ namespace IA
             _maxX = _playerX + half;
             _minY = _playerY-half;
             _maxY = _playerY+half;
+            
+            InitDecision();
             
         }
 
