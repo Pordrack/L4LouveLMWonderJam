@@ -1098,6 +1098,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f72a8fe4ce3850f4ea5d1922cbed0df5, type: 3}
   m_PrefabInstance: {fileID: 1616605746}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &234843982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 234843983}
+  - component: {fileID: 234843984}
+  m_Layer: 0
+  m_Name: Glitch_Vague
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &234843983
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234843982}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 45.938564, y: 0.93, z: 48.13}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &234843984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234843982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af51b4503912af640b232fdbbfa0242e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  colision: []
+  probanum: 1
+  probade: 3
 --- !u!1001 &235290168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2786,6 +2836,7 @@ MonoBehaviour:
   state: 0
   ennemy: {fileID: 0}
   Glitch_Probability: 0.8
+  startEnnemyTurn: 0
 --- !u!4 &642302372
 Transform:
   m_ObjectHideFlags: 0
