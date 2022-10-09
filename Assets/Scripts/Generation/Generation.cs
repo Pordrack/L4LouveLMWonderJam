@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using GenerationNS;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -19,8 +21,10 @@ public class Generation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _mapBlocks = new GameObject[tailleMap,tailleMap];
+        _mapBlocks = new GameObject[tailleMap,tailleMap]; //Init
+        _freeBlocks = new List<Vector2Int>();
 
+        //generate blocks for the mapBlocks
         for(int i = 0; i<tailleMap; i++){
             for(int v = 0; v<tailleMap; v++){
                 GameObject go = Instantiate(bloc, new Vector3(i, 0, v), Quaternion.identity,transform) as GameObject;
@@ -33,10 +37,11 @@ public class Generation : MonoBehaviour
                 go.SetActive(false);
             }
         }
-        procedural();
+        procedural(); //Define their type
 
-        MapsEnvironment = new GameObject[tailleMap,tailleMap];
-
+        MapsEnvironment = new GameObject[tailleMap,tailleMap]; //init
+        
+        //generate environment elements
         for(int i = 0; i<tailleMap; i++){
             for(int v = 0; v<tailleMap; v++){
                 GameObject go = Instantiate(environment, new Vector3(i, 1, v), Quaternion.identity,transform) as GameObject;
@@ -49,18 +54,23 @@ public class Generation : MonoBehaviour
                 go.SetActive(false);
             }
         }
-        procedural_generation_environnemnt();
+        procedural_generation_environment(); //Define their type
 
+        //Player spawn position
         var playerPos = Set_Player_Position();
 
         //mask logic
         _maskHandler = new MapMaskHandler(playerPos[0], playerPos[1]);
         MaskInit();
-
-        OnGenerationComplete?.Invoke(playerPos[0], playerPos[1]);
         
+        //Enemy generation
+        PositionEnemy();
+
+        //Warn subscribed classes that the generation is complete, and provide player spawn position (relatively to the map basis)
+        OnGenerationComplete?.Invoke(playerPos[0], playerPos[1]);
     }
 
+    //
     void procedural(){
         
 
@@ -118,7 +128,7 @@ public class Generation : MonoBehaviour
         _mapBlocks[i,v].GetComponent<bloc>().set_type(Random.Range(1, 3));
     }
 
-    void procedural_generation_environnemnt(){
+    void procedural_generation_environment(){
         for(int i = 0; i<tailleMap; i++){
             for(int v = 0; v<tailleMap; v++){
                 switch(_mapBlocks[i,v].GetComponent<bloc>().get_type()){
@@ -129,12 +139,13 @@ public class Generation : MonoBehaviour
                     case 1:
                         switch(Random.Range(0, 5)){
                             case 0:
-                                MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(1); 
+                                MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(1);
+                                _freeBlocks.Add(new Vector2Int(i,v));
                             break;
 
                             case 1:
-                                MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(2); 
-                            break;
+                                MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(2);
+                                break;
 
                             case 2:
                                 MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(2); 
@@ -149,6 +160,7 @@ public class Generation : MonoBehaviour
                                     MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(4); 
                                 }else{
                                     MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(1); 
+                                    _freeBlocks.Add(new Vector2Int(i,v));
                                 }
                             break;
                         }
@@ -177,9 +189,72 @@ public class Generation : MonoBehaviour
 
     private int[] Set_Player_Position()
     {
-        //TODO : à modifier pour le placer sur une case libre.
-        return new[] {30, 30};
+        //init
+        var found = false;
+        var amount = 10;
+        var count = 0;
+        var playerPos = Vector2Int.zero;
+        
+        
+        while(count < amount && !found )
+        {
+            //Take a random index from the free block list
+            var index = Random.Range(0, _freeBlocks.Count);
+            //Check if most of the surrounding blocks are free (the player can move)
+            playerPos = _freeBlocks[index];
+            var freeBlocksAround = 0;
+            for (var i = -2; i < 3; i++)
+            {
+                for (var j = -2; j < 3; j++)
+                {
+                    if (_freeBlocks.Contains(new Vector2Int(playerPos.x + i, playerPos.y + j)))
+                    {
+                        freeBlocksAround++;
+                    }
+                }
+            }
+
+            found = freeBlocksAround >= 6;
+            count++;
+        }
+
+        return found ? new[] {playerPos.x, playerPos.y} : new[] {30, 30};
     }
+
+    #region Enemy generation
+
+    [Header("Procedural enemy generation")]
+    
+    private List<Vector2Int> _freeBlocks;
+    [SerializeField] private ProbabilitySet probaSet;
+    [SerializeField] private Transform enemyParent;
+
+    private void PositionEnemy()
+    {
+        Debug.Log("------ Start Generating Enemy ------");
+        var amountToSpawn = (int) (probaSet.enemyApparitionRate * _freeBlocks.Count);
+        Debug.Log("freeblocks contains : " + _freeBlocks.Count + " blocks and we have to spawn " + amountToSpawn + " enemies");
+        for (var i = 0; i < amountToSpawn; i++)
+        {
+            //We take an index from the free list
+            var index = Random.Range(0, _freeBlocks.Count);
+            
+            //Get its position
+            var gridPos = _freeBlocks[index];
+            var pos = new Vector3(gridPos.x, 0.6f, gridPos.y);
+            
+            //Spawn the enemy
+            var go = probaSet.GetRandomEnemy();
+            var enemy = Instantiate(go, pos, go.transform.rotation, enemyParent);
+            enemy.name = go.name + " " + i;
+            
+            Debug.Log("Enemy spawned at " + pos);
+            //Remove the block from the free list for further spawn
+            _freeBlocks.RemoveAt(index);
+        }
+    }
+
+    #endregion
     
     #region Masking logic
 
