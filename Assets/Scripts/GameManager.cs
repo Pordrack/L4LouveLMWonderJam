@@ -44,14 +44,16 @@ public class GameManager : MonoBehaviour
         Input.Player.Enable();
         //deplacement du joueur
         //actions
+        HandScript.Instance.Fill_Hand();
         On_Player_Turn.Invoke();
     }
 
     public void StateEnemyTurn(){
         Input.Player.Disable();
-        
+
         //deplacement des ennemis
         //actions des ennemis
+        HandScript.Instance.Glitch_Hand(0.8f);
         On_Enemy_Turn.Invoke();
     }
 
