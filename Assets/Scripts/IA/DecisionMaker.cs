@@ -20,5 +20,7 @@ namespace IA
         public abstract void Decide();
 
         public abstract void Die();
+
+        public abstract string GetId();
     }
 }

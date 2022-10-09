@@ -124,7 +124,8 @@ namespace IA
 
         public void GlitchSwitch()
         {
-            if (!_decision.Equals(NormalDecision)) throw new Exception("Only applies to normal");
+            print(_decision.GetId());
+            if (!_decision.GetId().Equals("Normal")) throw new Exception("Only applies to normal");
 
             if (UnityEngine.Random.Range(0f, 1f) < 0.7f) //70% chance to enrage rather than glitch
             {
@@ -145,6 +146,8 @@ namespace IA
                 _rend.material = _initMat;
             else if (decision is EnragedDecision)
                 _rend.material = buggedMat;
+            else if (decision is GlitchedDecision)
+                _rend.material.color = Color.red;
         }
         public void Decide() => _decision.Decide();
         

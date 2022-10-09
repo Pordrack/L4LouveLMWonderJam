@@ -18,6 +18,7 @@ public class Glitch_Wave : MonoBehaviour
         for(var i = 0; i<colision.Length; i++){
             if(Random.Range(probanum,probade+1)==1){
                 Debug.Log("Switch_Mode");
+                print($"On collide avec {colision[i].name}");
                 colision[i].GetComponent<IA.Brain>().GlitchSwitch();
             }
         }

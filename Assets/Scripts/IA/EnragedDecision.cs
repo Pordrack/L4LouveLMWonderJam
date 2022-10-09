@@ -41,5 +41,10 @@ namespace IA
         {
             throw new System.NotImplementedException();
         }
+
+        public override string GetId()
+        {
+            return "enraged";
+        }
     }
 }

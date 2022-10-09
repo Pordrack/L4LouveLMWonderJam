@@ -220,7 +220,7 @@ public class Stats_Perso : MonoBehaviour
             action -= energie;
             _action = action;
         }
-        Debug.Log("Action - " + energie + " : " + _action);
+//        Debug.Log("Action - " + energie + " : " + _action);
     }
 
     //method to call when game is lost
