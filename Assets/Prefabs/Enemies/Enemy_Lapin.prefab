@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 7558549416785835414}
   - component: {fileID: 3661109322141115400}
   - component: {fileID: 3661109322141115403}
-  - component: {fileID: 2592820626446000294}
+  - component: {fileID: 2239445758224211760}
   m_Layer: 6
   m_Name: Enemy_Lapin
   m_TagString: Untagged
@@ -478,7 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65f4a3f0f162b4392a8d906fc1a11675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &2592820626446000294
+--- !u!65 &2239445758224211760
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -486,8 +486,8 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8351257924918498371}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.018044967, y: 0.017888568, z: 0.15771724}
-  m_Center: {x: -0.000039100647, y: -0.00011730195, z: 0.070451245}
+  m_Size: {x: 0.018983383, y: 0.01734116, z: 0.15239729}
+  m_Center: {x: -0.000039100647, y: -0.00023460329, z: 0.07429343}

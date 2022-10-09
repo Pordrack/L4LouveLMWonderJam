@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1498676073720481696}
   - component: {fileID: 6154398259438172974}
   - component: {fileID: 6154398259438172975}
-  - component: {fileID: 8611478010881406054}
+  - component: {fileID: 4793452384379190219}
   m_Layer: 6
   m_Name: Enemy_Cerf
   m_TagString: Untagged
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2060c1f896686433e80f5cfea74eea35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &8611478010881406054
+--- !u!65 &4793452384379190219
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,11 +119,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138462389458642549}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.018044967, y: 0.017888568, z: 0.15771724}
-  m_Center: {x: -0.000039100647, y: -0.00011730195, z: 0.070451245}
+  m_Size: {x: 0.018983383, y: 0.01734116, z: 0.15239729}
+  m_Center: {x: -0.000039100647, y: -0.00023460329, z: 0.07429343}
 --- !u!1 &4861156472384662116
 GameObject:
   m_ObjectHideFlags: 0
