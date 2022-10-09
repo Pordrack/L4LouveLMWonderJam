@@ -21,15 +21,22 @@ namespace IA
             {
                 Stats_Perso.Instance.down_santee(20);
                 AudioManager.instance.GetDmgSound();
+                return;
             }
 
-            //if so, try to move towards him 
-
-            //if not, try to move towards the last known position of the player
-
-            //else move randomly
+            //move random
+            
+            for(var i=0; i<MoveAmount; i++)
+            {
+                var surroundings = Brain.GetAvailableSurrounding(pos);
+                if(surroundings.Count == 0)
+                {
+                    return;
+                }
+                var rand = Random.Range(0, (int)surroundings.Count);
+                Nav.PerformMove(surroundings[rand]);
+            }
         }
-
         public override void Die()
         {
             throw new System.NotImplementedException();
