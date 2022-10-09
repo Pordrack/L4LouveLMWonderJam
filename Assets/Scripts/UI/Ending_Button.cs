@@ -18,6 +18,11 @@ public class Ending_Button : MonoBehaviour
     }
 
     public void button_change_scene(int sceneIndex){
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit ();
+        #endif
         StartCoroutine(LoadSAsync(sceneIndex));
     }
 
