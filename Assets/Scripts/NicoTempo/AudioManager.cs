@@ -42,4 +42,10 @@ public class AudioManager : MonoBehaviour
         }
         Play("Theme");
     }
+
+    private string[] dmgSoundArray = new[] {"Oof1", "Oof2", "Oof3", "Oof4"};
+    public void GetDmgSound()
+    {
+        Play(dmgSoundArray[UnityEngine.Random.Range(0, dmgSoundArray.Length)]);
+    }
 }
