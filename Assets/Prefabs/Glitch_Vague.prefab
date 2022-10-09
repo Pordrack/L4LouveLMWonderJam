@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3794979556300652832
+--- !u!1 &418232212884427003
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3794979556300652835}
-  - component: {fileID: 3794979556300652834}
+  - component: {fileID: 418232212884427002}
+  - component: {fileID: 418232212884426981}
   m_Layer: 0
-  m_Name: Glith_Vague
+  m_Name: Glitch_Vague
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3794979556300652835
+--- !u!4 &418232212884427002
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3794979556300652832}
+  m_GameObject: {fileID: 418232212884427003}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 35.12766, y: -0.63797396, z: 48.22948}
+  m_LocalPosition: {x: 45.938564, y: 0.93, z: 48.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3794979556300652834
+--- !u!114 &418232212884426981
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3794979556300652832}
+  m_GameObject: {fileID: 418232212884427003}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af51b4503912af640b232fdbbfa0242e, type: 3}
@@ -48,3 +48,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   colision: []
+  probanum: 1
+  probade: 3
