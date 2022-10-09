@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RockFries
   m_EditorClassIdentifier: 
   Effects_Key: 9
-  Icon: {fileID: 21300000, guid: f2ef570effe8beb40a6b2d4a50ca974d, type: 3}
+  Icon: {fileID: 21300000, guid: e2ffe4fa99192ac4582f99f34dd9860c, type: 3}
   Name: Frites naiseuses
   Description: Dures comme du cailloux, qu'est-ce que je peux en faire ?
   Energy_Cost: 0
