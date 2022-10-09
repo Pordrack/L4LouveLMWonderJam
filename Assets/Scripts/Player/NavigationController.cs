@@ -1,4 +1,5 @@
 using System;
+using System.Security.Cryptography;
 using Generation;
 using IA;
 using PlayerH;
@@ -9,9 +10,14 @@ namespace Player
 {
     public class NavigationController : MonoBehaviour
     {
+        private static NavigationController _instance;
+        
+        public static Vector2Int GetPlayerPos() => new Vector2Int(_instance.PlayerX, _instance.PlayerZ);
 
-        private int _playerX, _playerZ; //indices of the player relatively to the map
+        public int PlayerX { get; private set; }
+        public int PlayerZ { get; private set; }//indices of the player relatively to the map
         // This is different from its world position in Unity.
+        
         
         public GameObject gameTable;
         private environnement_bloc[,] _map;
@@ -23,7 +29,7 @@ namespace Player
         {
             if (Input.GetKeyDown(KeyCode.M))
             {
-                var a = GenerationMap.GetAllResourcesInArea(_playerX, _playerZ, 2);
+                var a = GenerationMap.GetAllResourcesInArea(PlayerX, PlayerZ, 2);
                 var str = "[";
                 foreach (var value in a)
                 {
@@ -43,20 +49,23 @@ namespace Player
 
         private void Awake()
         {
+            if(_instance != null && _instance != this) Destroy(gameObject);
+            _instance = this;
+            
             _tf = transform;
             Generation.GenerationMap.OnGenerationComplete += GetGeneratedMap;
             //init position of the player.
             //TODO : this must be changed
             var position = _tf.position;
-            _playerX = (int) position.x;
-            _playerZ = (int) position.z;
+            PlayerX = (int) position.x;
+            PlayerZ = (int) position.z;
         }
 
         private void GetGeneratedMap(int x, int y)
         {
             //Set player position given by the generator
-            _playerX = x;
-            _playerZ = y;
+            PlayerX = x;
+            PlayerZ = y;
             
             //Move the plate 
             var playerRealPos = _tf.position;
@@ -80,8 +89,8 @@ namespace Player
         {
             if (_map is null) return;
             // Get the wanted new player's position
-            var newX = _playerX + (int) direction.x;
-            var newZ = _playerZ + (int) direction.y;
+            var newX = PlayerX + (int) direction.x;
+            var newZ = PlayerZ + (int) direction.y;
             //Debug.Log($"Current position registered is {_playerX}, {_playerZ}.\n Current position (transform) is {_tf.position.x}, {_tf.position.z}.\n" +
               //        $" The direction we get is {direction} .\n" +
                 //      $" New position is {newX}, {newZ}.");
@@ -98,8 +107,8 @@ namespace Player
                 //Update table visibility
                 Generation.GenerationMap.UpdateMask(newX,newZ);
                 //Update player position
-                _playerX = newX;
-                _playerZ = newZ;
+                PlayerX = newX;
+                PlayerZ = newZ;
                 
                 //Update its rotation according to the movement.
                 _tf.rotation = Quaternion.RotateTowards(_tf.rotation, Quaternion.LookRotation(new Vector3(direction.x, 0, direction.y)), 180);
