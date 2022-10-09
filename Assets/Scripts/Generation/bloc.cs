@@ -40,6 +40,11 @@ namespace Generation
             this.type = type;
         }
 
+        public void set_type(ResourceType type)
+        {
+            this.type = (int) type;
+        }
+
         public void set_visibility(){
             obj_type_floor[type].SetActive(true);
         }

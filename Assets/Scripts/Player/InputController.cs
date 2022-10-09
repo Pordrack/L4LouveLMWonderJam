@@ -1,4 +1,5 @@
 using System;
+using Generation;
 using Player;
 using Tools;
 using UnityEngine;
@@ -30,9 +31,10 @@ namespace PlayerH
         #endregion
 
         private PlayerAction _action;
+
         
-        
-        
+
+
         private void OnEnable()
         {
             if (_action is null)
@@ -57,7 +59,7 @@ namespace PlayerH
                 _action.Cards.SwitchToNormalView.performed += Switch_To_Normal_View;
             }
 
-            Debug.LogWarning("_action.Enable(); est toujours lancé dans InputController.cs !");
+            Debug.LogWarning("_action.Enable(); est toujours lancï¿½ dans InputController.cs !");
             _action.Enable();
             _action.Cards.Disable();
         }

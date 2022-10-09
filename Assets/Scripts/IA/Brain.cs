@@ -83,12 +83,10 @@ namespace IA
             if (local.x < _minX || local.x > _maxX || local.z < _minY || local.z > _maxY)
             {
                 EnableRendering(false);
-                print("We get in the false statement WTF.? ");
             }
             else
             {
                 EnableRendering(true);
-                print("We get in true statement.");
             }
         }
     }

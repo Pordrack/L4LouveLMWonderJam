@@ -33,7 +33,7 @@ namespace Generation
                     go.name = "Bloc (" + i + "," + v + ")";
                     _mapBlocks[i,v] = go;
                     if(v==0 || i == 0 || i == tailleMap-1 || v == tailleMap-1){
-                        _mapBlocks[i,v].GetComponent<bloc>().set_type(0);
+                        _mapBlocks[i,v].GetComponent<bloc>().set_type(ResourceType.Blocked);
                     }
                     go.SetActive(false);
                 }
@@ -50,7 +50,7 @@ namespace Generation
                     go.name = "Environment (" + i + "," + v + ")";
                     MapsEnvironment[i,v] = go;
                     if(v==0 || i == 0 || i == tailleMap-1 || v == tailleMap-1){
-                        MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(0);
+                        MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(ResourceType.Blocked);
                     }
                     go.SetActive(false);
                 }
@@ -78,13 +78,13 @@ namespace Generation
             for(int i = 1; i<tailleMap-1; i++){
                 for(int v = 1; v<tailleMap-1; v++){
                     if((i+v)<=tailleMap-1){
-                        if(_mapBlocks[i-1,v].GetComponent<bloc>().get_type() == 0 || _mapBlocks[i,v-1].GetComponent<bloc>().get_type() == 0){
+                        if(_mapBlocks[i-1,v].GetComponent<bloc>().get_type() == (int) ResourceType.Blocked || _mapBlocks[i,v-1].GetComponent<bloc>().get_type() == (int)ResourceType.Blocked){
                             if(Random.Range(0, 100)>50){
-                                _mapBlocks[tailleMap-i-1,tailleMap-v-1].GetComponent<bloc>().set_type(3); 
-                                _mapBlocks[i,v].GetComponent<bloc>().set_type(3); 
+                                _mapBlocks[tailleMap-i-1,tailleMap-v-1].GetComponent<bloc>().set_type(ResourceType.Rock); 
+                                _mapBlocks[i,v].GetComponent<bloc>().set_type(ResourceType.Rock); 
                             }else{
-                                _mapBlocks[tailleMap-i-1,tailleMap-v-1].GetComponent<bloc>().set_type(0); 
-                                _mapBlocks[i,v].GetComponent<bloc>().set_type(0); 
+                                _mapBlocks[tailleMap-i-1,tailleMap-v-1].GetComponent<bloc>().set_type(ResourceType.Blocked); 
+                                _mapBlocks[i,v].GetComponent<bloc>().set_type(ResourceType.Blocked); 
                             }
 
                         }else{
@@ -98,11 +98,11 @@ namespace Generation
             for(int i = 1; i<tailleMap-1; i++){
                 for(int v = 1; v<tailleMap-1; v++){
                     if((i+v)<=tailleMap-1){
-                        if(_mapBlocks[i-1,v].GetComponent<bloc>().get_type() == 0 || _mapBlocks[i,v-1].GetComponent<bloc>().get_type() == 0){
+                        if(_mapBlocks[i-1,v].GetComponent<bloc>().get_type() == (int) ResourceType.Blocked || _mapBlocks[i,v-1].GetComponent<bloc>().get_type() == (int) ResourceType.Blocked){
                             if(Random.Range(0, 100)>50){
-                                _mapBlocks[i,v].GetComponent<bloc>().set_type(3); 
+                                _mapBlocks[i,v].GetComponent<bloc>().set_type(ResourceType.Rock); 
                             }else{
-                                _mapBlocks[i,v].GetComponent<bloc>().set_type(0); 
+                                _mapBlocks[i,v].GetComponent<bloc>().set_type(ResourceType.Blocked); 
                             }
 
                         }else{
@@ -134,33 +134,33 @@ namespace Generation
                 for(int v = 0; v<tailleMap; v++){
                     switch(_mapBlocks[i,v].GetComponent<bloc>().get_type()){
                         case 0:
-                            MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(0); 
+                            MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(ResourceType.Blocked); 
                             break;
 
                         case 1:
                             switch(Random.Range(0, 5)){
                                 case 0:
-                                    MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(1);
+                                    MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(ResourceType.Free);
                                     _freeBlocks.Add(new Vector2Int(i,v));
                                     break;
 
                                 case 1:
-                                    MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(2);
+                                    MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(ResourceType.Wood);
                                     break;
 
                                 case 2:
-                                    MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(2); 
+                                    MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(ResourceType.Wood); 
                                     break;
 
                                 case 3:
-                                    MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(3); 
+                                    MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(ResourceType.Rock); 
                                     break;
 
                                 case 4:
                                     if(Random.Range(0, 100)>75){
-                                        MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(4); 
+                                        MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(ResourceType.Food); 
                                     }else{
-                                        MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(1); 
+                                        MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(ResourceType.Free); 
                                         _freeBlocks.Add(new Vector2Int(i,v));
                                     }
                                     break;
@@ -168,11 +168,13 @@ namespace Generation
                             break;
 
                         case 2:
-                            MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(1); 
+                            MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(ResourceType.Free);
+                            _freeBlocks.Add(new Vector2Int(i,v));
                             break;
 
                         case 3:
-                            MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(1); 
+                            MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(ResourceType.Free); 
+                            _freeBlocks.Add(new Vector2Int(i,v));
                             break;
                     }
                 }
@@ -249,7 +251,7 @@ namespace Generation
                 var enemy = Instantiate(go, pos, go.transform.rotation, enemyParent);
                 enemy.name = go.name + " " + i;
             
-                Debug.Log("Enemy spawned at " + pos);
+//                Debug.Log("Enemy spawned at " + pos);
                 //Remove the block from the free list for further spawn
                 _freeBlocks.RemoveAt(index);
             }
@@ -317,5 +319,86 @@ namespace Generation
         }
 
         #endregion
+
+        #region Getter ressources
+
+        /// <summary>
+        /// This method gather all resources of a specific type in an area.
+        /// </summary>
+        /// <param name="x">x pos of the block</param>
+        /// <param name="y">y pos of the block</param>
+        /// <param name="range">Range as a block</param>
+        /// <returns></returns>
+        public static int GetAResourceInArea(int x, int y, int range, ResourceType type)
+        {
+            if(type == ResourceType.All) throw new Exception("Use GetResourcesInArea instead.");
+
+            var count = 0;
+            //Get the blocks around the pos (x,y) with range of range blocks
+            for(var i = -range; i <= range; i++)
+            {
+                for(var j = -range; j <= range; j++)
+                {
+                    if (i == 0 && j == 0) continue; //Ignore the player tile
+                    
+                    if (!IsInMap(x + i, y + j)) continue; //make sure there is a block there.
+                    var block = MapsEnvironment[x + i, y + j].GetComponent<environnement_bloc>(); 
+                    
+                    if (block.get_type() == (int) type)
+                    {
+                        count++; //update count 
+                        block.set_type(ResourceType.Free); //Modify the block.
+                    }
+
+                }
+            }
+            return count;
+        }
+
+        public static int[] GetAllResourcesInArea(int x, int y, int range)
+        {
+            var resources = new int[3];
+            //Get the blocks around the pos (x,y) with range of range blocks
+            for(var i = -range; i <= range; i++)
+            {
+                for(var j = -range; j <= range; j++)
+                {
+                    if (i == 0 && j == 0) continue; //Ignore the player tile
+                    
+                    if (!IsInMap(x + i, y + j)) continue; //make sure there is a block there.
+                    var block = MapsEnvironment[x + i, y + j].GetComponent<environnement_bloc>();
+
+                    switch (block.get_type())
+                    {
+                        case (int) ResourceType.Wood:
+                            resources[0]++;
+                            break;
+                        case (int) ResourceType.Rock:
+                            resources[1]++;
+                            break;
+                        case (int) ResourceType.Food:
+                            resources[2]++;
+                            break;
+                        default:
+                            break;
+                    }
+                    block.set_type(ResourceType.Free); //Modify the block.
+                }
+            }
+            return resources;
+        }
+        
+        #endregion
+    }
+
+    public enum ResourceType
+    {
+        Blocked = 0,
+        Free = 1,
+        Wood = 2,
+        Rock = 3,
+        Food = 4,
+        All = 5
+        
     }
 }
