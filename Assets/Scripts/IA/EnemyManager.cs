@@ -87,7 +87,11 @@ namespace IA
             }
         }
 
-        
+        public bool IsThereAnEnemy(Vector3 worldPos)
+        {
+            var colliders = Physics.OverlapSphere(worldPos, 0.5f, enemyLayer);
+            return colliders.Length > 0;
+        }
 
         public Vector3 GetPlayerPosition() => player.position;
     }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MapMaskHandler
 {
+    //TODO : For optimisation purpose, keep a track of the current visible map and just update this (better)
     private readonly int[] _playerPos;
     public static int DrawnMapSize = 11;
     private int _halfMapSize = DrawnMapSize / 2;
@@ -69,15 +70,27 @@ public class MapMaskHandler
 
     public int[,,] InitMask()
     {
+        return GetSurroundingMap(_playerPos[0], _playerPos[1]);
+    }
+    
+
+    public int[,,] GetSurroundingMap(int x, int y)
+    {
         var mask = new int[DrawnMapSize, DrawnMapSize, 2];
         for (var i = 0; i < DrawnMapSize; i++)
         {
             for (var j = 0; j < DrawnMapSize; j++)
             {
-                mask[i, j, 0] = _playerPos[0] - _halfMapSize + i;
-                mask[i, j, 1] = _playerPos[1] - _halfMapSize+ j;
+                mask[i, j, 0] = x - _halfMapSize + i;
+                mask[i, j, 1] = y - _halfMapSize+ j;
             }
         }
         return mask;
+    }
+    
+    public void UpdatePlayerPosition(int x, int y)
+    {
+        _playerPos[0] = x;
+        _playerPos[1] = y;
     }
 }
