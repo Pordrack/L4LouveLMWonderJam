@@ -16,9 +16,10 @@ public class HandScript : MonoBehaviour
     private List<Card> Cards_Templates_With_Ponderations; //La fusion des deux, avec des cartes en multiples pour la pondération
 
     private List<CardScript> Cards_Scripts; //Les cartes "physiquement" dans la main
+    public GameObject Card_Prefab; //Prefab de la carte physique
 
     [Header("DECK")]
-    public GameObject Card_Prefab; //Prefab de la carte physique
+    
     public Card[] Cards_Templates; //Liste des scritable objects de cartes randoms
     public int[] Ponderations; //Les ponderation des cartes randoms
     
@@ -142,7 +143,13 @@ public class HandScript : MonoBehaviour
             return;
         }
 
-        Cards_Scripts[index].On_Play();
+        //On essaie de jouer la carte, si ça foire on s'arrête ici
+        if (!Cards_Scripts[index].On_Play())
+        {
+            return;
+        }
+
+        //Sinon on l'enlève de la main
         Cards_Scripts.RemoveAt(index);
 
         Update_Target_Pos();

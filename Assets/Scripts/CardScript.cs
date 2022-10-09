@@ -13,6 +13,8 @@ public class CardScript : MonoBehaviour
     public TMP_Text Energy_Cost;
     public TMP_Text Wood_Cost;
     public TMP_Text Stone_Cost;
+    public TMP_Text Food_Cost;
+    private AudioSource audio_source;
     private string SEPARATOR = "|"; //Séparateur des paramètres de la description
     private string PLACEHOLDER = "paramètre introuvable";
     public Vector3 Target_Position; //Une position dont on doit se rapprocher
@@ -23,6 +25,7 @@ public class CardScript : MonoBehaviour
     //Les classes pour les effets de toutes les cartes
     void Start()
     {
+        audio_source = GetComponent<AudioSource>();
         Card_Scriptable_Object = Instantiate(Card_Scriptable_Object);
         Card_Scriptable_Object.FillDictionnary();
 
@@ -71,11 +74,15 @@ public class CardScript : MonoBehaviour
         Wood_Cost.text = Card_Scriptable_Object.Wood_Cost.ToString();
         Stone_Cost.text = Card_Scriptable_Object.Stone_Cost.ToString();
         Energy_Cost.text = Card_Scriptable_Object.Energy_Cost.ToString();
+        Food_Cost.text = Card_Scriptable_Object.Food_Cost.ToString();
+
+        audio_source.clip = Card_Scriptable_Object.Audio_Clip;
 
         //On cache les icones de couts si inutiles
         Energy_Cost.transform.parent.gameObject.SetActive(Card_Scriptable_Object.Energy_Cost > 0);
         Stone_Cost.transform.parent.gameObject.SetActive(Card_Scriptable_Object.Stone_Cost > 0);
         Wood_Cost.transform.parent.gameObject.SetActive(Card_Scriptable_Object.Wood_Cost > 0);
+        Food_Cost.transform.parent.gameObject.SetActive(Card_Scriptable_Object.Food_Cost > 0);
     }
 
     //Prend le texte "brute" de la description, puis rempli les paramètres en mettant leur valeur
@@ -112,8 +119,37 @@ public class CardScript : MonoBehaviour
     }
 
     //Joué quand on joue la carte
-    public void On_Play()
+    //Renvoie false si on a pas reussi
+    public bool On_Play()
     {
+        if (Card_Scriptable_Object.Energy_Cost > Stats_Perso.Instance._action)
+        {
+            return false;
+        }
+
+        if (Card_Scriptable_Object.Wood_Cost > Ressources.Instance._bois)
+        {
+            return false;
+        }
+
+        if (Card_Scriptable_Object.Stone_Cost > Ressources.Instance._pierre)
+        {
+            return false;
+        }
+
+        if (Card_Scriptable_Object.Food_Cost > Ressources.Instance._nourriture)
+        {
+            return false;
+        }
+
+
+        Stats_Perso.Instance.down_action(Card_Scriptable_Object.Energy_Cost);
+        Ressources.Instance.down_bois(Card_Scriptable_Object.Wood_Cost);
+        Ressources.Instance.down_pierre(Card_Scriptable_Object.Stone_Cost);
+        Ressources.Instance.down_nourriture(Card_Scriptable_Object.Food_Cost);
+
+        audio_source.enabled = true;
+
         if (Card_Effects_Dictionnary != null)
         {
             //On trouve son instance de Card_Effects puis on appel OnPlay
@@ -122,10 +158,16 @@ public class CardScript : MonoBehaviour
                 Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnPlay(Card_Scriptable_Object.Params,Card_Scriptable_Object);
             }
         }
-        
+
         //A la fin on défausse
+        float destroy_timer = 0.3f;
+        if (audio_source.clip != null)
+        {
+            destroy_timer=audio_source.clip.length;
+        }
         GetComponentInChildren<Collider>().enabled = false;
-        Destroy(gameObject, 1);
+        Destroy(gameObject, destroy_timer);
+        return true;
     }
 
     //Joué quand la carte glitch

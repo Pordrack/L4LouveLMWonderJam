@@ -20,7 +20,22 @@ public class Ressources : MonoBehaviour
     //public Text txt_rondin = text_rondin.GetComponent<UnityEngine.UI.Text>();
     //public Text txt_pierre = text_pierre.GetComponent<UnityEngine.UI.Text>();
     //public Text txt_carotte = text_carotte.GetComponent<UnityEngine.UI.Text>();
-    
+
+    public static Ressources Instance { get; private set; }
+    private void Awake()
+    {
+        // If there is an instance, and it's not me, delete myself.
+
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
 
     void Start()
     {

@@ -17,6 +17,7 @@ public class Card : ScriptableObject
     public int Energy_Cost;
     public int Wood_Cost;
     public int Stone_Cost;
+    public int Food_Cost;
 
     public AudioClip Audio_Clip;
 
