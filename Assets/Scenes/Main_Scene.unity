@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -651,6 +651,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f72a8fe4ce3850f4ea5d1922cbed0df5, type: 3}
+--- !u!1 &113238849 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 922116206041803121, guid: fc5579590086e0a4f9cb013616edb124, type: 3}
+  m_PrefabInstance: {fileID: 1208478944}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &133797801 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 15c6978abb036e4479f45be40b5a83ef, type: 3}
@@ -4959,6 +4964,7 @@ GameObject:
   - component: {fileID: 1923917771}
   - component: {fileID: 1923917773}
   - component: {fileID: 1923917772}
+  - component: {fileID: 1923917774}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -5011,6 +5017,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameTable: {fileID: 1387708567}
+--- !u!114 &1923917774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923917767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aedded2a40d4e918106663b70d5fc1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1934229127 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1977417327736442364, guid: fb7888534daf69c409b5a92180659e00, type: 3}
@@ -5100,6 +5118,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 542634695237628875, guid: fc5579590086e0a4f9cb013616edb124, type: 3}
   m_PrefabInstance: {fileID: 1208478944}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1957032226
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113238849}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1004941ecff214f08bb1f3f757dd9a86, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1982657520
 PrefabInstance:
   m_ObjectHideFlags: 0

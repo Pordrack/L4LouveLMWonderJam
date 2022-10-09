@@ -29,7 +29,7 @@ namespace Player
         
         
         private Transform _tf; //for fewer c++ calls
-
+        private AnimationController _anim;
         private void Update()
         {
             
@@ -64,15 +64,19 @@ namespace Player
             _instance = this;
             
             _tf = transform;
-            Generation.GenerationMap.OnGenerationComplete += GetGeneratedMap;
+            GenerationMap.OnGenerationComplete += GetGeneratedMap;
+ 
             //init position of the player.
             //TODO : this must be changed
             var position = _tf.position;
             PlayerX = (int) position.x;
             PlayerZ = (int) position.z;
             
+            _anim = GetComponent<AnimationController>();
             Debug.LogWarning("Ne pas oublier d'enlever les touches de debug");
         }
+
+
 
         private void GetGeneratedMap(int x, int y)
         {
@@ -121,6 +125,23 @@ namespace Player
                 PlayerZ = newZ;
                 
                 //Update its rotation according to the movement.
+                var angle = (int) Vector2.SignedAngle(new Vector2(_tf.forward.x, _tf.forward.z), direction);
+                switch (angle)
+                {
+                    case 90:
+                        _anim.MoveAnimation(AnimationController.AnimationMove.Right);
+                        break;
+                    case -90:
+                        _anim.MoveAnimation(AnimationController.AnimationMove.Left);
+                        break;
+                    case 180:
+                        _anim.MoveAnimation(AnimationController.AnimationMove.Down);
+                        break;
+                    case 0:
+                        _anim.MoveAnimation(AnimationController.AnimationMove.Up);
+                        break;
+                }
+
                 _tf.rotation = Quaternion.RotateTowards(_tf.rotation, Quaternion.LookRotation(new Vector3(direction.x, 0, direction.y)), 180);
             }
 
