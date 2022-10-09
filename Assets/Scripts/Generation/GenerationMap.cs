@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using IA;
+using Player;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,7 +9,14 @@ namespace Generation
 {
     public class GenerationMap : MonoBehaviour
     {
-    
+        private static GenerationMap _instance;
+
+        private void Awake()
+        {
+            if(_instance != null && _instance != this) Destroy(gameObject);
+            _instance = this;
+        }
+
         public static int tailleMap = 100;
         public GameObject bloc; //prefab of the block
         private static GameObject[,] _mapBlocks;
@@ -247,11 +256,27 @@ namespace Generation
             
         }
 
+        public static void TeleportPlayer()
+        {
+            //TODO : might need to be modified if we make enemies respawn. (need to clear area near player) 
+            //get a random location.
+            var index = Random.Range(0,_freeBlocks.Count);
+            var target = _freeBlocks[index];
+            
+            //teleport the player.
+            var dir = NavigationController.GetPlayerPosInGrid() - target;
+            _instance.transform.position += new Vector3(dir.x, 0, dir.y);
+            
+            //Updates : mask and player pos in grid
+            UpdateAllMask(target.x,target.y);
+            NavigationController.UpdatePlayerPosInGrid(target.x,target.y);
+        }
+
         #region Enemy generation
 
         [Header("Procedural enemy generation")]
     
-        private List<Vector2Int> _freeBlocks;
+        private static List<Vector2Int> _freeBlocks;
         [SerializeField] private ProbabilitySet probaSet;
         [SerializeField] private Transform enemyParent;
 
@@ -280,6 +305,10 @@ namespace Generation
             }
         }
 
+        public static void AddFreeBlock(Vector2Int pos) => _freeBlocks.Add(pos);
+        
+        public static void RemoveFreeBlock(Vector2Int pos) => _freeBlocks.Remove(pos);
+        
         #endregion
     
         #region Masking logic
@@ -322,6 +351,41 @@ namespace Generation
                 _mapBlocks[x,y].SetActive(true);
                 MapsEnvironment[x,y].SetActive(true);
             }
+        }
+
+        private static void UpdateAllMask(int newX, int newY)
+        {
+            var around = _maskHandler.InitMask(); //get the mask around the player
+            var newMask = _maskHandler.GetSurroundingMap(newX, newY);
+            
+            //Hide the old mask
+            for (var i = 0; i < around.GetLength(0); i++)
+            {
+                for (var j = 0; j < around.GetLength(1); j++)
+                {
+                    var x = around[i, j, 0];
+                    var y = around[i, j, 1];
+                    if (!IsInMap(x, y)) continue;
+                    _mapBlocks[x, y].SetActive(false);
+                    MapsEnvironment[x, y].SetActive(false);
+                }
+            }
+            
+            //Show the new mask
+            for (var i = 0; i < newMask.GetLength(0); i++)
+            {
+                for (var j = 0; j < newMask.GetLength(1); j++)
+                {
+                    var x = newMask[i, j, 0];
+                    var y = newMask[i, j, 1];
+                    if (!IsInMap(x, y)) continue;
+                    _mapBlocks[x, y].SetActive(true);
+                    MapsEnvironment[x, y].SetActive(true);
+                }
+            }
+            
+            //Update player position for the maskhandler
+            _maskHandler.UpdatePlayerPosition(newX, newY);
         }
     
         public static bool IsInMap(int x, int y)

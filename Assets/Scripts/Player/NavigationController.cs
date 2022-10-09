@@ -14,6 +14,11 @@ namespace Player
         
         public static Vector2Int GetPlayerPosInGrid() => new Vector2Int(_instance.PlayerX, _instance.PlayerZ);
 
+        public static void UpdatePlayerPosInGrid(int x, int y)
+        {
+            _instance.PlayerX = x;
+            _instance.PlayerZ = y;
+        }
         public int PlayerX { get; private set; }
         public int PlayerZ { get; private set; }//indices of the player relatively to the map
         // This is different from its world position in Unity.
@@ -27,7 +32,7 @@ namespace Player
 
         private void Update()
         {
-            Debug.LogWarning("Ne pas oublier d'enlever les touches de debug");
+            
             if (Input.GetKeyDown(KeyCode.M))
             {
                 var a = GenerationMap.GetAllResourcesInArea(PlayerX, PlayerZ, 2);
@@ -45,6 +50,11 @@ namespace Player
             {
                 EnemyManager.Singleton.KillEnemiesInAnArea(transform.position,2);
             }
+
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                GenerationMap.TeleportPlayer();
+            }
         }
         
 
@@ -60,6 +70,8 @@ namespace Player
             var position = _tf.position;
             PlayerX = (int) position.x;
             PlayerZ = (int) position.z;
+            
+            Debug.LogWarning("Ne pas oublier d'enlever les touches de debug");
         }
 
         private void GetGeneratedMap(int x, int y)

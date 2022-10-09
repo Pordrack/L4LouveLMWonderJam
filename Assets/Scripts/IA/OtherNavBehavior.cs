@@ -1,4 +1,5 @@
 using System;
+using Generation;
 using UnityEngine;
 
 namespace IA
@@ -21,6 +22,11 @@ namespace IA
                 y = 1.5f,
                 z = y
             };
+            
+            //updates the free blocks (usefull for correct teleportation) 
+            GenerationMap.AddFreeBlock(new Vector2Int(x,y));
+            var pos = transform.position;
+            GenerationMap.RemoveFreeBlock(new Vector2Int((int) pos.x, (int) pos.y));
         }
         private void Update()
         {
