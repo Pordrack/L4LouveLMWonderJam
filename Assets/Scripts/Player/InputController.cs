@@ -82,9 +82,8 @@ namespace PlayerH
 
         private void End_Turn(InputAction.CallbackContext obj)
         {
-            //TO DO : Remplacer par du vrai
-            Debug.LogWarning("Je ne fini pas vraiment le tour ! J'invoque juste les events a la main");
-            GameManager.Instance.EndPlayerTurn();
+            
+            GameManager.Instance.ChangeState(State.Decision_Turn);
         }
 
         private void OnCardButton(int index)
@@ -156,7 +155,7 @@ namespace PlayerH
 
         #region Enable/Disable input
 
-        private void EnableMovement(bool b)
+        public void EnableMovement(bool b)
         {
             if(b) _action.Player.Enable();
             else _action.Player.Disable();
@@ -170,7 +169,7 @@ namespace PlayerH
 
         public void SwitchInputToMovement(bool b)
         {
-            Debug.Log(b ? "Switching to movement" : "Switching to card selection");
+//            Debug.Log(b ? "Switching to movement" : "Switching to card selection");
             EnableMovement(b);
             EnableCardSelection(!b);
         }

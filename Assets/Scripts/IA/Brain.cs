@@ -9,7 +9,11 @@ namespace IA
     [RequireComponent(typeof(OtherNavBehavior))]
     public class Brain : MonoBehaviour
     {
-        [SerializeField] private int moveAmount = 1;
+        private Material _initMat;
+        [SerializeField] private Material buggedMat;
+        
+        
+        [SerializeField] private int moveAmount = 3;
         private OtherNavBehavior _nav;
         private Transform _tf;
         private MeshRenderer _rend;
@@ -53,7 +57,8 @@ namespace IA
             _maxX = _playerX + half;
             _minY = _playerY-half;
             _maxY = _playerY+half;
-            
+
+            _initMat = _rend.material;
             InitDecision();
             
         }
@@ -119,7 +124,8 @@ namespace IA
 
         public void GlitchSwitch()
         {
-            if (!_decision.Equals(NormalDecision)) throw new Exception("Only applies to normal");
+            print(_decision.GetId());
+            if (!_decision.GetId().Equals("Normal")) throw new Exception("Only applies to normal");
 
             if (UnityEngine.Random.Range(0f, 1f) < 0.7f) //70% chance to enrage rather than glitch
             {
@@ -136,6 +142,12 @@ namespace IA
         {
             Debug.Log($"Switching decision from {_decision} to {decision}");
             _decision = decision;
+            if (decision is NormalDecision)
+                _rend.material = _initMat;
+            else if (decision is EnragedDecision)
+                _rend.material = buggedMat;
+            else if (decision is GlitchedDecision)
+                _rend.material.color = Color.red;
         }
         public void Decide() => _decision.Decide();
         

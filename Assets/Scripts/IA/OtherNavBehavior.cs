@@ -6,6 +6,12 @@ namespace IA
 {
     public class OtherNavBehavior : MonoBehaviour
     {
+        private Brain _brain;
+
+        private void Awake()
+        {
+            _brain = GetComponent<Brain>();
+        }
 
         private Vector3? _target;
         public void PerformMove(int[] target)
@@ -19,7 +25,7 @@ namespace IA
             _target = new Vector3()
             {
                 x = x,
-                y = 1.5f,
+                y = transform.position.y,
                 z = y
             };
             
@@ -32,6 +38,7 @@ namespace IA
         {
             if (_target is null) return;
             transform.position = Vector3.MoveTowards(transform.position, _target.Value, 0.1f);
+            _brain.ShallBeDrawn();
             if (transform.position == _target.Value) _target = null;
         }
     }

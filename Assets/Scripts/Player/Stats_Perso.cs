@@ -149,7 +149,7 @@ public class Stats_Perso : MonoBehaviour
             {
                 _action = action;
             }
-            Debug.Log("Action + " + energie + " : " + _action);
+//            Debug.Log("Action + " + energie + " : " + _action);
         }
     }
 
@@ -170,7 +170,7 @@ public class Stats_Perso : MonoBehaviour
         {
             _santee = santee;
         }
-        Debug.Log("Santee - " + hp + " : " + _santee);
+//        Debug.Log("Santee - " + hp + " : " + _santee);
     }
 
     public void down_faim(int bouffe)
@@ -195,7 +195,7 @@ public class Stats_Perso : MonoBehaviour
             faim -= bouffe;
             _faim = faim;
         }
-        Debug.Log("Faim - " + bouffe + " : " + _faim);
+//        Debug.Log("Faim - " + bouffe + " : " + _faim);
     }
 
     public void down_action(int energie)
@@ -220,7 +220,7 @@ public class Stats_Perso : MonoBehaviour
             action -= energie;
             _action = action;
         }
-        Debug.Log("Action - " + energie + " : " + _action);
+//        Debug.Log("Action - " + energie + " : " + _action);
     }
 
     //method to call when game is lost

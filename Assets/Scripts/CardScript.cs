@@ -15,11 +15,11 @@ public class CardScript : MonoBehaviour
     public TMP_Text Stone_Cost;
     public TMP_Text Food_Cost;
     private AudioSource audio_source;
-    private string SEPARATOR = "|"; //Séparateur des paramètres de la description
-    private string PLACEHOLDER = "paramètre introuvable";
+    private string SEPARATOR = "|"; //Sï¿½parateur des paramï¿½tres de la description
+    private string PLACEHOLDER = "paramï¿½tre introuvable";
     public Vector3 Target_Position; //Une position dont on doit se rapprocher
-    public bool Must_Reach_Target=true; //Doit se déplacer vers sa position cible
-    public float Max_Speed = 2; //La vitesse par frame dont on se déplace
+    public bool Must_Reach_Target=true; //Doit se dï¿½placer vers sa position cible
+    public float Max_Speed = 2; //La vitesse par frame dont on se dï¿½place
     public GameObject loading;
 
     public static Dictionary<Effect_Key_Enum, Card_Effect> Card_Effects_Dictionnary;//Le dictionnaire qui contient
@@ -28,11 +28,11 @@ public class CardScript : MonoBehaviour
     {
         StartCard();
 
-        GameManager.On_Player_Turn += OnPlayerTurn;
+        GameManager.OnPlayerTurn += OnPlayerTurn;
     }
 
     //Regroupe une partie de Star()
-    //Séparée du reste pour pouvoir être appelée indépendanment par le Loading_Effect
+    //Sï¿½parï¿½e du reste pour pouvoir ï¿½tre appelï¿½e indï¿½pendanment par le Loading_Effect
     public void StartCard()
     {
         audio_source = GetComponent<AudioSource>();
@@ -93,14 +93,14 @@ public class CardScript : MonoBehaviour
         Food_Cost.transform.parent.gameObject.SetActive(Card_Scriptable_Object.Food_Cost > 0);
     }
 
-    //Prend le texte "brute" de la description, puis rempli les paramètres en mettant leur valeur
+    //Prend le texte "brute" de la description, puis rempli les paramï¿½tres en mettant leur valeur
     string Fill_Description(string description)
     {
-        //On va d'abord séparer les strings en ségment
+        //On va d'abord sï¿½parer les strings en sï¿½gment
         string[] segments = description.Split(SEPARATOR);
 
-        //On va regarder si le premier mot est un paramètre en regardant si la chaine commence par |
-        //Si oui, on va prendre les bouts de string avec un index paire (0, 2, etc.) car ce sont les paramètres
+        //On va regarder si le premier mot est un paramï¿½tre en regardant si la chaine commence par |
+        //Si oui, on va prendre les bouts de string avec un index paire (0, 2, etc.) car ce sont les paramï¿½tres
         //Si non, ce sont ceux impaires
         int firstIndex = 1;
         if (description[0] == '|')
@@ -108,7 +108,7 @@ public class CardScript : MonoBehaviour
             firstIndex = 0;
         }
 
-        //On remplace toutes les clés de paramètres par leurs valeurs
+        //On remplace toutes les clï¿½s de paramï¿½tres par leurs valeurs
         for(int i = firstIndex; i < segments.Length; i+=2)
         {
             string value = Card_Scriptable_Object.Params[segments[i]].display_value;
@@ -126,7 +126,7 @@ public class CardScript : MonoBehaviour
 
     }
 
-    //Joué quand on joue la carte
+    //Jouï¿½ quand on joue la carte
     //Renvoie false si on a pas reussi
     public bool On_Play()
     {
@@ -171,7 +171,7 @@ public class CardScript : MonoBehaviour
             }
         }
 
-        //A la fin on défausse
+        //A la fin on dï¿½fausse
         float destroy_timer = 5; //0.3f;
         if (audio_source.clip != null)
         {
@@ -193,7 +193,7 @@ public class CardScript : MonoBehaviour
         return true;
     }
 
-    //Joué quand la carte glitch
+    //Jouï¿½ quand la carte glitch
     public void On_Glitch()
     {
         //TODO : Ajouter animation de glitch

@@ -29,5 +29,9 @@ namespace IA
             Debug.Log("He's dead Jim.");
         }
 
+        public override string GetId()
+        {
+            return "Normal";
+        }
     }
 }
