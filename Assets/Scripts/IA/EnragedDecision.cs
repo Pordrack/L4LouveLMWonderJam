@@ -12,20 +12,16 @@ namespace IA
         public override void Decide()
         {
             //Check if the player is around 
-            var player = EnemyManager.Singleton.GetPlayerPosition();
-            var pos = Tf.position;
-            var sqrDistance = Vector3.SqrMagnitude(player-pos);
-
-            //if he is close enough, attack him
-            if (sqrDistance < 4)
+            if (EnemyManager.Singleton.IsEnemyAround(2, Brain))
             {
                 Stats_Perso.Instance.down_santee(20);
                 AudioManager.instance.GetDmgSound();
-                return;
             }
+            
+            
 
             //move random
-            
+            var pos = Tf.position;
             for(var i=0; i<MoveAmount; i++)
             {
                 var surroundings = Brain.GetAvailableSurrounding(pos);
@@ -39,7 +35,7 @@ namespace IA
         }
         public override void Die()
         {
-            throw new System.NotImplementedException();
+            Debug.Log("Je meurs Johnny.");
         }
 
         public override string GetId()

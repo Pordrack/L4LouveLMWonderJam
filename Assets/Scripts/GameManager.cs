@@ -84,10 +84,8 @@ public class GameManager : MonoBehaviour
     public void StateGlitchTurn(){
         //apparition des glitch
         glitchWave.Start_Wave();
-        //Descente des glitchs
-        //Glitchage des mobs
-
-        //glitchage de la main
+        
+        
          HandScript.Instance.Glitch_Hand(Glitch_Probability);
          turnBeforeGlitch = Random.Range(NbTourMin,NbTourMax);
          ChangeState(State.Environnement_Turn);

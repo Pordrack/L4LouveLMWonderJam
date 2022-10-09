@@ -478,6 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cafaeed3674f047d0baa3368746a2e0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buggedMat: {fileID: 0}
   moveAmount: 1
 --- !u!65 &2239445758224211760
 BoxCollider:

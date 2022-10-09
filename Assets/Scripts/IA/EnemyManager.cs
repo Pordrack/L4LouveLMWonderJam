@@ -109,6 +109,21 @@ namespace IA
             return colliders.Length > 0;
         }
 
+        public bool IsEnemyAround(int range, Brain enemy)
+        {
+            Debug.Log($"Check asked by {enemy.name}");
+            var colliders = Physics.OverlapBox(player.position, range * Vector3.one, Quaternion.identity, enemyLayer);
+            if(colliders.Length == 0) return false;
+            
+            foreach (var collider in colliders)
+            {
+                Debug.Log($"We get collider of {collider.name}");
+                if(collider.GetComponent<Brain>() == enemy) return true;
+            }
+
+            return false;
+        }
+
         public Vector3 GetPlayerPosition() => player.position;
     }
 }
