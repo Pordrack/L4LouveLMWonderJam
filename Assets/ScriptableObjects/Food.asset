@@ -21,7 +21,7 @@ MonoBehaviour:
   Stone_Cost: 0
   Food_Cost: 1
   Audio_Clip: {fileID: 8300000, guid: c6172009f31d82b4383c769d6f8f5700, type: 3}
-  Probability_to_change: 0
+  Probability_to_change: 0.3
   parameter_Entries:
   - key: food
     display_value: Carotte
