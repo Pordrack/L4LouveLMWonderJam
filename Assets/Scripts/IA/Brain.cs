@@ -9,7 +9,11 @@ namespace IA
     [RequireComponent(typeof(OtherNavBehavior))]
     public class Brain : MonoBehaviour
     {
-        [SerializeField] private int moveAmount = 1;
+        private Material _initMat;
+        [SerializeField] private Material buggedMat;
+        
+        
+        [SerializeField] private int moveAmount = 3;
         private OtherNavBehavior _nav;
         private Transform _tf;
         private MeshRenderer _rend;
@@ -53,7 +57,8 @@ namespace IA
             _maxX = _playerX + half;
             _minY = _playerY-half;
             _maxY = _playerY+half;
-            
+
+            _initMat = _rend.material;
             InitDecision();
             
         }
@@ -136,6 +141,10 @@ namespace IA
         {
             Debug.Log($"Switching decision from {_decision} to {decision}");
             _decision = decision;
+            if (decision is NormalDecision)
+                _rend.material = _initMat;
+            else if (decision is EnragedDecision)
+                _rend.material = buggedMat;
         }
         public void Decide() => _decision.Decide();
         

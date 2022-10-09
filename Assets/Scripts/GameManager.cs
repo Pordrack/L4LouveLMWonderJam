@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     public int NbTourMax=7;
 
+    [SerializeField] private Glitch_Wave glitchWave;
+
     [Header("RessourceLose")]
     public int FoodLostByTurn=20;
     public int RegenActionByTurn=100;
@@ -109,6 +111,7 @@ public class GameManager : MonoBehaviour
          PlayerH.InputController.Instance.SwitchInputToMovement(false);
 
         //apparition des glitch
+        glitchWave.Start_Wave();
         //Descente des glitchs
         //Glitchage des mobs
 
