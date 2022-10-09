@@ -2322,11 +2322,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: Ponderations.Array.data[2]
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: Ponderations.Array.data[3]
-      value: 12
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: Ponderations.Array.data[4]
@@ -2350,7 +2350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: Ponderations.Array.data[9]
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: Ponderations.Array.data[10]
