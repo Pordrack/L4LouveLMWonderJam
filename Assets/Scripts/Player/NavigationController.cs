@@ -137,12 +137,15 @@ namespace Player
                     case 180:
                         _anim.MoveAnimation(AnimationController.AnimationMove.Down);
                         break;
+                    case -180:
+                        _anim.MoveAnimation(AnimationController.AnimationMove.Down);
+                        break;
                     case 0:
                         _anim.MoveAnimation(AnimationController.AnimationMove.Up);
                         break;
                 }
-
-                _tf.rotation = Quaternion.RotateTowards(_tf.rotation, Quaternion.LookRotation(new Vector3(direction.x, 0, direction.y)), 180);
+                Debug.Log($"We have a rotation of angle {angle}");
+                _tf.rotation *= Quaternion.Euler(0,angle,0);
             }
 
         }
