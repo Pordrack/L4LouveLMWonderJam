@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1804,7 +1804,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100 jours
+  m_text: Error
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0f011281606644f56b9773472f6249f8, type: 2}
   m_sharedMaterial: {fileID: -5296247047259039734, guid: 0f011281606644f56b9773472f6249f8, type: 2}
@@ -2786,7 +2786,6 @@ MonoBehaviour:
   state: 0
   ennemy: {fileID: 0}
   Glitch_Probability: 0.8
-  startEnnemyTurn: 0
   NbTourMin: 3
   NbTourMax: 7
   glitchWave: {fileID: 418232213099085750}
