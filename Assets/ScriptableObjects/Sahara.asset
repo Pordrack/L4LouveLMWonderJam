@@ -12,10 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a3cce0af8b0824c8a0d62f845a6e18, type: 3}
   m_Name: Sahara
   m_EditorClassIdentifier: 
+  Effects_Key: 0
   Icon: {fileID: 21300000, guid: 5d56dacd2119ec148aeaaddfef464082, type: 3}
-  Name: "T\xE9l\xE9portation au Sahara"
+  Name: Sahara
   Description: "Se t\xE9l\xE9porte |adverb| au |place| "
   Energy_Cost: 4
   Wood_Cost: 2
   Stone_Cost: 0
-  TextParams: adverb:Joliment-joliment;place:Sahara-sahara
+  Audio_Clip: {fileID: 0}
+  Probability_to_change: 0
+  parameter_Entries:
+  - key: adverb
+    display_value: Joliement
+    real_value: joliment
+  - key: place
+    display_value: Sahara
+    real_value: desert

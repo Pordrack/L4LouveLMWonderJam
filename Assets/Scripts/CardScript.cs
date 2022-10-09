@@ -15,7 +15,12 @@ public class CardScript : MonoBehaviour
     public TMP_Text Stone_Cost;
     private string SEPARATOR = "|"; //Séparateur des paramètres de la description
     private string PLACEHOLDER = "paramètre introuvable";
+    public Vector3 Target_Position; //Une position dont on doit se rapprocher
+    public bool Must_Reach_Target=false; //Doit se déplacer vers sa position cible
+    public float Max_Speed = 2; //La vitesse par frame dont on se déplace
 
+    public static Dictionary<Effect_Key_Enum, Card_Effect> Card_Effects_Dictionnary;//Le dictionnaire qui contient
+    //Les classes pour les effets de toutes les cartes
     void Start()
     {
         Card_Scriptable_Object = Instantiate(Card_Scriptable_Object);
@@ -23,10 +28,20 @@ public class CardScript : MonoBehaviour
         LoadCard();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        if (!Must_Reach_Target)
+        {
+            return;
+        }
+        Target_Position.y = transform.position.y;
+        //On se rapproche de la position cible
+        transform.position = Vector3.MoveTowards(transform.position, Target_Position, Max_Speed);
+
+        if (transform.position == Target_Position)
+        {
+            Must_Reach_Target = false;
+        }
     }
 
     //Remplie les champs de la carte avec les infos du scriptable object
@@ -63,18 +78,46 @@ public class CardScript : MonoBehaviour
         //On remplace toutes les clés de paramètres par leurs valeurs
         for(int i = firstIndex; i < segments.Length; i+=2)
         {
-            string value = Card_Scriptable_Object.Params[segments[i]][0];
+            string value = Card_Scriptable_Object.Params[segments[i]].display_value;
             //Debug.Log(i);
             if (value == null)
             {
                 value = PLACEHOLDER;
             }
-            segments[i] = value;
+            segments[i] = "<color=#82ff9d>" + value+"</color>";
             //Debug.Log(value);
         }
 
         //On recolle les bouts puis on renvoie
         return string.Concat(segments);
 
+    }
+
+    //Joué quand on joue la carte
+    public void On_Play()
+    {
+        if (Card_Effects_Dictionnary != null)
+        {
+            //On trouve son instance de Card_Effects puis on appel OnPlay
+            if (Card_Effects_Dictionnary.ContainsKey(Card_Scriptable_Object.Effects_Key))
+            {
+                Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnPlay(Card_Scriptable_Object.Params,Card_Scriptable_Object);
+            }
+        }
+        
+        //A la fin on défausse
+        GetComponentInChildren<Collider>().enabled = false;
+        Destroy(gameObject, 1);
+    }
+
+    //Joué quand la carte glitch
+    public void On_Glitch()
+    {
+        if (Card_Effects_Dictionnary.ContainsKey(Card_Scriptable_Object.Effects_Key))
+        {
+            Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnGlitch(Card_Scriptable_Object.Params,Card_Scriptable_Object);
+        }
+        //Recharge l'affichage des infos de la carte
+        LoadCard(); 
     }
 }
