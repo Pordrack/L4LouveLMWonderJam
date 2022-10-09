@@ -13,13 +13,15 @@ public class HandScript : MonoBehaviour
     public int Max_Number_Of_Cards;
 
     private int selected_index; //L'actuel selection d'index
-
-    public GameObject Card_Prefab; //Prefab de la carte physique
-    public Card[] Cards_Templates; //Liste des scritable objects de cartes randoms
-    public int[] Ponderations; //Les ponderation des cartes randoms
     private List<Card> Cards_Templates_With_Ponderations; //La fusion des deux, avec des cartes en multiples pour la pondération
 
     private List<CardScript> Cards_Scripts; //Les cartes "physiquement" dans la main
+
+    [Header("DECK")]
+    public GameObject Card_Prefab; //Prefab de la carte physique
+    public Card[] Cards_Templates; //Liste des scritable objects de cartes randoms
+    public int[] Ponderations; //Les ponderation des cartes randoms
+    
 
     public static HandScript Instance { get; private set; }
     private void Awake()
@@ -123,7 +125,8 @@ public class HandScript : MonoBehaviour
     {
         foreach(CardScript card_script in Cards_Scripts)
         {
-            float rng = Random.Range(0, 1);
+            float rng = Random.Range(0.0f, 1.0f);
+            Debug.Log("rng =" + rng);
             if (rng <= probability)
             {
                 card_script.On_Glitch();

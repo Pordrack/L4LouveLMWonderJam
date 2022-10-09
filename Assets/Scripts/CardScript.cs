@@ -19,7 +19,7 @@ public class CardScript : MonoBehaviour
     public bool Must_Reach_Target=false; //Doit se déplacer vers sa position cible
     public float Max_Speed = 2; //La vitesse par frame dont on se déplace
 
-    public static Dictionary<string,Card_Effect> Card_Effects_Dictionnary;//Le dictionnaire qui contient
+    public static Dictionary<Effect_Key_Enum, Card_Effect> Card_Effects_Dictionnary;//Le dictionnaire qui contient
     //Les classes pour les effets de toutes les cartes
     void Start()
     {
@@ -78,13 +78,13 @@ public class CardScript : MonoBehaviour
         //On remplace toutes les clés de paramètres par leurs valeurs
         for(int i = firstIndex; i < segments.Length; i+=2)
         {
-            string value = Card_Scriptable_Object.Params[segments[i]][0];
+            string value = Card_Scriptable_Object.Params[segments[i]].display_value;
             //Debug.Log(i);
             if (value == null)
             {
                 value = PLACEHOLDER;
             }
-            segments[i] = "<color=red>"+value+"</color>";
+            segments[i] = "<color=#82ff9d>" + value+"</color>";
             //Debug.Log(value);
         }
 
