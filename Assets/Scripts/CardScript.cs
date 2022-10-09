@@ -130,11 +130,11 @@ public class CardScript : MonoBehaviour
     //Renvoie false si on a pas reussi
     public bool On_Play()
     {
-        if (Card_Scriptable_Object.Energy_Cost > Stats_Perso.Instance._action)
-        {
-            //TODO : Rajouter feedback action
-            return false;
-        }
+        //if (Card_Scriptable_Object.Energy_Cost > Stats_Perso.Instance._action)
+        //{
+        //    //TODO : Rajouter feedback action
+        //    return false;
+        //}
 
         if (Card_Scriptable_Object.Wood_Cost > Ressources.Instance._bois)
         {

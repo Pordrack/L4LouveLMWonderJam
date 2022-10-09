@@ -22,5 +22,5 @@ MonoBehaviour:
   Food_Cost: 0
   Audio_Clip: {fileID: 8300000, guid: 5bded0e828a872b4e8855fe30f156186, type: 3}
   Audio_Volume: 1
-  Probability_to_change: 1
+  Probability_to_change: 0.7
   parameter_Entries: []

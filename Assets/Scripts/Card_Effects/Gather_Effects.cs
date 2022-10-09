@@ -14,6 +14,7 @@ public class Gather_Effects : Card_Effect
     public int max_range;
     [Tooltip("Nombre de buches par arbre, de carotte par buissons etc.")]
     public MinMaxValue Ressource_Unit_Per_Map_Element;
+    //public MinMaxValue Ressource_Unit_Per_Map_Element_Nourriture;
 
     //[Tooltip("Entre 0 et 1, proba que l'outil sois faible et capable de recup qu'une ressource")]
     //public float weak_probability; 
@@ -106,7 +107,7 @@ public class Gather_Effects : Card_Effect
                 Ressources.Instance.add_pierre(amount);
                 break;
             default :
-                Ressources.Instance.add_nourriture(amount);
+                Ressources.Instance.add_nourriture(amount*3);
                 break;
         }
     }
