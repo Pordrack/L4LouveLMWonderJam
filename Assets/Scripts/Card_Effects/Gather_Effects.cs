@@ -78,7 +78,7 @@ public class Gather_Effects : Card_Effect
         //On "corromp" une des valeurs de la carte au hasard (valeur plus affichée
         int index = Random.Range(0, tool_values.Length);
         tool_values[index].display_value = "υɿwɿO pɿdʇɿυƧ";
-        tool_values[index].display_value = "ḧ̶̢̞̠̼̮̤̞̮̳̲̬̳́̌̽͂͝ͅų̵̢̢̞̠͙̖̥̼̠̞͍̹̉̐̾͒̀̕g̸̛̯̮͙̋̀̇͠o̵͈̼͐̍̅̔̎̆͐̑̓̃̚̚";
+        tool_values[index].display_value = "[///@^{{}";
 
         OnStart(parameters, card_scriptable_objects,null);
     }

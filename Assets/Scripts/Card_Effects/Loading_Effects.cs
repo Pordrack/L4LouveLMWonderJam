@@ -13,7 +13,7 @@ public class Loading_Effects : Card_Effect
 
     public override void OnStart(Dictionary<string, ParameterEntry> parameters, Card card, CardScript card_script)
     {
-        card_script.transform.Find("Loading").gameObject.SetActive(true);
+        card_script.loading.SetActive(true);
         int loading_time=ValueRandomizer.RandomizeValue(Total_Loading_Time);
         parameters["loading_time"] = new ParameterEntry { display_value = loading_time.ToString(), real_value = loading_time.ToString() };
     }
@@ -24,7 +24,9 @@ public class Loading_Effects : Card_Effect
         remaining_loading_time--;
         if (remaining_loading_time<=0)
         {
+            card_script.loading.SetActive(false);
             card_script.Card_Scriptable_Object = Instantiate(HandScript.Instance.GetRandomCardTemplate());
+            card_script.StartCard();
             return;
         }
         parameters["loading_time"] = new ParameterEntry { display_value = remaining_loading_time.ToString(), real_value = remaining_loading_time.ToString() };

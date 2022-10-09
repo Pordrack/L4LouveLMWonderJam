@@ -427,6 +427,33 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Next_Selection"",
+                    ""type"": ""Button"",
+                    ""id"": ""b992c0c6-3c8f-4584-bd8a-6aefc87b90a5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Previous_Selection"",
+                    ""type"": ""Button"",
+                    ""id"": ""21f7d583-d056-41dc-9037-b58f84de2acf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Play_Selected"",
+                    ""type"": ""Button"",
+                    ""id"": ""384fe778-f591-40d6-b901-a4db7adf514c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -495,6 +522,39 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""action"": ""SwitchToNormalView"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bc6cb4ca-3cbf-4320-8ac1-fbfe9fc4e0e7"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Next_Selection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""efd81fef-734a-41e7-a258-38ed63f8ddf7"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Previous_Selection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8f77f892-11f7-4e4c-a5c5-87b4f9703973"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Play_Selected"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -546,6 +606,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         m_Cards_Card3 = m_Cards.FindAction("Card3", throwIfNotFound: true);
         m_Cards_Card4 = m_Cards.FindAction("Card4", throwIfNotFound: true);
         m_Cards_SwitchToNormalView = m_Cards.FindAction("SwitchToNormalView", throwIfNotFound: true);
+        m_Cards_Next_Selection = m_Cards.FindAction("Next_Selection", throwIfNotFound: true);
+        m_Cards_Previous_Selection = m_Cards.FindAction("Previous_Selection", throwIfNotFound: true);
+        m_Cards_Play_Selected = m_Cards.FindAction("Play_Selected", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -732,6 +795,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_Cards_Card3;
     private readonly InputAction m_Cards_Card4;
     private readonly InputAction m_Cards_SwitchToNormalView;
+    private readonly InputAction m_Cards_Next_Selection;
+    private readonly InputAction m_Cards_Previous_Selection;
+    private readonly InputAction m_Cards_Play_Selected;
     public struct CardsActions
     {
         private @PlayerAction m_Wrapper;
@@ -742,6 +808,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         public InputAction @Card3 => m_Wrapper.m_Cards_Card3;
         public InputAction @Card4 => m_Wrapper.m_Cards_Card4;
         public InputAction @SwitchToNormalView => m_Wrapper.m_Cards_SwitchToNormalView;
+        public InputAction @Next_Selection => m_Wrapper.m_Cards_Next_Selection;
+        public InputAction @Previous_Selection => m_Wrapper.m_Cards_Previous_Selection;
+        public InputAction @Play_Selected => m_Wrapper.m_Cards_Play_Selected;
         public InputActionMap Get() { return m_Wrapper.m_Cards; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -769,6 +838,15 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @SwitchToNormalView.started -= m_Wrapper.m_CardsActionsCallbackInterface.OnSwitchToNormalView;
                 @SwitchToNormalView.performed -= m_Wrapper.m_CardsActionsCallbackInterface.OnSwitchToNormalView;
                 @SwitchToNormalView.canceled -= m_Wrapper.m_CardsActionsCallbackInterface.OnSwitchToNormalView;
+                @Next_Selection.started -= m_Wrapper.m_CardsActionsCallbackInterface.OnNext_Selection;
+                @Next_Selection.performed -= m_Wrapper.m_CardsActionsCallbackInterface.OnNext_Selection;
+                @Next_Selection.canceled -= m_Wrapper.m_CardsActionsCallbackInterface.OnNext_Selection;
+                @Previous_Selection.started -= m_Wrapper.m_CardsActionsCallbackInterface.OnPrevious_Selection;
+                @Previous_Selection.performed -= m_Wrapper.m_CardsActionsCallbackInterface.OnPrevious_Selection;
+                @Previous_Selection.canceled -= m_Wrapper.m_CardsActionsCallbackInterface.OnPrevious_Selection;
+                @Play_Selected.started -= m_Wrapper.m_CardsActionsCallbackInterface.OnPlay_Selected;
+                @Play_Selected.performed -= m_Wrapper.m_CardsActionsCallbackInterface.OnPlay_Selected;
+                @Play_Selected.canceled -= m_Wrapper.m_CardsActionsCallbackInterface.OnPlay_Selected;
             }
             m_Wrapper.m_CardsActionsCallbackInterface = instance;
             if (instance != null)
@@ -791,6 +869,15 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @SwitchToNormalView.started += instance.OnSwitchToNormalView;
                 @SwitchToNormalView.performed += instance.OnSwitchToNormalView;
                 @SwitchToNormalView.canceled += instance.OnSwitchToNormalView;
+                @Next_Selection.started += instance.OnNext_Selection;
+                @Next_Selection.performed += instance.OnNext_Selection;
+                @Next_Selection.canceled += instance.OnNext_Selection;
+                @Previous_Selection.started += instance.OnPrevious_Selection;
+                @Previous_Selection.performed += instance.OnPrevious_Selection;
+                @Previous_Selection.canceled += instance.OnPrevious_Selection;
+                @Play_Selected.started += instance.OnPlay_Selected;
+                @Play_Selected.performed += instance.OnPlay_Selected;
+                @Play_Selected.canceled += instance.OnPlay_Selected;
             }
         }
     }
@@ -836,5 +923,8 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         void OnCard3(InputAction.CallbackContext context);
         void OnCard4(InputAction.CallbackContext context);
         void OnSwitchToNormalView(InputAction.CallbackContext context);
+        void OnNext_Selection(InputAction.CallbackContext context);
+        void OnPrevious_Selection(InputAction.CallbackContext context);
+        void OnPlay_Selected(InputAction.CallbackContext context);
     }
 }
