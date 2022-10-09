@@ -89,6 +89,12 @@ namespace IA
                 EnableRendering(true);
             }
         }
+
+        public virtual void Die()
+        {
+            Debug.Log("He's dead Jim.");
+            Destroy(gameObject);
+        }
     }
     
     
