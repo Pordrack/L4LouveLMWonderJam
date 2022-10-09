@@ -20,12 +20,16 @@ public abstract class Card_Effect : MonoBehaviour
     public abstract void OnStart(Dictionary<string, ParameterEntry> parameters, Card card);
 
     public abstract void OnPlay(Dictionary<string, ParameterEntry> parameters, Card card);
-    public void OnGlitch(Dictionary<string, ParameterEntry> parameters, Card card)
+    public void OnGlitch(Dictionary<string, ParameterEntry> parameters, Card card,CardScript card_script)
     {
         float random_value = Random.Range(0.0f, 1.0f);
-        if (random_value <= 1)
+        if (random_value <= 1) //Evolue en version glitchée
         {
             OnValueGlitch(parameters,card);
+        }
+        else //Est retirée
+        {
+            card_script.Card_Scriptable_Object = Instantiate(HandScript.Instance.GetRandomCardTemplate());
         }
     }
 

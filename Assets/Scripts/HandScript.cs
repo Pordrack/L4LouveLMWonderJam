@@ -96,14 +96,20 @@ public class HandScript : MonoBehaviour
         }
     }
 
+    //Récupére une carte aléatoire
+    public Card GetRandomCardTemplate()
+    {
+        //On commence par choisir un modèle de carte à créer à partir du tableau
+        int index = Random.Range(0, Cards_Templates_With_Ponderations.Count);
+        Card card_template = Cards_Templates_With_Ponderations[index];
+        return card_template;
+    }
+
     //Ajoute une nouvelle carte à la main
     //Renvoie le card script
     CardScript Deal_Card(Vector3 SpawnPosition)
     {
-        //On commence par choisir un modèle de carte à créer à partir du tableau
-        int index = Random.Range(0,Cards_Templates_With_Ponderations.Count);
-        Card card_template = Cards_Templates_With_Ponderations[index];
-
+        Card card_template = GetRandomCardTemplate();
         //On rajotue des variations en Z et en rotation, pour l'effet "naturel"
         float rotation = Random.Range(-Angle_Variation, Angle_Variation);
         float z_offset = Random.Range(-Z_Variation, Z_Variation);

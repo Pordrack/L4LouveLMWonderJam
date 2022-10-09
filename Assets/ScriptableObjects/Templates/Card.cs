@@ -47,6 +47,7 @@ struct ParameterEntryWithKeys
     public string real_value;
 }
 
+[Serializable]
 public struct ParameterEntry
 {
 

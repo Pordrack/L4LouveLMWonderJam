@@ -180,7 +180,7 @@ public class Generation : MonoBehaviour
         //TODO : à modifier pour le placer sur une case libre.
         return new[] {30, 30};
     }
-    
+
     #region Masking logic
 
     private void MaskInit()
