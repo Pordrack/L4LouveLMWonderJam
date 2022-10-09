@@ -1841,6 +1841,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HandManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 874128882}
     - target: {fileID: 4571597446544668883, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -2541,6 +2545,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 54b2a410606efa540bc1680e011a8485, type: 3}
   m_PrefabInstance: {fileID: 688113615}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &874128882 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3868065595831914376, guid: 66d36710b7a5b854084ab83a5bc7fbf2, type: 3}
+  m_PrefabInstance: {fileID: 922047653}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91bae07d0ba47f04a8318a2e859c5add, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &887536678 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8ad3a5afb4e216b469c84f978fbf5f68, type: 3}
@@ -2620,6 +2635,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3868065595831914376, guid: 66d36710b7a5b854084ab83a5bc7fbf2, type: 3}
+      propertyPath: sounds.Array.data[12].name
+      value: phytoterapie
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868065595831914376, guid: 66d36710b7a5b854084ab83a5bc7fbf2, type: 3}
+      propertyPath: sounds.Array.data[13].name
+      value: Sacrifice
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868065595831914376, guid: 66d36710b7a5b854084ab83a5bc7fbf2, type: 3}
+      propertyPath: sounds.Array.data[14].name
+      value: TP
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868065595831914376, guid: 66d36710b7a5b854084ab83a5bc7fbf2, type: 3}
+      propertyPath: sounds.Array.data[15].name
+      value: Recolte_Buisson
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868065595831914376, guid: 66d36710b7a5b854084ab83a5bc7fbf2, type: 3}
+      propertyPath: sounds.Array.data[16].name
+      value: Cerf
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868065595831914376, guid: 66d36710b7a5b854084ab83a5bc7fbf2, type: 3}
+      propertyPath: sounds.Array.data[1].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868065595831914376, guid: 66d36710b7a5b854084ab83a5bc7fbf2, type: 3}
+      propertyPath: sounds.Array.data[2].volume
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 3868065595831914377, guid: 66d36710b7a5b854084ab83a5bc7fbf2, type: 3}
       propertyPath: m_RootOrder
       value: 0
