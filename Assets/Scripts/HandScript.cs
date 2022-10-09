@@ -141,7 +141,7 @@ public class HandScript : MonoBehaviour
         foreach(CardScript card_script in Cards_Scripts)
         {
             float rng = Random.Range(0.0f, 1.0f);
-            Debug.Log("rng =" + rng);
+//            Debug.Log("rng =" + rng);
             if (rng <= probability)
             {
                 card_script.On_Glitch();
