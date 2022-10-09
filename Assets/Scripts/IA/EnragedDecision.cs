@@ -12,7 +12,7 @@ namespace IA
         public override void Decide()
         {
             //Check if the player is around 
-            if (EnemyManager.Singleton.IsEnemyAround(2, Brain))
+            if (EnemyManager.Singleton.IsPlayerAround(2, Brain))
             {
                 Stats_Perso.Instance.down_santee(20);
                 AudioManager.instance.GetDmgSound();

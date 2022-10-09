@@ -111,21 +111,13 @@ namespace IA
             return colliders.Length > 0;
         }
 
-        public bool IsEnemyAround(int range, Brain enemy)
+        [SerializeField] private LayerMask playerLayer;
+        public bool IsPlayerAround(int range, Brain enemy)
         {
-            Debug.Log($"Check asked by {enemy.name}");
             var half = new Vector3(range, 0.5f, range);
-            var colliders = Physics.OverlapBox(player.position, half, Quaternion.identity, enemyLayer);
+            var colliders = Physics.OverlapBox(enemy.transform.position, half, Quaternion.identity, playerLayer);
             
-            if(colliders.Length == 0) return false;
-            
-            foreach (var collider in colliders)
-            {
-                Debug.Log($"We get collider of {collider.name}");
-                if(collider.GetComponent<Brain>().Equals(enemy)) return true;
-            }
-
-            return false;
+            return colliders.Length > 0;
         }
 
         public Vector3 GetPlayerPosition() => player.position;
