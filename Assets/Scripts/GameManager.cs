@@ -5,6 +5,8 @@ using UnityEngine;
 public enum State {Player_Turn, Environnement_Turn, Glitch_Turn}
 public class GameManager : MonoBehaviour
 {
+
+    
     public State state;
     public TestInput Input;
     public GameObject ennemy;
@@ -15,6 +17,7 @@ public class GameManager : MonoBehaviour
     public delegate void OnTurn();
     public static event OnTurn On_Player_Turn;
     public static event OnTurn On_Enemy_Turn;
+    private bool startPlayerTurn = false;
 
     public static GameManager Instance { get; private set; }
     private void Awake()
@@ -44,14 +47,11 @@ public class GameManager : MonoBehaviour
     {
        
        if (state == State.Player_Turn){    
-           StatePlayerTurn();
+            if(startPlayerTurn == false){
+                StatePlayerTurn();
+                startPlayerTurn = true;
+            }
             
-           // a la fin du tour
-           changeStateEvent();
-         
-
-           Debug.Log("player end");
-         
        }
 
        if (state == State.Environnement_Turn){      
@@ -73,16 +73,25 @@ public class GameManager : MonoBehaviour
         //actions
         HandScript.Instance.Fill_Hand();
 
-        turnBeforeGlitch -=1;
+        
         On_Player_Turn.Invoke();
+    }
+    // a la fin du tour du joueur
+    public void EndPlayerTurn(){
+        turnBeforeGlitch -=1;
+        changeStateEvent();
+        startPlayerTurn = false;
+        Debug.Log("player end");
     }
 
     public void StateEnemyTurn(){
         Input.Player.Disable();
+        
+        
 
         //deplacement des ennemis
         //actions des ennemis
-       
+        
 //        On_Enemy_Turn.Invoke();
     }
     public void StateGlitchTurn(){
