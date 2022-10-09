@@ -26,12 +26,38 @@ namespace Player
         
         public GameObject gameTable;
         private environnement_bloc[,] _map;
-        
+
+        private float angularSpeed = 1000f;
+        private Animator _anim;
+        private int _moveHash;
+        private Quaternion? _targetRotation;
+
+        private float speed = 2f;
+        private Vector3? _targetPosition;
         
         private Transform _tf; //for fewer c++ calls
 
         private void Update()
         {
+            if (_targetRotation is not null)
+            {
+                _tf.rotation = Quaternion.RotateTowards(_tf.rotation, _targetRotation.Value, angularSpeed*Time.deltaTime);
+                
+                if (_tf.rotation == _targetRotation)
+                {
+                    _targetRotation = null;
+                }
+                
+            }
+
+            if (_targetPosition is not null)
+            {
+                gameTable.transform.position = Vector3.MoveTowards(gameTable.transform.position, _targetPosition.Value, speed*Time.deltaTime);
+                if(gameTable.transform.position == _targetPosition)
+                {
+                    _targetPosition = null;
+                }
+            }
             
             if (Input.GetKeyDown(KeyCode.M))
             {
@@ -70,6 +96,9 @@ namespace Player
             var position = _tf.position;
             PlayerX = (int) position.x;
             PlayerZ = (int) position.z;
+
+            _anim = GetComponentInChildren<Animator>();
+            _moveHash = Animator.StringToHash("Move");
             
             Debug.LogWarning("Ne pas oublier d'enlever les touches de debug");
         }
@@ -101,6 +130,8 @@ namespace Player
         public void TryToMove(Vector2 direction)
         {
             if (_map is null) return;
+            if(_targetRotation is not null) return;
+            if (_targetPosition is not null) return;
             // Get the wanted new player's position
             var newX = PlayerX + (int) direction.x;
             var newZ = PlayerZ + (int) direction.y;
@@ -113,7 +144,9 @@ namespace Player
             if (IsMoveLegal(targetBlock))
             {
                 //Move the table
-                gameTable.transform.position += new Vector3(-direction.x, 0, -direction.y);
+                _targetPosition = gameTable.transform.position + new Vector3(-direction.x, 0, -direction.y);
+                //gameTable.transform.position += new Vector3(-direction.x, 0, -direction.y);
+                
                 //Update table visibility
                 Generation.GenerationMap.UpdateMask(newX,newZ);
                 //Update player position
@@ -121,10 +154,13 @@ namespace Player
                 PlayerZ = newZ;
                 
                 //Update its rotation according to the movement.
-                _tf.rotation = Quaternion.RotateTowards(_tf.rotation, Quaternion.LookRotation(new Vector3(direction.x, 0, direction.y)), 180);
+                _anim.SetTrigger(_moveHash);
+                _targetRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.y));
+                angularSpeed = Quaternion.Angle(_tf.rotation, _targetRotation.Value) * 2f;
             }
 
         }
+        
 
         private bool IsMoveLegal(environnement_bloc targetBlock)
         {
