@@ -124,7 +124,7 @@ public class HandScript : MonoBehaviour
 
         //On applique le template
         new_card.Card_Scriptable_Object = card_template;
-
+        audioManager.Play("Tirage_Carte");
         return new_card;
     }
 
