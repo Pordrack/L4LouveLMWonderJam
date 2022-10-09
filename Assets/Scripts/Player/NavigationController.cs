@@ -85,7 +85,7 @@ namespace Player
 
         private bool IsMoveLegal(environnement_bloc targetBlock)
         {
-            print($"The type of the target block is {targetBlock.get_type()}");
+            //print($"The type of the target block is {targetBlock.get_type()}");
             return targetBlock.get_type() == 1;
         }
         

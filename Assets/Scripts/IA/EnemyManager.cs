@@ -20,17 +20,22 @@ namespace IA
         }
 
         #endregion
-
-        [SerializeField] private Transform enemyParent;
-        private List<Brain> _brains;
         
+        [SerializeField] private Transform player;
+        private Transform _enemyParent;
+        private List<Brain> _brains;
+
+        private void Start()
+        {
+            _enemyParent = transform;
+        }
 
         /// <summary>
         /// This methods collects all the brain component of each enemy.
         /// </summary>
         private void GatherBrains()
         {
-            foreach (var brain in enemyParent.GetComponentsInChildren<Brain>())
+            foreach (var brain in _enemyParent.GetComponentsInChildren<Brain>())
             {
                 _brains.Add(brain);
             }
@@ -65,5 +70,7 @@ namespace IA
                 brain.Decide();
             }
         }
+
+        public Vector3 GetPlayerPosition() => player.position;
     }
 }

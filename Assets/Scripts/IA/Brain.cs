@@ -11,8 +11,7 @@ namespace IA
         protected OtherNavBehavior Nav { get; private set; }
         protected Transform Tf { get; private set; }
         protected MeshRenderer Rend { get; private set; }
-        public Transform player;
-        private int _playerX, _playerY;
+        private int _playerX = -1, _playerY = -1;
         private int _minX,_maxX,_minY,_maxY;
 
         private void Start()
@@ -21,16 +20,15 @@ namespace IA
             Nav = GetComponent<OtherNavBehavior>();
             Rend = GetComponent<MeshRenderer>();
             EnableRendering(false);
-            Generation.OnGenerationComplete += (x,y) =>
-            {
-                _playerX = (int) player.position.x ; 
-                _playerY = (int)player.position.z;
-                var half = MapMaskHandler.DrawnMapSize/2;    
-                _minX = _playerX - half;
-                _maxX = _playerX + half;
-                _minY = _playerY-half;
-                _maxY = _playerY+half;
-            };
+            var playerPos = EnemyManager.Singleton.GetPlayerPosition();
+            _playerX = (int) playerPos.x ; 
+            _playerY = (int) playerPos.z;
+            var half = MapMaskHandler.DrawnMapSize/2;    
+            _minX = _playerX - half;
+            _maxX = _playerX + half;
+            _minY = _playerY-half;
+            _maxY = _playerY+half;
+            
         }
 
         private void EnableRendering(bool b)
@@ -77,12 +75,11 @@ namespace IA
 
         protected void ShallBeDrawn()
         {
-            if(_playerX == 0 || _playerY == 0)
+            if(_playerX == -1 || _playerY == -1)
                 return;
             
             //We only hide the visual part, the animals still play, even out of bounds.
             var local = Tf.position;
-            Debug.Log($"We have ({local.x},{local.z}) with extrema being X = ({_minX},{_maxX}) and Y = ({_minY},{_maxY})");
             if (local.x < _minX || local.x > _maxX || local.z < _minY || local.z > _maxY)
             {
                 EnableRendering(false);
