@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6a3cce0af8b0824c8a0d62f845a6e18, type: 3}
+  m_Name: Bandage
+  m_EditorClassIdentifier: 
+  Effects_Key: 13
+  Icon: {fileID: 21300000, guid: e6d5b884762aedf44afc2a91c082265d, type: 3}
+  Name: Bandage
+  Description: "Marchromome, le pansement des h\xE9ros !"
+  Energy_Cost: 10
+  Wood_Cost: 10
+  Stone_Cost: 0
+  Food_Cost: 0
+  Audio_Clip: {fileID: 0}
+  Audio_Volume: 1
+  Probability_to_change: 1
+  parameter_Entries: []

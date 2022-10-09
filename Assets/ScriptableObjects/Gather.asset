@@ -13,17 +13,26 @@ MonoBehaviour:
   m_Name: Gather
   m_EditorClassIdentifier: 
   Effects_Key: 2
-  Icon: {fileID: 21300000, guid: 14868e72ec28e43459f2f2c0151ace90, type: 3}
-  Name: Nourriture
-  Description: "Mangez une tr\xE8s bonne |food| et r\xE9cuperez |faim| de nourriture"
-  Energy_Cost: 1
+  Icon: {fileID: 21300000, guid: 65d5dcaec23ddc848ad27cdc6f246790, type: 3}
+  Name: "R\xE9colte"
+  Description: "Utilisez votre |tool| pour r\xE9cuperer du |ressource| jusqu'\xE0
+    |range| cases de vous"
+  Energy_Cost: 20
   Wood_Cost: 0
   Stone_Cost: 0
-  Probability_to_change: 0
+  Food_Cost: 0
+  Audio_Clip: {fileID: 0}
+  Probability_to_change: 0.2
   parameter_Entries:
-  - key: food
-    display_value: Carotte
-    real_value: carots
-  - key: faim
-    display_value: 40
-    real_value: 40
+  - key: tool
+    display_value: Hache
+    real_value: axe
+  - key: range
+    display_value: 2
+    real_value: 2
+  - key: ressource
+    display_value: Bois
+    real_value: wood
+  - key: weak
+    display_value: 
+    real_value: 0

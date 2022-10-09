@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a3cce0af8b0824c8a0d62f845a6e18, type: 3}
   m_Name: Food
   m_EditorClassIdentifier: 
-  Effects_Key: food
-  Icon: {fileID: 21300000, guid: 14868e72ec28e43459f2f2c0151ace90, type: 3}
+  Effects_Key: 0
+  Icon: {fileID: 21300000, guid: ee1f9404ee8dd4675a5fb1d8c40235d6, type: 3}
   Name: Nourriture
   Description: "Mangez une tr\xE8s bonne |food| et r\xE9cuperez |faim| de nourriture"
-  Energy_Cost: 1
+  Energy_Cost: 10
   Wood_Cost: 0
   Stone_Cost: 0
-  Probability_to_change: 0
+  Food_Cost: 10
+  Audio_Clip: {fileID: 8300000, guid: c6172009f31d82b4383c769d6f8f5700, type: 3}
+  Probability_to_change: 0.3
   parameter_Entries:
   - key: food
     display_value: Carotte

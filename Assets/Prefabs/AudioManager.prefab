@@ -59,8 +59,8 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Theme
     clip: {fileID: 8300000, guid: ff3d5af1adced44db9ba71266282c8e1, type: 3}
-    volume: 1
-    pitch: 1.59
+    volume: 0.71
+    pitch: 1.61
     loop: 1
     source: {fileID: 0}
   - name: Pierre

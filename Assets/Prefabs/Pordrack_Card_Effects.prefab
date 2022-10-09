@@ -10,6 +10,15 @@ GameObject:
   m_Component:
   - component: {fileID: 2476799782958325158}
   - component: {fileID: 2476799782958325145}
+  - component: {fileID: 2383065564471479232}
+  - component: {fileID: 2277995414018755846}
+  - component: {fileID: 1773858202775548884}
+  - component: {fileID: 6605855155149385193}
+  - component: {fileID: 9098367145642313337}
+  - component: {fileID: 3163795326691853112}
+  - component: {fileID: 7984751579903455502}
+  - component: {fileID: 2203942710235883513}
+  - component: {fileID: 5007954065748146110}
   m_Layer: 0
   m_Name: Pordrack_Card_Effects
   m_TagString: Untagged
@@ -44,5 +53,230 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff85e8328c703d46a807dc0888b6c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Effects_Key: food
+  Effects_Key: 0
   Poutine_Sprite: {fileID: 21300000, guid: d257666eb90274245ab88b2f0551cffd, type: 3}
+--- !u!114 &2383065564471479232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476799782958325159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b0b7c22fd1d98a45ae1e0e78f425754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Effects_Key: 1
+  min_energy: 40
+  max_energy: 50
+  min_life: 20
+  max_life: 30
+--- !u!114 &2277995414018755846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476799782958325159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed66ed1ceef335748a146bd5e3a221e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Effects_Key: 2
+  tool_values:
+  - display_value: Hache
+    real_value: axe
+  - display_value: Pioche
+    real_value: pioche
+  - display_value: "B\xEAche"
+    real_value: hoe
+  - display_value: Outil miracle
+    real_value: outil miracle
+  ressources_values:
+  - display_value: Bois
+    real_value: wood
+  - display_value: Pierre
+    real_value: stone
+  - display_value: Carotte
+    real_value: food
+  - display_value: Tout
+    real_value: all
+  min_range: 1
+  max_range: 5
+  Ressource_Unit_Per_Map_Element:
+    min: 0
+    max: 0
+    picked_value: 0
+--- !u!114 &1773858202775548884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476799782958325159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5e8fa4edeb93449b00371ce133729e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Effects_Key: 5
+--- !u!114 &6605855155149385193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476799782958325159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67d5eb1534e573e459acfe77ca02cb64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Effects_Key: 9
+  FoodBonus:
+    min: 0
+    max: 0
+    picked_value: 0
+  WoodBonus:
+    min: 0
+    max: 0
+    picked_value: 0
+  StoneBonus:
+    min: 6
+    max: 12
+    picked_value: 0
+  HealthBonus:
+    min: 0
+    max: 0
+    picked_value: 0
+  HungerBonus:
+    min: 0
+    max: 0
+    picked_value: 0
+  ActionBonus:
+    min: 0
+    max: 0
+    picked_value: 0
+--- !u!114 &9098367145642313337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476799782958325159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67d5eb1534e573e459acfe77ca02cb64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Effects_Key: 11
+  FoodBonus:
+    min: 0
+    max: 5
+    picked_value: 0
+  WoodBonus:
+    min: 0
+    max: 5
+    picked_value: 0
+  StoneBonus:
+    min: 0
+    max: 5
+    picked_value: 0
+  HealthBonus:
+    min: 0
+    max: 0
+    picked_value: 0
+  HungerBonus:
+    min: 0
+    max: 0
+    picked_value: 0
+  ActionBonus:
+    min: 0
+    max: 0
+    picked_value: 0
+--- !u!114 &3163795326691853112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476799782958325159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d68f5fce697fac4aaaa9d178f21b4a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Effects_Key: 0
+  minmax_range:
+    min: 0
+    max: 0
+    picked_value: 0
+--- !u!114 &7984751579903455502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476799782958325159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 407565a5e8ca87445b26e2b79d06dab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Effects_Key: 4
+--- !u!114 &2203942710235883513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476799782958325159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67d5eb1534e573e459acfe77ca02cb64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Effects_Key: 13
+  FoodBonus:
+    min: 0
+    max: 0
+    picked_value: 0
+  WoodBonus:
+    min: 0
+    max: 0
+    picked_value: 0
+  StoneBonus:
+    min: 30
+    max: 100
+    picked_value: 0
+  HealthBonus:
+    min: 0
+    max: 0
+    picked_value: 0
+  HungerBonus:
+    min: 0
+    max: 0
+    picked_value: 0
+  ActionBonus:
+    min: 0
+    max: 0
+    picked_value: 0
+--- !u!114 &5007954065748146110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476799782958325159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ffe6ccc9cac5b48a1e15703e56c37a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Effects_Key: 6
+  Total_Loading_Time:
+    min: 1
+    max: 2
+    picked_value: 0

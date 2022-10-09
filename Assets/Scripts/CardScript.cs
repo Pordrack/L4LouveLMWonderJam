@@ -13,23 +13,26 @@ public class CardScript : MonoBehaviour
     public TMP_Text Energy_Cost;
     public TMP_Text Wood_Cost;
     public TMP_Text Stone_Cost;
+    public TMP_Text Food_Cost;
+    private AudioSource audio_source;
     private string SEPARATOR = "|"; //Séparateur des paramètres de la description
     private string PLACEHOLDER = "paramètre introuvable";
     public Vector3 Target_Position; //Une position dont on doit se rapprocher
-    public bool Must_Reach_Target=false; //Doit se déplacer vers sa position cible
+    public bool Must_Reach_Target=true; //Doit se déplacer vers sa position cible
     public float Max_Speed = 2; //La vitesse par frame dont on se déplace
 
     public static Dictionary<Effect_Key_Enum, Card_Effect> Card_Effects_Dictionnary;//Le dictionnaire qui contient
     //Les classes pour les effets de toutes les cartes
     void Start()
     {
+        audio_source = GetComponent<AudioSource>();
         Card_Scriptable_Object = Instantiate(Card_Scriptable_Object);
         Card_Scriptable_Object.FillDictionnary();
 
         //On trouve son instance de Card_Effects puis on appel OnStart
         if (Card_Effects_Dictionnary.ContainsKey(Card_Scriptable_Object.Effects_Key))
         {
-            Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnStart(Card_Scriptable_Object.Params, Card_Scriptable_Object);
+            Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnStart(Card_Scriptable_Object.Params, Card_Scriptable_Object,this);
         }
 
         LoadCard();
@@ -42,7 +45,7 @@ public class CardScript : MonoBehaviour
         //On trouve son instance de Card_Effects puis on appel OnTurn
         if (Card_Effects_Dictionnary.ContainsKey(Card_Scriptable_Object.Effects_Key))
         {
-            Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnTurn(Card_Scriptable_Object.Params, Card_Scriptable_Object);
+            Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnTurn(Card_Scriptable_Object.Params, Card_Scriptable_Object,this);
         }
     }
 
@@ -52,7 +55,6 @@ public class CardScript : MonoBehaviour
         {
             return;
         }
-        Target_Position.y = transform.position.y;
         //On se rapproche de la position cible
         transform.position = Vector3.MoveTowards(transform.position, Target_Position, Max_Speed);
 
@@ -71,11 +73,16 @@ public class CardScript : MonoBehaviour
         Wood_Cost.text = Card_Scriptable_Object.Wood_Cost.ToString();
         Stone_Cost.text = Card_Scriptable_Object.Stone_Cost.ToString();
         Energy_Cost.text = Card_Scriptable_Object.Energy_Cost.ToString();
+        Food_Cost.text = Card_Scriptable_Object.Food_Cost.ToString();
+
+        audio_source.clip = Card_Scriptable_Object.Audio_Clip;
+        audio_source.volume = Card_Scriptable_Object.Audio_Volume;
 
         //On cache les icones de couts si inutiles
         Energy_Cost.transform.parent.gameObject.SetActive(Card_Scriptable_Object.Energy_Cost > 0);
         Stone_Cost.transform.parent.gameObject.SetActive(Card_Scriptable_Object.Stone_Cost > 0);
         Wood_Cost.transform.parent.gameObject.SetActive(Card_Scriptable_Object.Wood_Cost > 0);
+        Food_Cost.transform.parent.gameObject.SetActive(Card_Scriptable_Object.Food_Cost > 0);
     }
 
     //Prend le texte "brute" de la description, puis rempli les paramètres en mettant leur valeur
@@ -112,8 +119,37 @@ public class CardScript : MonoBehaviour
     }
 
     //Joué quand on joue la carte
-    public void On_Play()
+    //Renvoie false si on a pas reussi
+    public bool On_Play()
     {
+        if (Card_Scriptable_Object.Energy_Cost > Stats_Perso.Instance._action)
+        {
+            return false;
+        }
+
+        if (Card_Scriptable_Object.Wood_Cost > Ressources.Instance._bois)
+        {
+            return false;
+        }
+
+        if (Card_Scriptable_Object.Stone_Cost > Ressources.Instance._pierre)
+        {
+            return false;
+        }
+
+        if (Card_Scriptable_Object.Food_Cost > Ressources.Instance._nourriture)
+        {
+            return false;
+        }
+
+
+        Stats_Perso.Instance.down_action(Card_Scriptable_Object.Energy_Cost);
+        Ressources.Instance.down_bois(Card_Scriptable_Object.Wood_Cost);
+        Ressources.Instance.down_pierre(Card_Scriptable_Object.Stone_Cost);
+        Ressources.Instance.down_nourriture(Card_Scriptable_Object.Food_Cost);
+
+        audio_source.enabled = true;
+
         if (Card_Effects_Dictionnary != null)
         {
             //On trouve son instance de Card_Effects puis on appel OnPlay
@@ -122,18 +158,36 @@ public class CardScript : MonoBehaviour
                 Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnPlay(Card_Scriptable_Object.Params,Card_Scriptable_Object);
             }
         }
-        
+
         //A la fin on défausse
-        GetComponentInChildren<Collider>().enabled = false;
-        Destroy(gameObject, 1);
+        float destroy_timer = 5; //0.3f;
+        if (audio_source.clip != null)
+        {
+            destroy_timer=audio_source.clip.length;
+        }
+
+        Destroy(gameObject, destroy_timer);
+        transform.rotation = Quaternion.Euler(Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f), Random.Range(0.0f, 360.0f));
+        Target_Position.x = Random.Range(-1000f, 1000f);
+        Target_Position.y = Random.Range(-1000f, 1000f);
+        Target_Position.z = Random.Range(-1000f, 1000f);
+        Max_Speed *= 5;
+        Must_Reach_Target = true;
+
+        Ressources.Instance.update_nourriture(Ressources.Instance._nourriture);
+        Ressources.Instance.update_bois(Ressources.Instance._bois);
+        Ressources.Instance.update_pierre(Ressources.Instance._pierre);
+
+        return true;
     }
 
     //Joué quand la carte glitch
     public void On_Glitch()
     {
+        //TODO : Ajouter animation de glitch
         if (Card_Effects_Dictionnary.ContainsKey(Card_Scriptable_Object.Effects_Key))
         {
-            Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnGlitch(Card_Scriptable_Object.Params,Card_Scriptable_Object);
+            Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnGlitch(Card_Scriptable_Object.Params,Card_Scriptable_Object,this);
         }
         //Recharge l'affichage des infos de la carte
         LoadCard(); 

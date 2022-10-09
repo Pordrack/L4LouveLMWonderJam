@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class HandScript : MonoBehaviour
 {
+    
+    
     public float Z_Variation=2; //Valeur absolu maximum de la variation aleatoire du la position Z
     public float Angle_Variation=18; //Valeur absolu maximum de la variation aleatoire de l'angle
     public float SpawnAltitude = 20;
-    //Permet d'avoir les cartes un peu posés a l'arrache comme en vrai
+    //Permet d'avoir les cartes un peu posï¿½s a l'arrache comme en vrai
 
     public Transform[] Cards_Holder; //Les positions ou doivent atterir les cartes sur la table
     public int Max_Number_Of_Cards;
 
     private int selected_index; //L'actuel selection d'index
-    private List<Card> Cards_Templates_With_Ponderations; //La fusion des deux, avec des cartes en multiples pour la pondération
+    private List<Card> Cards_Templates_With_Ponderations; //La fusion des deux, avec des cartes en multiples pour la pondï¿½ration
 
     private List<CardScript> Cards_Scripts; //Les cartes "physiquement" dans la main
+    public GameObject Card_Prefab; //Prefab de la carte physique
 
     [Header("DECK")]
-    public GameObject Card_Prefab; //Prefab de la carte physique
+    
     public Card[] Cards_Templates; //Liste des scritable objects de cartes randoms
     public int[] Ponderations; //Les ponderation des cartes randoms
     
@@ -42,7 +45,7 @@ public class HandScript : MonoBehaviour
     {
         Cards_Scripts = new List<CardScript>();
         Cards_Templates_With_Ponderations = new List<Card>();
-        //On créé le tableau cards with ponderations
+        //On crï¿½ï¿½ le tableau cards with ponderations
         //En mettant x fois les cards templates dans cards with ponderations
         for(int i=0;i<Cards_Templates.Length;i++)
         {
@@ -95,32 +98,42 @@ public class HandScript : MonoBehaviour
         }
     }
 
-    //Ajoute une nouvelle carte à la main
+    //Rï¿½cupï¿½re une carte alï¿½atoire
+    public Card GetRandomCardTemplate()
+    {
+        //On commence par choisir un modï¿½le de carte ï¿½ crï¿½er ï¿½ partir du tableau
+        int index = Random.Range(0, Cards_Templates_With_Ponderations.Count);
+        Card card_template = Cards_Templates_With_Ponderations[index];
+        return card_template;
+    }
+
+    //Ajoute une nouvelle carte ï¿½ la main
     //Renvoie le card script
     CardScript Deal_Card(Vector3 SpawnPosition)
     {
-        //On commence par choisir un modèle de carte à créer à partir du tableau
-        int index = Random.Range(0,Cards_Templates_With_Ponderations.Count);
-        Card card_template = Cards_Templates_With_Ponderations[index];
-
+        Card card_template = GetRandomCardTemplate();
         //On rajotue des variations en Z et en rotation, pour l'effet "naturel"
         float rotation = Random.Range(-Angle_Variation, Angle_Variation);
         float z_offset = Random.Range(-Z_Variation, Z_Variation);
+
+        Vector3 targetPosition = SpawnPosition;
+
         Quaternion quaternion = Quaternion.Euler(0, rotation, 0);
         SpawnPosition.z += z_offset;
-        SpawnPosition.y += SpawnAltitude;
 
-        //On créé l'objet
+        //On crï¿½ï¿½ l'objet
         GameObject new_card_go = Instantiate(Card_Prefab, SpawnPosition, quaternion);
         CardScript new_card = new_card_go.GetComponent<CardScript>();
+        new_card.Target_Position = SpawnPosition;
+        SpawnPosition.y += SpawnAltitude;
 
         //On applique le template
         new_card.Card_Scriptable_Object = card_template;
-
+        AudioManager.instance.Play("Tirage_Carte");
         return new_card;
     }
 
-    //Fait glitcher les cartes avec une proba tirée pour chaque carte
+    //Fait glitcher les cartes avec une proba tirï¿½e pour chaque carte
     public void Glitch_Hand(float probability)
     {
         foreach(CardScript card_script in Cards_Scripts)
@@ -142,13 +155,19 @@ public class HandScript : MonoBehaviour
             return;
         }
 
-        Cards_Scripts[index].On_Play();
+        //On essaie de jouer la carte, si ï¿½a foire on s'arrï¿½te ici
+        if (!Cards_Scripts[index].On_Play())
+        {
+            return;
+        }
+
+        //Sinon on l'enlï¿½ve de la main
         Cards_Scripts.RemoveAt(index);
 
         Update_Target_Pos();
     }
 
-    //Marque une carte comme selectionnée
+    //Marque une carte comme selectionnï¿½e
     public void Select_Card_Of_Index(int index)
     {
         selected_index = index;
@@ -157,7 +176,7 @@ public class HandScript : MonoBehaviour
         Show_Cursors();
     }
 
-    //Selectionne la carte suivante/précédente
+    //Selectionne la carte suivante/prï¿½cï¿½dente
     public void Move_Selected_Index(int difference)
     {
         selected_index += difference;
@@ -184,7 +203,7 @@ public class HandScript : MonoBehaviour
 
     public void Show_Cursors()
     {
-        //Puis on active le curseur de la carte a selectionner, si il y'as une carte là
+        //Puis on active le curseur de la carte a selectionner, si il y'as une carte lï¿½
         if (selected_index >= 0 && selected_index < Cards_Holder.Length && selected_index <= Cards_Scripts.Count)
         {
             Cards_Holder[selected_index].Find("Cursor").gameObject.SetActive(true);

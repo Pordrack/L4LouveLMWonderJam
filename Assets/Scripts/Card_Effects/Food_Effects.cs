@@ -18,17 +18,18 @@ public class Food_Effects : Card_Effect
         if (typeBouffe == "poutine")
         {
             Stats_Perso.Instance.down_action(Stats_Perso.Instance._action / 2);
+            Stats_Perso.Instance._faim = Stats_Perso.Instance.Get_Max_Faim();
         }
         Debug.Log("Nv faim : " + Stats_Perso.Instance._faim.ToString());
         Debug.Log("Nv action : " + Stats_Perso.Instance._action.ToString());
     }
 
-    public override void OnStart(Dictionary<string, ParameterEntry> parameters, Card card)
+    public override void OnStart(Dictionary<string, ParameterEntry> parameters, Card card, CardScript card_script)
     {
 
     }
 
-    public override void OnTurn(Dictionary<string, ParameterEntry> parameters, Card card)
+    public override void OnTurn(Dictionary<string, ParameterEntry> parameters, Card card, CardScript card_script)
     {
 
     }
@@ -38,8 +39,7 @@ public class Food_Effects : Card_Effect
         //Redefini le paramètre "food" de la carte avec Poutine en valeur affiché et poutine en valeur "réelle"
         parameters["food"] = new ParameterEntry { display_value = "Poutine",real_value="poutine" };
         //Remplace paramètre faim avec "infinity" en valeur affiché et beaucoup en valeur réelle
-        ParameterEntry newValue = new ParameterEntry { display_value = "Poutine", real_value = "poutine" };
-        parameters["faim"] = new ParameterEntry { display_value = "∞", real_value = "9999" }; 
+        parameters["faim"] = new ParameterEntry { display_value = "🇨🇦 ", real_value = "0" }; 
         //Change l'image de la carte
         card_scriptable_objects.Icon = Poutine_Sprite;
     }
