@@ -4014,11 +4014,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2583999043885133831, guid: c077c9c474fbb4a4aa4e9af599aed667, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.58
+      value: 16.01
       objectReference: {fileID: 0}
     - target: {fileID: 2583999043885133831, guid: c077c9c474fbb4a4aa4e9af599aed667, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 38.22
+      value: 36.88
       objectReference: {fileID: 0}
     - target: {fileID: 2583999043885133831, guid: c077c9c474fbb4a4aa4e9af599aed667, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5060,6 +5060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameTable: {fileID: 1387708567}
+  movingEnergyCost: 10
 --- !u!4 &1934229127 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1977417327736442364, guid: fb7888534daf69c409b5a92180659e00, type: 3}
