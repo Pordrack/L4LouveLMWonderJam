@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using Generation;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 namespace IA
@@ -112,13 +114,15 @@ namespace IA
         public bool IsEnemyAround(int range, Brain enemy)
         {
             Debug.Log($"Check asked by {enemy.name}");
-            var colliders = Physics.OverlapBox(player.position, range * Vector3.one, Quaternion.identity, enemyLayer);
+            var half = new Vector3(range, 0.5f, range);
+            var colliders = Physics.OverlapBox(player.position, half, Quaternion.identity, enemyLayer);
+            
             if(colliders.Length == 0) return false;
             
             foreach (var collider in colliders)
             {
                 Debug.Log($"We get collider of {collider.name}");
-                if(collider.GetComponent<Brain>() == enemy) return true;
+                if(collider.GetComponent<Brain>().Equals(enemy)) return true;
             }
 
             return false;
