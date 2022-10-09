@@ -168,6 +168,7 @@ public class Stats_Perso : MonoBehaviour
         }
         else
         {
+            AudioManager.instance.GetDmgSound();
             _santee = santee;
         }
 //        Debug.Log("Santee - " + hp + " : " + _santee);
