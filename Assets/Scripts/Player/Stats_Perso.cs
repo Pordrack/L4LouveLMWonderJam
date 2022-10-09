@@ -29,7 +29,7 @@ public class Stats_Perso : MonoBehaviour
     public int _max_faim = 200;
     public int _faim { get; set; }
 
-    // gestion action perso (=énergie), max peut etre modifie en cas de glitch
+    // gestion action perso (=ï¿½nergie), max peut etre modifie en cas de glitch
     public int _max_action = 200;
     public int _action { get; set; }
 
@@ -75,7 +75,7 @@ public class Stats_Perso : MonoBehaviour
         //    down_faim(Random.Range(0, 11));
         //    down_action(Random.Range(0, 11));
         //}
-        down_santee(1);
+        //down_santee(1);
     }
 
     // ajout de valeurs
@@ -100,7 +100,7 @@ public class Stats_Perso : MonoBehaviour
             {
                 _santee = santee;
             }
-            Debug.Log("Santée + " + hp + " : " + _santee);
+            Debug.Log("Santï¿½e + " + hp + " : " + _santee);
         }
     }
 

@@ -322,6 +322,7 @@ namespace Generation
                 {
                     var x = mask[i, j, 0];
                     var y = mask[i, j, 1];
+                    if(!IsInMap(x,y)) continue;
                     _mapBlocks[x,y].SetActive(true);
                     MapsEnvironment[x,y].SetActive(true);
                 }
