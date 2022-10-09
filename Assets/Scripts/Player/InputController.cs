@@ -76,6 +76,15 @@ namespace PlayerH
             
         }
 
+<<<<<<< Updated upstream
+=======
+        private void End_Turn(InputAction.CallbackContext obj)
+        {
+            Debug.LogWarning("Je ne fini pas vraiment le tour ! J'invoque juste les events a la main");
+            GameManager.Instance.StatePlayerTurn();
+        }
+
+>>>>>>> Stashed changes
         private void OnCardButton(int index)
         {
             handScript.Play_Card_Of_Index(index);
