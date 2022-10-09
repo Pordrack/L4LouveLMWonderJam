@@ -197,31 +197,54 @@ namespace Generation
             var amount = 10;
             var count = 0;
             var playerPos = Vector2Int.zero;
+            var freeAroundIndexes = new List<int>(); 
         
         
             while(count < amount && !found )
             {
+                freeAroundIndexes.Clear(); //Reset the list for a new try.
                 //Take a random index from the free block list
                 var index = Random.Range(0, _freeBlocks.Count);
                 //Check if most of the surrounding blocks are free (the player can move)
                 playerPos = _freeBlocks[index];
-                var freeBlocksAround = 0;
                 for (var i = -2; i < 3; i++)
                 {
                     for (var j = -2; j < 3; j++)
                     {
-                        if (_freeBlocks.Contains(new Vector2Int(playerPos.x + i, playerPos.y + j)))
+                        var intPos = new Vector2Int(playerPos.x + i, playerPos.y + j);
+                        if (_freeBlocks.Contains(intPos))
                         {
-                            freeBlocksAround++;
+                            freeAroundIndexes.Add(_freeBlocks.IndexOf(intPos));
                         }
                     }
                 }
 
-                found = freeBlocksAround >= 6;
+                found = freeAroundIndexes.Count >= 6;
                 count++;
             }
 
-            return found ? new[] {playerPos.x, playerPos.y} : new[] {30, 30};
+            //Return the correct position and clear the blocks arounds
+            if (found)
+            {
+                foreach (var index in freeAroundIndexes)
+                {
+                    _freeBlocks.RemoveAt(index);
+                }
+                return new[] {playerPos.x, playerPos.y};
+            }
+            else
+            {
+                for (var i = -2; i < 3; i++)
+                {
+                    for (var j = -2; j < 3; j++)
+                    {
+                        var intPos = new Vector2Int(playerPos.x + i, playerPos.y + j);
+                        _freeBlocks.Remove(intPos);
+                    }
+                }
+                return new[] {30, 30};
+            }
+            
         }
 
         #region Enemy generation
@@ -328,6 +351,7 @@ namespace Generation
         /// <param name="x">x pos of the block</param>
         /// <param name="y">y pos of the block</param>
         /// <param name="range">Range as a block</param>
+        /// <param name="type">Type of the resource to get</param>
         /// <returns></returns>
         public static int GetAResourceInArea(int x, int y, int range, ResourceType type)
         {
@@ -389,16 +413,5 @@ namespace Generation
         }
         
         #endregion
-    }
-
-    public enum ResourceType
-    {
-        Blocked = 0,
-        Free = 1,
-        Wood = 2,
-        Rock = 3,
-        Food = 4,
-        All = 5
-        
     }
 }
