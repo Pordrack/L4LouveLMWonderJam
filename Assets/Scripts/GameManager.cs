@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour
     public State state;
     public TestInput Input;
     public GameObject ennemy;
+
+    public delegate void OnTurn();
+    public static event OnTurn On_Player_Turn;
+    public static event OnTurn On_Enemy_Turn;
     
     // Start is called before the first frame update
     void Start()

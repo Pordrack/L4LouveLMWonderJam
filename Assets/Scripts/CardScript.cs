@@ -25,7 +25,25 @@ public class CardScript : MonoBehaviour
     {
         Card_Scriptable_Object = Instantiate(Card_Scriptable_Object);
         Card_Scriptable_Object.FillDictionnary();
+
+        //On trouve son instance de Card_Effects puis on appel OnStart
+        if (Card_Effects_Dictionnary.ContainsKey(Card_Scriptable_Object.Effects_Key))
+        {
+            Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnStart(Card_Scriptable_Object.Params, Card_Scriptable_Object);
+        }
+
         LoadCard();
+
+        GameManager.On_Player_Turn += OnPlayerTurn;
+    }
+
+    public void OnPlayerTurn()
+    {
+        //On trouve son instance de Card_Effects puis on appel OnTurn
+        if (Card_Effects_Dictionnary.ContainsKey(Card_Scriptable_Object.Effects_Key))
+        {
+            Card_Effects_Dictionnary[Card_Scriptable_Object.Effects_Key].OnTurn(Card_Scriptable_Object.Params, Card_Scriptable_Object);
+        }
     }
 
     void FixedUpdate()
