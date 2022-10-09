@@ -1411,6 +1411,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 893465638}
+  - {fileID: 1473348634}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1844,35 +1845,7 @@ PrefabInstance:
     - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: audioManager
       value: 
-      objectReference: {fileID: 922047654}
-    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
-      propertyPath: Ponderations.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
-      propertyPath: Cards_Templates.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
-      propertyPath: Ponderations.Array.data[5]
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
-      propertyPath: Ponderations.Array.data[6]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
-      propertyPath: Cards_Templates.Array.data[4]
-      value: 
-      objectReference: {fileID: 11400000, guid: 906af94ab0c463243b2d998aad25e422, type: 2}
-    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
-      propertyPath: Cards_Templates.Array.data[5]
-      value: 
-      objectReference: {fileID: 11400000, guid: a7186f84dd476ef4f87177610044dc3a, type: 2}
-    - target: {fileID: 4571597446544668882, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
-      propertyPath: Cards_Templates.Array.data[6]
-      value: 
-      objectReference: {fileID: 11400000, guid: e556c751096192944bde2fd262f0b279, type: 2}
+      objectReference: {fileID: 874128882}
     - target: {fileID: 4571597446544668883, guid: 63f92f782d3dd2e478ab3b1975a28679, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -2589,6 +2562,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 54b2a410606efa540bc1680e011a8485, type: 3}
   m_PrefabInstance: {fileID: 688113615}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &874128882 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3868065595831914376, guid: 66d36710b7a5b854084ab83a5bc7fbf2, type: 3}
+  m_PrefabInstance: {fileID: 922047653}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91bae07d0ba47f04a8318a2e859c5add, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &887536678 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8ad3a5afb4e216b469c84f978fbf5f68, type: 3}
@@ -2649,10 +2633,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pordrack_Card_Effects
       objectReference: {fileID: 0}
-    - target: {fileID: 3163795326691853112, guid: 3ba2168ea0bf7174b9bb51259db0c75e, type: 3}
-      propertyPath: Effects_Key
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ba2168ea0bf7174b9bb51259db0c75e, type: 3}
 --- !u!4 &893465638 stripped
@@ -2672,6 +2652,54 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3868065595831914376, guid: 66d36710b7a5b854084ab83a5bc7fbf2, type: 3}
+      propertyPath: sounds.Array.size
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868065595831914376, guid: 66d36710b7a5b854084ab83a5bc7fbf2, type: 3}
+      propertyPath: sounds.Array.data[12].name
+      value: phytoterapie
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868065595831914376, guid: 66d36710b7a5b854084ab83a5bc7fbf2, type: 3}
+      propertyPath: sounds.Array.data[13].name
+      value: Sacrifice
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868065595831914376, guid: 66d36710b7a5b854084ab83a5bc7fbf2, type: 3}
+      propertyPath: sounds.Array.data[14].name
+      value: TP
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868065595831914376, guid: 66d36710b7a5b854084ab83a5bc7fbf2, type: 3}
+      propertyPath: sounds.Array.data[15].name
+      value: Recolte_Buisson
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868065595831914376, guid: 66d36710b7a5b854084ab83a5bc7fbf2, type: 3}
+      propertyPath: sounds.Array.data[16].name
+      value: Cerf
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868065595831914376, guid: 66d36710b7a5b854084ab83a5bc7fbf2, type: 3}
+      propertyPath: sounds.Array.data[21].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 661efe7b4cbd0c047a5fbf721b2fc78b, type: 3}
+    - target: {fileID: 3868065595831914376, guid: 66d36710b7a5b854084ab83a5bc7fbf2, type: 3}
+      propertyPath: sounds.Array.data[21].name
+      value: Marche
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868065595831914376, guid: 66d36710b7a5b854084ab83a5bc7fbf2, type: 3}
+      propertyPath: sounds.Array.data[1].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868065595831914376, guid: 66d36710b7a5b854084ab83a5bc7fbf2, type: 3}
+      propertyPath: sounds.Array.data[21].pitch
+      value: 1.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868065595831914376, guid: 66d36710b7a5b854084ab83a5bc7fbf2, type: 3}
+      propertyPath: sounds.Array.data[2].volume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868065595831914376, guid: 66d36710b7a5b854084ab83a5bc7fbf2, type: 3}
+      propertyPath: sounds.Array.data[21].volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3868065595831914377, guid: 66d36710b7a5b854084ab83a5bc7fbf2, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2722,17 +2750,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66d36710b7a5b854084ab83a5bc7fbf2, type: 3}
---- !u!114 &922047654 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3868065595831914376, guid: 66d36710b7a5b854084ab83a5bc7fbf2, type: 3}
-  m_PrefabInstance: {fileID: 922047653}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91bae07d0ba47f04a8318a2e859c5add, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &936832540 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f72a8fe4ce3850f4ea5d1922cbed0df5, type: 3}
@@ -3821,6 +3838,7 @@ MonoBehaviour:
   _max_santee: 200
   _max_faim: 200
   _max_action: 200
+  endScreenCanvas: {fileID: 0}
 --- !u!1001 &1390041861
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4049,6 +4067,52 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f72a8fe4ce3850f4ea5d1922cbed0df5, type: 3}
+--- !u!1 &1473348633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1473348634}
+  - component: {fileID: 1473348635}
+  m_Layer: 0
+  m_Name: Malau_card_effects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1473348634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473348633}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 427154657}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1473348635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473348633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc32f21c329bfab478be33d45699a5e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Effects_Key: 8
+  Satan_Sprite: {fileID: 21300000, guid: c1ecd3a41e3848d4ebf32278e8db4ed8, type: 3}
 --- !u!4 &1487810074 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3716fdaa78dfc4d4bb791cda20eaca22, type: 3}

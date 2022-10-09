@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class HandScript : MonoBehaviour
 {
-    public AudioManager audioManager;
+    
+    
     public float Z_Variation=2; //Valeur absolu maximum de la variation aleatoire du la position Z
     public float Angle_Variation=18; //Valeur absolu maximum de la variation aleatoire de l'angle
     public float SpawnAltitude = 20;
@@ -124,7 +125,7 @@ public class HandScript : MonoBehaviour
 
         //On applique le template
         new_card.Card_Scriptable_Object = card_template;
-        audioManager.Play("Tirage_Carte");
+        AudioManager.instance.Play("Tirage_Carte");
         return new_card;
     }
 

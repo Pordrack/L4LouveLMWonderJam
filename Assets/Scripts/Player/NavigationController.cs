@@ -14,6 +14,11 @@ namespace Player
         
         public static Vector2Int GetPlayerPosInGrid() => new Vector2Int(_instance.PlayerX, _instance.PlayerZ);
 
+        public static void UpdatePlayerPosInGrid(int x, int y)
+        {
+            _instance.PlayerX = x;
+            _instance.PlayerZ = y;
+        }
         public int PlayerX { get; private set; }
         public int PlayerZ { get; private set; }//indices of the player relatively to the map
         // This is different from its world position in Unity.
@@ -27,6 +32,7 @@ namespace Player
 
         private void Update()
         {
+            
             if (Input.GetKeyDown(KeyCode.M))
             {
                 var a = GenerationMap.GetAllResourcesInArea(PlayerX, PlayerZ, 2);
@@ -44,6 +50,11 @@ namespace Player
             {
                 EnemyManager.Singleton.KillEnemiesInAnArea(transform.position,2);
             }
+
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                GenerationMap.TeleportPlayer();
+            }
         }
         
 
@@ -59,6 +70,8 @@ namespace Player
             var position = _tf.position;
             PlayerX = (int) position.x;
             PlayerZ = (int) position.z;
+            
+            Debug.LogWarning("Ne pas oublier d'enlever les touches de debug");
         }
 
         private void GetGeneratedMap(int x, int y)
@@ -91,10 +104,7 @@ namespace Player
             // Get the wanted new player's position
             var newX = PlayerX + (int) direction.x;
             var newZ = PlayerZ + (int) direction.y;
-            //Debug.Log($"Current position registered is {_playerX}, {_playerZ}.\n Current position (transform) is {_tf.position.x}, {_tf.position.z}.\n" +
-              //        $" The direction we get is {direction} .\n" +
-                //      $" New position is {newX}, {newZ}.");
-            
+
             //Ensure it is in bounds.
             if(newX < 0 || newX >= _map.GetLength(0) || newZ < 0 || newZ >= _map.GetLength(1)) return;
             
@@ -118,8 +128,8 @@ namespace Player
 
         private bool IsMoveLegal(environnement_bloc targetBlock)
         {
-            //print($"The type of the target block is {targetBlock.get_type()}");
-            return targetBlock.get_type() == 1;
+            //Check if there is an enemy on the move
+            return targetBlock.get_type() == 1 && !EnemyManager.Singleton.IsThereAnEnemy(targetBlock.transform.position + 0.2f * Vector3.up);
         }
         
 
