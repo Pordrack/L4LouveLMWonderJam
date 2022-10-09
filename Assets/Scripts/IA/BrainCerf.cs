@@ -18,9 +18,6 @@ namespace IA
             }
         }
 
-        private void Update()
-        {
-            //ShallBeDrawn();
-        }
+        
     }
 }
