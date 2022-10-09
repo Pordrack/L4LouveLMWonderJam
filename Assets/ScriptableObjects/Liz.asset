@@ -16,10 +16,10 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 14868e72ec28e43459f2f2c0151ace90, type: 3}
   Name: Elizabeth
   Description: "Demandez de l'aide \xE0 votre bonne amie Elizabeth !"
-  Energy_Cost: 5
-  Wood_Cost: 7
-  Stone_Cost: 2
-  Food_Cost: 10
+  Energy_Cost: 50
+  Wood_Cost: 70
+  Stone_Cost: 20
+  Food_Cost: 100
   Audio_Clip: {fileID: 0}
   Probability_to_change: 1
   parameter_Entries: []

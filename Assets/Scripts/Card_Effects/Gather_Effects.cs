@@ -12,10 +12,11 @@ public class Gather_Effects : Card_Effect
     public ParameterEntry[] ressources_values;
     public int min_range;
     public int max_range;
+    [Tooltip("Nombre de buches par arbre, de carotte par buissons etc...")]
+    public MinMaxValue Ressource_Unit_Per_Map_Element;
 
     [Tooltip("Entre 0 et 1, proba que l'outil sois faible et capable de recup qu'une ressource")]
     public float weak_probability; 
-
 
     public override void OnPlay(Dictionary<string, ParameterEntry> parameters,Card card_scriptable_objects)
     {
@@ -85,11 +86,11 @@ public class Gather_Effects : Card_Effect
         int amount = 0;
         if (weak && true)
         {
-            amount = 1;
+            amount = ValueRandomizer.RandomizeValue(Ressource_Unit_Per_Map_Element);
         }
         else if(!weak)
         {
-            amount = 2;
+            amount = 2*ValueRandomizer.RandomizeValue(Ressource_Unit_Per_Map_Element);
         }
 
         switch (ressource_type)

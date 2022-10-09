@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2383065564471479232}
   - component: {fileID: 2277995414018755846}
   - component: {fileID: 1773858202775548884}
+  - component: {fileID: 6605855155149385193}
   m_Layer: 0
   m_Name: Pordrack_Card_Effects
   m_TagString: Untagged
@@ -113,3 +114,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Effects_Key: 5
+--- !u!114 &6605855155149385193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476799782958325159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67d5eb1534e573e459acfe77ca02cb64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Effects_Key: 9
+  FoodBonus:
+    min: 0
+    max: 0
+  WoodBonus:
+    min: 0
+    max: 0
+  StoneBonus:
+    min: 6
+    max: 12
+  HealthBonus:
+    min: 0
+    max: 0
+  HungerBonus:
+    min: 0
+    max: 0
+  ActionBonus:
+    min: 0
+    max: 0
