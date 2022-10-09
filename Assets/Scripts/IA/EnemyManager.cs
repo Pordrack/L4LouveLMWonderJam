@@ -34,7 +34,7 @@ namespace IA
             GenerationMap.OnGenerationComplete += (x, y) =>
             {
                 GatherBrains();
-                DrawEnemies();
+                Invoke(nameof(DrawEnemies), 0.1f);
             };
         }
 
