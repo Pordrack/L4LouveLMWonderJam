@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Generation;
 using UnityEngine;
 
 namespace IA
@@ -29,6 +30,12 @@ namespace IA
         private void Start()
         {
             _enemyParent = transform;
+
+            GenerationMap.OnGenerationComplete += (x, y) =>
+            {
+                GatherBrains();
+                DrawEnemies();
+            };
         }
 
         /// <summary>
@@ -84,6 +91,14 @@ namespace IA
                 var brain = collider.GetComponent<Brain>();
                 RemoveEnemy(brain);
                 brain.Die();
+            }
+        }
+
+        public void DrawEnemies()
+        {
+            foreach (var brain in _brains)
+            {
+                brain.ShallBeDrawn();
             }
         }
 

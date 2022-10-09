@@ -6,8 +6,9 @@ namespace IA
 {
     [RequireComponent(typeof(MeshRenderer))]
     [RequireComponent(typeof(OtherNavBehavior))]
-    public abstract class Brain : MonoBehaviour 
+    public abstract class Brain : MonoBehaviour
     {
+        [SerializeField] protected int moveAmount = 1;
         protected OtherNavBehavior Nav { get; private set; }
         protected Transform Tf { get; private set; }
         protected MeshRenderer Rend { get; private set; }
@@ -73,7 +74,7 @@ namespace IA
             return availableSurrounding;
         }
 
-        protected void ShallBeDrawn()
+        public void ShallBeDrawn()
         {
             if(_playerX == -1 || _playerY == -1)
                 return;

@@ -8,16 +8,16 @@ namespace IA
     {
         public override void Decide()
         {
-            var pos = Tf.position; //Get player position
-            var surroundings = GetAvailableSurrounding(pos);
-            
-            var rand = Random.Range(0, surroundings.Count);
-            Nav.PerformMove(surroundings[rand]);
+            for(var i=0; i<moveAmount; i++)
+            {
+                var pos = Tf.position; //Get Cerf position
+                var surroundings = GetAvailableSurrounding(pos);
+
+                var rand = Random.Range(0, surroundings.Count);
+                Nav.PerformMove(surroundings[rand]);
+            }
         }
 
-        private void Update()
-        {
-            ShallBeDrawn();
-        }
+        
     }
 }
