@@ -27,8 +27,18 @@ namespace Generation
         public void set_type(int type){
             this.type = type;
         }
+        public void set_type(ResourceType type){
+            this.type = (int) type;
+            set_visibility();
+        }
+        
+        
+        
 
         public void set_visibility(){
+            foreach(GameObject obj in obj_type_floor){
+                obj.SetActive(false);
+            }
             obj_type_floor[type].SetActive(true);
         }
     }

@@ -16,7 +16,22 @@ namespace Player
         
         
         private Transform _tf; //for fewer c++ calls
-        
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                var a = GenerationMap.GetAllResourcesInArea(_playerX, _playerZ, 2);
+                var str = "[";
+                foreach (var value in a)
+                {
+                    str += $"{value},";
+                }
+
+                str += "]";
+                Debug.Log(str);
+            }
+        }
 
         private void Awake()
         {
