@@ -77,6 +77,7 @@ namespace IA
             {
                 brain.Decide();
             }
+            
         }
 
         public void KillEnemiesInAnArea(Vector3 worldPos, int range)

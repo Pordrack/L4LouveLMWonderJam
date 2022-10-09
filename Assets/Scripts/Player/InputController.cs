@@ -84,7 +84,7 @@ namespace PlayerH
         {
             //TO DO : Remplacer par du vrai
             Debug.LogWarning("Je ne fini pas vraiment le tour ! J'invoque juste les events a la main");
-            GameManager.CallPlayerTurnEvent();
+            GameManager.Instance.EndPlayerTurn();
         }
 
         private void OnCardButton(int index)
