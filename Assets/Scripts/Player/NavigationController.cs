@@ -1,4 +1,5 @@
 using System;
+using Generation;
 using PlayerH;
 using UnityEngine;
 
@@ -20,7 +21,7 @@ namespace Player
         private void Awake()
         {
             _tf = transform;
-            Generation.OnGenerationComplete += GetGeneratedMap;
+            Generation.GenerationMap.OnGenerationComplete += GetGeneratedMap;
             //init position of the player.
             //TODO : this must be changed
             var position = _tf.position;
@@ -38,7 +39,7 @@ namespace Player
             var playerRealPos = _tf.position;
             gameTable.transform.position = new Vector3(playerRealPos.x-x, gameTable.transform.position.y, playerRealPos.z-y);
 
-            var map = Generation.MapsEnvironment;
+            var map = Generation.GenerationMap.MapsEnvironment;
             _map = new environnement_bloc[map.GetLength(0), map.GetLength(1)];
             //Go through each element of the map
             for (var i = 0; i < map.GetLength(0); i++)
@@ -72,7 +73,7 @@ namespace Player
                 //Move the table
                 gameTable.transform.position += new Vector3(-direction.x, 0, -direction.y);
                 //Update table visibility
-                Generation.UpdateMask(newX,newZ);
+                Generation.GenerationMap.UpdateMask(newX,newZ);
                 //Update player position
                 _playerX = newX;
                 _playerZ = newZ;

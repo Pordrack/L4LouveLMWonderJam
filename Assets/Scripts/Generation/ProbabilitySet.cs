@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace GenerationNS
+namespace Generation
 {
     [CreateAssetMenu(fileName = "Probability", menuName = "App/ProbabilitySheet", order = 0)]
     public class ProbabilitySet : ScriptableObject
@@ -26,7 +26,6 @@ namespace GenerationNS
             return null; //Shall never happen
         }
     }
-
 
     [Serializable]
     public struct ProbabilitySpawn
