@@ -5389,7 +5389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8992219235522415074, guid: fe9d8db2adbcc3342972a1ce1a689316, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8992219235522415075, guid: fe9d8db2adbcc3342972a1ce1a689316, type: 3}
       propertyPath: txt_faim
