@@ -19,6 +19,15 @@ public class GameManager : MonoBehaviour
     private bool startPlayerTurn = false;
     public bool startEnnemyTurn= false;
 
+    [Header("Glitch")]
+    public int NbTourMin=3;
+
+    public int NbTourMax=7;
+
+    [Header("RessourceLose")]
+    public int FoodLostByTurn=20;
+    public int RegenActionByTurn=100;
+
 
     public static GameManager Instance { get; private set; }
     private void Awake()
@@ -40,7 +49,7 @@ public class GameManager : MonoBehaviour
     {
         state = State.Player_Turn;
 
-        turnBeforeGlitch = Random.Range(1,6);
+        turnBeforeGlitch = Random.Range(NbTourMin,NbTourMax);
     }
 
     // Update is called once per frame
@@ -71,6 +80,8 @@ public class GameManager : MonoBehaviour
     }
 
     public void StatePlayerTurn(){
+        Stats_Perso.Instance.add_action(RegenActionByTurn);
+        Stats_Perso.Instance.down_faim(FoodLostByTurn);
         PlayerH.InputController.Instance.SwitchInputToMovement(true);
         //deplacement du joueur
         //actions
@@ -103,7 +114,7 @@ public class GameManager : MonoBehaviour
 
         //glitchage de la main
          HandScript.Instance.Glitch_Hand(Glitch_Probability);
-         turnBeforeGlitch = Random.Range(2,7);
+         turnBeforeGlitch = Random.Range(NbTourMin,NbTourMax);
          
 
     }
