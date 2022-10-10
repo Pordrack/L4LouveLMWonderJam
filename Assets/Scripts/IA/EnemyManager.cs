@@ -116,7 +116,7 @@ namespace IA
         {
             var half = new Vector3(range, 0.5f, range);
             var colliders = Physics.OverlapBox(enemy.transform.position, half, Quaternion.identity, playerLayer);
-            
+            Debug.Log($"{enemy.name} is looking for player. He has found {colliders.Length} players.");
             return colliders.Length > 0;
         }
 
