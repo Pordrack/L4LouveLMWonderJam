@@ -16,6 +16,7 @@ namespace Player
 
         public static void UpdatePlayerPosInGrid(int x, int y)
         {
+            GenerationMap.Map[_instance.PlayerX, _instance.PlayerZ] = false;
             _instance.PlayerX = x;
             _instance.PlayerZ = y;
         }
@@ -54,7 +55,6 @@ namespace Player
 
             if (_targetPosition is not null)
             {
-                AudioManager.instance.Play("Marche");
                 gameTable.transform.position = Vector3.MoveTowards(gameTable.transform.position, _targetPosition.Value, speed*Time.deltaTime);
                 EnemyManager.Singleton.DrawEnemies();
                 if(gameTable.transform.position == _targetPosition)
@@ -153,9 +153,17 @@ namespace Player
                 
                 //Update table visibility
                 Generation.GenerationMap.UpdateMask(newX,newZ);
+                
+                //Update person zone map
+                GenerationMap.Map[newX, newZ] = true;
+                GenerationMap.Map[PlayerX, PlayerZ] = false;
+                
                 //Update player position
                 PlayerX = newX;
                 PlayerZ = newZ;
+                
+                //Play sound
+                AudioManager.instance.Play("Marche");
                 
                 //Update its rotation according to the movement and play animation.
                 _anim.SetTrigger(_moveHash);

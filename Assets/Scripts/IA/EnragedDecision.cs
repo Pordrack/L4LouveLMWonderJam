@@ -1,3 +1,4 @@
+using Generation;
 using Player;
 using UnityEngine;
 
@@ -9,11 +10,31 @@ namespace IA
         {
         }
 
+        private bool IsAround(int range)
+        {
+            var around = false;
+            var pos = Tf.localPosition;
+            var x = (int) pos.x;
+            var y = (int) pos.z;
+            for (var i = -range; i < range + 1; i++)
+            {
+                for (var j = -range; j < range + 1; j++)
+                {
+                    if (!GenerationMap.IsInMap(x + i, y + j)) continue;
+                    around = around || GenerationMap.Map[x+i, y+j];
+                }
+            }
+
+            return around;
+        }
+
         public override void Decide()
         {
             //Check if the player is around 
             //Player detection.
-            if (EnemyManager.Singleton.IsPlayerAround(2, Brain))
+            
+            
+            if (IsAround(2))
             {
                 Stats_Perso.Instance.down_santee(20);
                 AudioManager.instance.GetDmgSound();

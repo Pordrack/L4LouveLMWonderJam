@@ -20,6 +20,7 @@ namespace Generation
         public static int tailleMap = 100;
         public GameObject bloc; //prefab of the block
         private static GameObject[,] _mapBlocks;
+        public static bool[,] Map; // This contains all the free zone of the map
     
 
         public GameObject environment;
@@ -33,6 +34,15 @@ namespace Generation
         {
             _mapBlocks = new GameObject[tailleMap,tailleMap]; //Init
             _freeBlocks = new List<Vector2Int>();
+            Map = new bool[tailleMap, tailleMap];
+            //Set up the map.
+            for (var i = 0; i < tailleMap; i++)
+            {
+                for (var j = 0; j < tailleMap; j++)
+                {
+                    Map[i, j] = false;
+                }
+            }
 
             //generate blocks for the mapBlocks
             for(int i = 0; i<tailleMap; i++){
@@ -43,6 +53,7 @@ namespace Generation
                     _mapBlocks[i,v] = go;
                     if(v==0 || i == 0 || i == tailleMap-1 || v == tailleMap-1){
                         _mapBlocks[i,v].GetComponent<bloc>().set_type(ResourceType.Blocked);
+                        Map[i, v] = true;
                     }
                     go.SetActive(false);
                 }
@@ -60,6 +71,7 @@ namespace Generation
                     MapsEnvironment[i,v] = go;
                     if(v==0 || i == 0 || i == tailleMap-1 || v == tailleMap-1){
                         MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(ResourceType.Blocked);
+                        Map[i, v] = true;
                     }
                     go.SetActive(false);
                 }
@@ -91,9 +103,11 @@ namespace Generation
                             if(Random.Range(0, 100)>50){
                                 _mapBlocks[tailleMap-i-1,tailleMap-v-1].GetComponent<bloc>().set_type(ResourceType.Rock); 
                                 _mapBlocks[i,v].GetComponent<bloc>().set_type(ResourceType.Rock); 
+                                Map[i, v] = true;
                             }else{
                                 _mapBlocks[tailleMap-i-1,tailleMap-v-1].GetComponent<bloc>().set_type(ResourceType.Blocked); 
                                 _mapBlocks[i,v].GetComponent<bloc>().set_type(ResourceType.Blocked); 
+                                Map[i, v] = true;
                             }
 
                         }else{
@@ -110,8 +124,10 @@ namespace Generation
                         if(_mapBlocks[i-1,v].GetComponent<bloc>().get_type() == (int) ResourceType.Blocked || _mapBlocks[i,v-1].GetComponent<bloc>().get_type() == (int) ResourceType.Blocked){
                             if(Random.Range(0, 100)>50){
                                 _mapBlocks[i,v].GetComponent<bloc>().set_type(ResourceType.Rock); 
+                                Map[i, v] = true;
                             }else{
-                                _mapBlocks[i,v].GetComponent<bloc>().set_type(ResourceType.Blocked); 
+                                _mapBlocks[i,v].GetComponent<bloc>().set_type(ResourceType.Blocked);
+                                Map[i, v] = true;
                             }
 
                         }else{
@@ -132,10 +148,12 @@ namespace Generation
         void procedural_1(int i, int v){
             _mapBlocks[i,v].GetComponent<bloc>().set_type(Random.Range(1, 3));
             _mapBlocks[tailleMap-i-1,tailleMap-v-1].GetComponent<bloc>().set_type(Random.Range(1, 3));
+            Map[i, v] = true;
         }
 
         void procedural_2(int i,int v){
             _mapBlocks[i,v].GetComponent<bloc>().set_type(Random.Range(1, 3));
+            Map[i, v] = true;
         }
 
         void procedural_generation_environment(){
@@ -144,6 +162,7 @@ namespace Generation
                     switch(_mapBlocks[i,v].GetComponent<bloc>().get_type()){
                         case 0:
                             MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(ResourceType.Blocked); 
+                            Map[i, v] = true;
                             break;
 
                         case 1:
@@ -155,19 +174,23 @@ namespace Generation
 
                                 case 1:
                                     MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(ResourceType.Wood);
+                                    Map[i, v] = true;
                                     break;
 
                                 case 2:
-                                    MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(ResourceType.Wood); 
+                                    MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(ResourceType.Wood);
+                                    Map[i, v] = true;
                                     break;
 
                                 case 3:
-                                    MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(ResourceType.Rock); 
+                                    MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(ResourceType.Rock);
+                                    Map[i, v] = true;
                                     break;
 
                                 case 4:
                                     if(Random.Range(0, 100)>75){
-                                        MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(ResourceType.Food); 
+                                        MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(ResourceType.Food);
+                                        Map[i, v] = true;
                                     }else{
                                         MapsEnvironment[i,v].GetComponent<environnement_bloc>().set_type(ResourceType.Free); 
                                         _freeBlocks.Add(new Vector2Int(i,v));
@@ -239,6 +262,8 @@ namespace Generation
                 {
                     _freeBlocks.RemoveAt(index);
                 }
+
+                Map[playerPos.x, playerPos.y] = true;
                 return new[] {playerPos.x, playerPos.y};
             }
             else
@@ -251,6 +276,8 @@ namespace Generation
                         _freeBlocks.Remove(intPos);
                     }
                 }
+
+                Map[30, 30] = true;
                 return new[] {30, 30};
             }
             
@@ -266,7 +293,8 @@ namespace Generation
             //teleport the player.
             var dir = NavigationController.GetPlayerPosInGrid() - target;
             _instance.transform.position += new Vector3(dir.x, 0, dir.y);
-            
+            Map[target.x, target.y] = true;
+
             //Updates : mask and player pos in grid
             UpdateAllMask(target.x,target.y);
             NavigationController.UpdatePlayerPosInGrid(target.x,target.y);
@@ -297,6 +325,7 @@ namespace Generation
                 //Spawn the enemy
                 var go = probaSet.GetRandomEnemy();
                 var enemy = Instantiate(go, pos, go.transform.rotation, enemyParent);
+                Map[(int)pos.x,(int)pos.y] = true;
                 enemy.name = go.name + " " + i;
             
 //                Debug.Log("Enemy spawned at " + pos);
@@ -305,9 +334,17 @@ namespace Generation
             }
         }
 
-        public static void AddFreeBlock(Vector2Int pos) => _freeBlocks.Add(pos);
+        public static void AddFreeBlock(Vector2Int pos)
+        {
+            Map[pos.x, pos.y] = false;
+            _freeBlocks.Add(pos);
+        }
         
-        public static void RemoveFreeBlock(Vector2Int pos) => _freeBlocks.Remove(pos);
+        public static void RemoveFreeBlock(Vector2Int pos)
+        {
+            Map[pos.x, pos.y] = true;
+            _freeBlocks.Remove(pos);
+        }
         
         #endregion
     
